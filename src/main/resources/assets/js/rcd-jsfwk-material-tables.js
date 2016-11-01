@@ -112,7 +112,8 @@ class RcdMaterialTableBody extends RcdTbodyElement {
     }
 
     selectAllRows(selected) {
-        this.rows.forEach((row) => row.select(selected));
+        this.rows.forEach((row) => row.select(selected, true));
+        this.fireSelectionEvent(this.rows[this.rows.length - 1]);
         return this;
     }
 
