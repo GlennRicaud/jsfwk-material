@@ -47,10 +47,12 @@ class RcdMaterialTableRow extends RcdTrElement {
         return this.addChild(cell);
     }
 
-    select(selected) {
+    select(selected, silent) {
         super.select(selected);
         this.checkbox.select(selected);
-        this.fireSelectEvent();
+        if (!silent) {
+            this.fireSelectEvent();
+        }
     }
 
     fireSelectEvent() {
@@ -96,7 +98,7 @@ class RcdMaterialTableBody extends RcdTbodyElement {
         var row = new RcdMaterialTableRow().
             init();
 
-        row.addSelectListener(() => this.fireSelectionEvent());
+        row.addSelectListener(() => this.fireSelectionEvent(row));
         this.rows.push(row);
         this.addChild(row);
         return row;
@@ -118,10 +120,9 @@ class RcdMaterialTableBody extends RcdTbodyElement {
         return this.rows.filter((row) => row.isSelected());
     }
 
-    fireSelectionEvent() {
-        var nbSelectedRows = this.getSelectedRows().length;
+    fireSelectionEvent(rowSelected) {
         this.selectionListeners.forEach((selectionListener) => {
-            selectionListener(nbSelectedRows);
+            selectionListener(rowSelected);
         }, this);
     }
 
