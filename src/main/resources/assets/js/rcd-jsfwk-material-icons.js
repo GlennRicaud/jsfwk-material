@@ -30,6 +30,18 @@ class RcdMaterialAction extends RcdDivElement {
                 removeClickListener(this.callback);
         }
     }
+
+    setTooltip(text, parent) {
+        var tooltip = new RcdTextDivElement(text).init();
+        this.addMouseOverListener(() => {
+            tooltip.show(parent);
+        });
+        this.addMouseOutListener(() => {
+            tooltip.hide(parent);
+        });
+        return this;
+
+    }
 }
 
 class RcdMaterialActionIcon extends RcdMaterialAction {
