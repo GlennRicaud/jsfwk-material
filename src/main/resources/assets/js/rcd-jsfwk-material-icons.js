@@ -10,6 +10,17 @@ class RcdGoogleMaterialIcon extends RcdIElement {
     }
 }
 
+class RcdMaterialTooltip extends RcdTextDivElement {
+    constructor(text) {
+        super(text);
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-material-tooltip');
+    }
+}
+
 class RcdMaterialAction extends RcdDivElement {
     constructor(callback) {
         super();
@@ -32,8 +43,10 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     setTooltip(text, parent) {
-        var tooltip = new RcdTextDivElement(text).init();
+        var tooltip = new RcdMaterialTooltip(text).init();
         this.addMouseOverListener(() => {
+            var boundingClientRect = this.domElement.getBoundingClientRect();
+            tooltip.setPosition(boundingClientRect.left, boundingClientRect.bottom + 14);
             tooltip.show(parent);
         });
         this.addMouseOutListener(() => {
