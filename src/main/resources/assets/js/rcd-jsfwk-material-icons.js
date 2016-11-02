@@ -50,7 +50,7 @@ class RcdMaterialAction extends RcdDivElement {
             tooltip.show(parent);
         });
         this.addMouseOutListener(() => {
-            //tooltip.hide(parent);
+            tooltip.hide(parent);
         });
         return this;
 
