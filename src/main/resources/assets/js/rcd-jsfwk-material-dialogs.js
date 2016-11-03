@@ -59,7 +59,7 @@ class RcdMaterialModalDialog extends RcdDivElement {
 }
 
 var currentRcdDialog;
-function showConfirmationDialog(text, callback) {
+function showConfirmationDialog(text, callback, parent) {
     var cancelAction = new RcdMaterialActionText("Cancel", hideDialog).init();
     var okAction = new RcdMaterialActionText("Ok", () => {
         hideDialog();
@@ -69,12 +69,12 @@ function showConfirmationDialog(text, callback) {
         init().
         addAction(cancelAction).
         addAction(okAction);
-    currentRcdDialog.show(document.body);
+    currentRcdDialog.show(parent);
 }
-function showInfoDialog(text) {
+function showInfoDialog(text, parent) {
     currentRcdDialog = new RcdMaterialModalDialog(text).init();
-    currentRcdDialog.show(document.body);
+    currentRcdDialog.show(parent);
 }
-function hideDialog() {
-    currentRcdDialog.hide(document.body);
+function hideDialog(parent) {
+    currentRcdDialog.hide(parent);
 }
