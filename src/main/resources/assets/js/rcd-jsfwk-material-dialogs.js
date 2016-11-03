@@ -53,6 +53,7 @@ class RcdMaterialModalDialog extends RcdDivElement {
 
     init() {
         return this.addClass('rcd-material-cache').
+            addClass('rcd-body'). //Workaround for widget
             addChild(this.dialog);
     }
 
@@ -99,6 +100,5 @@ function showInfoDialog(text, parent) {
     currentRcdDialog.show(parent);
 }
 function hideDialog(parent) {
-    console.log("hide from " + parent);
     currentRcdDialog.hide(parent);
 }

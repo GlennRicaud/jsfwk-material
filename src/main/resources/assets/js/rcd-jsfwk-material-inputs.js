@@ -4,8 +4,7 @@ class RcdMaterialTextField extends RcdDivElement {
         super();
         this.label = new RcdTextElement(labelText).init().
             addClass('rcd-material-textfield-label');
-        this.input = new RcdInputElement().init().
-            setText(placeholderText).
+        this.input = new RcdInputElement(placeholderText).init().
             addClass('rcd-material-textfield-input');
     }
 
