@@ -34,6 +34,10 @@ class RcdMaterialDialog extends RcdDivElement {
             addChild(this.actions);
     }
 
+    addField(field) {
+        this.content.addChild(field);
+    }
+
     addAction(action) {
         action.addClass('rcd-material-dialog-action');
         this.actions.addChild(action);
@@ -52,6 +56,11 @@ class RcdMaterialModalDialog extends RcdDivElement {
             addChild(this.dialog);
     }
 
+    addField(field) {
+        this.dialog.addField(field);
+        return this;
+    }
+
     addAction(action) {
         this.dialog.addAction(action);
         return this;
@@ -59,8 +68,22 @@ class RcdMaterialModalDialog extends RcdDivElement {
 }
 
 var currentRcdDialog;
+function showInputDialog(params) {
+    var inputField = new RcdMaterialTextField(params.label, params.placeholder).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(params.parent)).init();
+    var okAction = new RcdMaterialActionText(params.ok || "OK", () => {
+        hideDialog();
+        params.callback(inputField.getValue());
+    }).init();
+    currentRcdDialog = new RcdMaterialModalDialog("                 ", params.title).
+        init().
+        addField(inputField).
+        addAction(cancelAction).
+        addAction(okAction);
+    currentRcdDialog.show(params.parent);
+}
 function showConfirmationDialog(text, callback, parent) {
-    var cancelAction = new RcdMaterialActionText("Cancel", hideDialog).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(parent)).init();
     var okAction = new RcdMaterialActionText("Ok", () => {
         hideDialog();
         callback();
@@ -76,5 +99,6 @@ function showInfoDialog(text, parent) {
     currentRcdDialog.show(parent);
 }
 function hideDialog(parent) {
+    console.log("hide from " + parent);
     currentRcdDialog.hide(parent);
 }
