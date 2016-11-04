@@ -93,7 +93,7 @@ function showConfirmationDialog(text, callback, parent) {
         callback();
     };
     var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(parent)).init();
-    var okAction = new RcdMaterialActionText("Ok", okCallback).init();
+    var okAction = new RcdMaterialActionText("OK", okCallback).init();
     currentRcdDialog = new RcdMaterialModalDialog(text).
         init().
         addAction(cancelAction).
