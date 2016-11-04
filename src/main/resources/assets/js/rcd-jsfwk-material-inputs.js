@@ -17,4 +17,19 @@ class RcdMaterialTextField extends RcdDivElement {
     getValue() {
         return this.input.getValue();
     }
+
+    setValue(value) {
+        this.input.setValue(value);
+        return this;
+    }
+
+    focus() {
+        this.input.focus();
+        return this;
+    }
+
+    select() {
+        this.input.select();
+        return this;
+    }
 }

@@ -70,30 +70,37 @@ class RcdMaterialModalDialog extends RcdDivElement {
 
 var currentRcdDialog;
 function showInputDialog(params) {
-    var inputField = new RcdMaterialTextField(params.label, params.placeholder).init();
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(params.parent)).init();
-    var okAction = new RcdMaterialActionText(params.ok || "OK", () => {
-        hideDialog();
+    var inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
+        setValue(params.value);
+    var okCallback = () => {
+        hideDialog(params.parent);
         params.callback(inputField.getValue());
-    }).init();
-    currentRcdDialog = new RcdMaterialModalDialog("                 ", params.title).
+    };
+    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(params.parent)).init();
+    var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
+    currentRcdDialog = new RcdMaterialModalDialog("", params.title).
         init().
         addField(inputField).
         addAction(cancelAction).
-        addAction(okAction);
-    currentRcdDialog.show(params.parent);
+        addAction(okAction).
+        addKeyUpListener('Enter', okCallback).
+        show(params.parent);
+    inputField.select().focus();
 }
 function showConfirmationDialog(text, callback, parent) {
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(parent)).init();
-    var okAction = new RcdMaterialActionText("Ok", () => {
-        hideDialog();
+    var okCallback = () => {
+        hideDialog(parent);
         callback();
-    }).init();
+    };
+    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(parent)).init();
+    var okAction = new RcdMaterialActionText("Ok", okCallback).init();
     currentRcdDialog = new RcdMaterialModalDialog(text).
         init().
         addAction(cancelAction).
-        addAction(okAction);
-    currentRcdDialog.show(parent);
+        addAction(okAction).
+        addKeyUpListener('Enter', okCallback).
+        show(parent).
+        focus();
 }
 function showInfoDialog(text, parent) {
     currentRcdDialog = new RcdMaterialModalDialog(text).init();
