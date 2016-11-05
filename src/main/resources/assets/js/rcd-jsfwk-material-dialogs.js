@@ -71,7 +71,7 @@ class RcdMaterialModalDialog extends RcdDivElement {
 var currentRcdDialog;
 function showInputDialog(params) {
     var inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
-        setValue(params.value);
+        setValue(params.value || '');
     var okCallback = () => {
         hideDialog(params.parent);
         params.callback(inputField.getValue());
