@@ -68,17 +68,16 @@ class RcdMaterialModalDialog extends RcdDivElement {
     }
 }
 
-var currentRcdDialog;
 function showInputDialog(params) {
     var inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
         setValue(params.value || '');
     var okCallback = () => {
-        hideDialog(params.parent);
+        hideDialog(rcdDialog, params.parent);
         params.callback(inputField.getValue());
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(params.parent)).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(rcdDialog, params.parent)).init();
     var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
-    currentRcdDialog = new RcdMaterialModalDialog("", params.title).
+    var rcdDialog = new RcdMaterialModalDialog("", params.title).
         init().
         addField(inputField).
         addAction(cancelAction).
@@ -89,12 +88,12 @@ function showInputDialog(params) {
 }
 function showConfirmationDialog(text, callback, parent) {
     var okCallback = () => {
-        hideDialog(parent);
+        hideDialog(rcdDialog, parent);
         callback();
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(parent)).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(rcdDialog, parent)).init();
     var okAction = new RcdMaterialActionText("OK", okCallback).init();
-    currentRcdDialog = new RcdMaterialModalDialog(text).
+    var rcdDialog = new RcdMaterialModalDialog(text).
         init().
         addAction(cancelAction).
         addAction(okAction).
@@ -103,9 +102,10 @@ function showConfirmationDialog(text, callback, parent) {
         focus();
 }
 function showInfoDialog(text, parent) {
-    currentRcdDialog = new RcdMaterialModalDialog(text).init();
-    currentRcdDialog.show(parent);
+    var rcdDialog = new RcdMaterialModalDialog(text).init();
+    rcdDialog.show(parent);
+    return rcdDialog;
 }
-function hideDialog(parent) {
-    currentRcdDialog.hide(parent);
+function hideDialog(dialog, parent) {
+    dialog.hide(parent);
 }
