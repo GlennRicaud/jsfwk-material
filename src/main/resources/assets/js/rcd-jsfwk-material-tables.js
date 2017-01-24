@@ -28,14 +28,14 @@ class RcdMaterialTableCheckbox extends RcdMaterialTableCell {
 class RcdMaterialTableRow extends RcdTrElement {
     constructor() {
         super();
-        this.checkbox = new RcdMaterialTableCheckbox().init();
+        this.checkbox = new RcdMaterialTableCheckbox().init().
+            setClickListener(() => {
+                this.select(!this.isSelected());
+            });
         this.selectListeners = [];
     }
 
     init() {
-        this.setClickListener(() => {
-            this.select(!this.isSelected());
-        });
         return this.addClass('rcd-material-table-row').
             addChild(this.checkbox);
     }
