@@ -75,6 +75,12 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
         return this.addClass('rcd-material-breadcrumbs');
     }
 
+    setPathElements(pathElements) {
+        this.breadcrumbs = [];
+        this.removeAllChildren();
+        this.addPathElements(pathElements);
+    }
+
     addPathElements(pathElements) {
         pathElements.forEach(this.addPathElement, this);
         return this;
@@ -118,6 +124,12 @@ class RcdMaterialView extends RcdDivElement {
         return this.addClass('rcd-material-view').
             addChild(this.header).
             addChild(this.description);
+    }
+
+    setPathElements(pathElements) {
+        var title = pathElements[pathElements.length - 1].name;
+        this.title.setText(title);
+        this.breadcrumbs.setPathElements(pathElements);
     }
 }
 
