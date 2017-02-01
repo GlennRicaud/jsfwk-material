@@ -86,6 +86,7 @@ function showInputDialog(params) {
         show(params.parent);
     inputField.select().focus();
 }
+
 function showConfirmationDialog(text, callback, parent) {
     var okCallback = () => {
         hideDialog(rcdDialog, parent);
@@ -101,6 +102,17 @@ function showConfirmationDialog(text, callback, parent) {
         show(parent).
         focus();
 }
+
+function showDetailsDialog(params) {
+    var closeAction = new RcdMaterialActionText("CLOSE", () => hideDialog(rcdDialog, params.parent)).init();
+    var rcdDialog = new RcdMaterialModalDialog(params.text, params.title).
+        init().
+        addAction(closeAction).
+        addKeyUpListener('Enter', () => hideDialog(rcdDialog, pparams.arent)).
+        show(params.parent).
+        focus();
+}
+
 function showInfoDialog(text, parent) {
     var rcdDialog = new RcdMaterialModalDialog(text).init();
     rcdDialog.show(parent);
