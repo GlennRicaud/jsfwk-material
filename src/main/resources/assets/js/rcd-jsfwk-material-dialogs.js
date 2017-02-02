@@ -108,7 +108,7 @@ function showDetailsDialog(params) {
     var rcdDialog = new RcdMaterialModalDialog(params.text, params.title).
         init().
         addAction(closeAction).
-        addKeyUpListener('Enter', () => hideDialog(rcdDialog, pparams.arent)).
+        addKeyUpListener('Enter', () => hideDialog(rcdDialog, params.arent)).
         show(params.parent).
         focus();
 }
