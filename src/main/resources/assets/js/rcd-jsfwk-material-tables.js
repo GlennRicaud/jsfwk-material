@@ -32,19 +32,30 @@ class RcdMaterialTableRow extends RcdTrElement {
             setClickListener(() => {
                 this.select(!this.isSelected());
             });
+        this.icons = new RcdMaterialTableCell().init().
+            addClass('rcd-material-table-icons');
         this.selectListeners = [];
     }
 
     init() {
         return this.addClass('rcd-material-table-row').
-            addChild(this.checkbox);
+            addChild(this.checkbox).
+            addChild(this.icons);
     }
 
     addCell(value) {
         var cell = new RcdMaterialTableCell().
             init().
             setText(value);
-        return this.addChild(cell);
+        this.removeChild(this.icons);
+        this.addChild(cell);
+        return this.addChild(this.icons);
+    }
+
+    addIcon(icon) {
+        icon.addClass('rcd-material-table-icon'); //TODO
+        this.icons.addChild(icon);
+        return this;
     }
 
     select(selected, silent) {
