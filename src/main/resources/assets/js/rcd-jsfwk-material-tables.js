@@ -175,3 +175,32 @@ class RcdMaterialTable extends RcdTableElement {
         return this;
     }
 }
+
+class RcdMaterialTableNav extends RcdDivElement {
+    constructor() {
+        super();
+        this.start = 0;
+        this.count = 1;
+        this.total = 0;
+        this.iterator = new RcdTextDivElement('').
+            init().
+            addClass('rcd-material-table-nav-iterator');
+    }
+
+    generateIteratorText() {
+        return (parseInt(this.start) + 1) + ' - ' + (parseInt(this.start) + this.count) + ' of ' + this.total;
+    }
+
+    setValues(start, count, total) {
+        this.start = start;
+        this.count = count;
+        this.total = total;
+        this.iterator.setText(this.generateIteratorText());
+    }
+
+    init() {
+        this.iterator.setText(this.generateIteratorText());
+        return this.addClass('rcd-material-table-nav').
+            addChild(this.iterator);
+    }
+}
