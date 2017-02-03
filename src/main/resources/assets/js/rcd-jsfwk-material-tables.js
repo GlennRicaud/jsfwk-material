@@ -187,10 +187,10 @@ class RcdMaterialTableNav extends RcdDivElement {
             addClass('rcd-material-table-nav-iterator');
         this.beforeIcon = new RcdMaterialActionIcon('navigate_before', beforeCallback).
             init().
-            addClass('rcd-material-table-nav-before');
+            addClass('rcd-material-table-nav-icon');
         this.nextIcon = new RcdMaterialActionIcon('navigate_next', nextCallback).
             init().
-            addClass('rcd-material-table-nav-after');
+            addClass('rcd-material-table-nav-icon');
     }
 
     init() {
@@ -209,6 +209,8 @@ class RcdMaterialTableNav extends RcdDivElement {
         this.start = start;
         this.count = count;
         this.total = total;
+        this.beforeIcon.enable(this.start > 0);
+        this.nextIcon.enable((this.start + this.count) < this.total);
         this.iterator.setText(this.generateIteratorText());
     }
 }

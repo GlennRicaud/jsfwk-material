@@ -69,14 +69,15 @@
 .rcd-material-table-nav-iterator {
   //Material design metrics
   margin-left: 32px;
+  margin-right: 8px;
 }
 
-.rcd-material-table-nav-before {
-  //Material design metrics
-  margin-left: 32px;
-}
-
-.rcd-material-table-nav-after {
+.rcd-material-table-nav-icon :extend(.rcd-material-button) {
+  color: rgba(0, 0, 0, 0.54);
   //Material design metrics
   margin-left: 24px;
-} 
+}
+
+.rcd-material-table-nav-icon.disabled {
+  color: rgba(0, 0, 0, 0.26);
+}
