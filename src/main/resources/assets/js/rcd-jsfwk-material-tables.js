@@ -177,7 +177,7 @@ class RcdMaterialTable extends RcdTableElement {
 }
 
 class RcdMaterialTableNav extends RcdDivElement {
-    constructor() {
+    constructor(beforeCallback, nextCallback) {
         super();
         this.start = 0;
         this.count = 1;
@@ -185,6 +185,20 @@ class RcdMaterialTableNav extends RcdDivElement {
         this.iterator = new RcdTextDivElement('').
             init().
             addClass('rcd-material-table-nav-iterator');
+        this.beforeIcon = new RcdMaterialActionIcon('navigate_before', beforeCallback).
+            init().
+            addClass('rcd-material-table-nav-before');
+        this.nextIcon = new RcdMaterialActionIcon('navigate_next', nextCallback).
+            init().
+            addClass('rcd-material-table-nav-after');
+    }
+
+    init() {
+        this.iterator.setText(this.generateIteratorText());
+        return this.addClass('rcd-material-table-nav').
+            addChild(this.iterator).
+            addChild(this.beforeIcon).
+            addChild(this.nextIcon);
     }
 
     generateIteratorText() {
@@ -196,11 +210,5 @@ class RcdMaterialTableNav extends RcdDivElement {
         this.count = count;
         this.total = total;
         this.iterator.setText(this.generateIteratorText());
-    }
-
-    init() {
-        this.iterator.setText(this.generateIteratorText());
-        return this.addClass('rcd-material-table-nav').
-            addChild(this.iterator);
     }
 }
