@@ -202,7 +202,7 @@ class RcdMaterialTableNav extends RcdDivElement {
     }
 
     generateIteratorText() {
-        return (parseInt(this.start) + 1) + ' - ' + (parseInt(this.start) + Math.max(1, this.count)) + ' of ' + this.total;
+        return (this.start + 1) + ' - ' + (this.start + Math.max(1, this.count)) + ' of ' + this.total;
     }
 
     setValues(start, count, total) {

@@ -33,3 +33,29 @@ class RcdMaterialTextField extends RcdDivElement {
         return this;
     }
 }
+
+class RcdMaterialSelect extends RcdDivElement {
+    constructor(labelText, options) {
+        super();
+        this.label = new RcdTextElement(labelText).init().
+            addClass('rcd-material-combo-label');
+        this.select = new RcdSelectElement().init().
+            addOptions(options).
+            addClass('rcd-material-combo-select');
+    }
+
+    init() {
+        return this.addClass('rcd-material-combo').
+            addChild(this.label).
+            addChild(this.select);
+    }
+
+    focus() {
+        this.select.focus();
+        return this;
+    }
+
+    getValue() {
+        return this.select.getValue();
+    }
+}
