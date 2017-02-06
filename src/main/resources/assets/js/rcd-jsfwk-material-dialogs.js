@@ -71,11 +71,12 @@ class RcdMaterialModalDialog extends RcdDivElement {
 function showInputDialog(params) {
     var inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
         setValue(params.value || '');
+    var cancelCallback = () => hideDialog(rcdDialog, params.parent);
     var okCallback = () => {
         hideDialog(rcdDialog, params.parent);
         params.callback(inputField.getValue());
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(rcdDialog, params.parent)).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
     var rcdDialog = new RcdMaterialModalDialog("", params.title).
         init().
@@ -83,17 +84,19 @@ function showInputDialog(params) {
         addAction(cancelAction).
         addAction(okAction).
         addKeyUpListener('Enter', okCallback).
+        addKeyUpListener('Escape', cancelCallback).
         show(params.parent);
     inputField.select().focus();
 }
 
 function showSelectionDialog(params) {
     var comboField = new RcdMaterialSelect(params.label, params.options).init();
+    var cancelCallback = () => hideDialog(rcdDialog, params.parent);
     var okCallback = () => {
         hideDialog(rcdDialog, params.parent);
         params.callback(comboField.getValue());
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(rcdDialog, params.parent)).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
     var rcdDialog = new RcdMaterialModalDialog("", params.title).
         init().
@@ -101,32 +104,37 @@ function showSelectionDialog(params) {
         addAction(cancelAction).
         addAction(okAction).
         addKeyUpListener('Enter', okCallback).
+        addKeyUpListener('Escape', cancelCallback).
         show(params.parent);
     comboField.focus();
 }
 
 function showConfirmationDialog(text, callback, parent) {
+    var cancelCallback = () => hideDialog(rcdDialog, parent);
     var okCallback = () => {
         hideDialog(rcdDialog, parent);
         callback();
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", () => hideDialog(rcdDialog, parent)).init();
+    var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText("OK", okCallback).init();
     var rcdDialog = new RcdMaterialModalDialog(text).
         init().
         addAction(cancelAction).
         addAction(okAction).
         addKeyUpListener('Enter', okCallback).
+        addKeyUpListener('Escape', cancelCallback).
         show(parent).
         focus();
 }
 
 function showDetailsDialog(params) {
-    var closeAction = new RcdMaterialActionText("CLOSE", () => hideDialog(rcdDialog, params.parent)).init();
+    var closeCallback = () => hideDialog(rcdDialog, params.parent);
+    var closeAction = new RcdMaterialActionText("CLOSE", closeCallback).init();
     var rcdDialog = new RcdMaterialModalDialog(params.text, params.title).
         init().
         addAction(closeAction).
-        addKeyUpListener('Enter', () => hideDialog(rcdDialog, params.arent)).
+        addKeyUpListener('Enter', closeCallback).
+        addKeyUpListener('Escape', closeCallback).
         show(params.parent).
         focus();
 }
