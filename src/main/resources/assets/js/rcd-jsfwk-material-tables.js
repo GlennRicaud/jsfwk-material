@@ -176,6 +176,22 @@ class RcdMaterialTable extends RcdTableElement {
     }
 }
 
+
+class RcdMaterialTableNoContent extends RcdDivElement {
+    constructor(message) {
+        super();
+        this.message = new RcdTextDivElement(message).
+            init().
+            addClass('rcd-material-table-nocontent-message');
+    }
+
+    init() {
+        return this.addClass('rcd-material-table-nocontent').
+            addChild(this.message);
+    }
+}
+
+
 class RcdMaterialTableNav extends RcdDivElement {
     constructor(beforeCallback, nextCallback) {
         super();

@@ -61,6 +61,7 @@
   width: 100%;
   justify-content: flex-end;
   align-items: center;
+  border-top: solid rgba(0, 0, 0, 0.12) 1px;
   //Material design metrics
   height: 56px;
   padding-right: 14px;
@@ -80,4 +81,13 @@
 
 .rcd-material-table-nav-icon.disabled {
   color: rgba(0, 0, 0, 0.26);
+}
+
+.rcd-material-table-nocontent :extend(.rcd-flex-hbox) {
+  border-top: solid rgba(0, 0, 0, 0.12) 1px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  font-size: 13px;
 }
