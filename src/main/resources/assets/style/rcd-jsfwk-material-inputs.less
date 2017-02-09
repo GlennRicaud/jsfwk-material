@@ -1,16 +1,16 @@
-.rcd-material-textfield :extend(.rcd-flex-vbox) {
+.rcd-material-field :extend(.rcd-flex-vbox) {
   align-items: flex-start;
   //Material metrics
   padding-bottom: 8px;
 }
 
-.rcd-material-textfield-label {
-  //Material metrics
+.rcd-material-field-label {
+  //Material metrics for text fields
   font-size: 12px;
   margin-top: 16px;
 }
 
-.rcd-body .rcd-material-textfield-input {
+.rcd-body .rcd-material-field-input :extend(.rcd-flex-hbox) {
   width: 20em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.38);
   //Material metrics
@@ -19,6 +19,10 @@
   margin-bottom: 8px;
 }
 
-.rcd-body .rcd-material-textfield-input:focus {
+.rcd-body .rcd-material-field-input:focus {
   border-bottom: 1px solid @rcd-accent-color;
+}
+
+.rcd-body .rcd-material-dropdown-select {
+  font-size: 16px;
 }

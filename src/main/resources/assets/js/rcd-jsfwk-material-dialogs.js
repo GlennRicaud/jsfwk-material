@@ -90,23 +90,23 @@ function showInputDialog(params) {
 }
 
 function showSelectionDialog(params) {
-    var comboField = new RcdMaterialSelect(params.label, params.options).init();
+    var dropdownField = new RcdMaterialDropdown(params.label, params.options).init();
     var cancelCallback = () => hideDialog(rcdDialog, params.parent);
     var okCallback = () => {
         hideDialog(rcdDialog, params.parent);
-        params.callback(comboField.getValue());
+        params.callback(dropdownField.getValue());
     };
     var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
     var rcdDialog = new RcdMaterialModalDialog("", params.title).
         init().
-        addField(comboField).
+        addField(dropdownField).
         addAction(cancelAction).
         addAction(okAction).
         addKeyUpListener('Enter', okCallback).
         addKeyUpListener('Escape', cancelCallback).
         show(params.parent);
-    comboField.focus();
+    dropdownField.focus();
 }
 
 function showConfirmationDialog(text, callback, parent) {

@@ -1,16 +1,29 @@
 //TODO Label should move above the field on focus. Directly above for now
-class RcdMaterialTextField extends RcdDivElement {
-    constructor(labelText, placeholderText) {
+
+
+class RcdMaterialField extends RcdDivElement {
+    constructor(labelText) {
         super();
         this.label = new RcdTextElement(labelText).init().
             addClass('rcd-material-textfield-label');
+    }
+
+    init() {
+        return this.addClass('rcd-material-field').
+            addChild(this.label);
+    }
+}
+
+class RcdMaterialTextField extends RcdMaterialField {
+    constructor(labelText, placeholderText) {
+        super(labelText);
         this.input = new RcdInputElement(placeholderText).init().
+            addClass('rcd-material-field-input').
             addClass('rcd-material-textfield-input');
     }
 
     init() {
         return this.addClass('rcd-material-textfield').
-            addChild(this.label).
             addChild(this.input);
     }
 
@@ -34,19 +47,16 @@ class RcdMaterialTextField extends RcdDivElement {
     }
 }
 
-class RcdMaterialSelect extends RcdDivElement {
-    constructor(labelText, options) {
+class RcdMaterialDropdownInput extends RcdDivElement {
+    constructor(options) {
         super();
-        this.label = new RcdTextElement(labelText).init().
-            addClass('rcd-material-combo-label');
         this.select = new RcdSelectElement().init().
             addOptions(options).
-            addClass('rcd-material-combo-select');
+            addClass('rcd-material-dropdown-select');
     }
 
     init() {
-        return this.addClass('rcd-material-combo').
-            addChild(this.label).
+        return this.addClass('rcd-material-field-input').
             addChild(this.select);
     }
 
@@ -57,5 +67,27 @@ class RcdMaterialSelect extends RcdDivElement {
 
     getValue() {
         return this.select.getValue();
+    }
+}
+
+class RcdMaterialDropdown extends RcdMaterialField {
+    constructor(labelText, options) {
+        super(labelText);
+        this.input = new RcdMaterialDropdownInput(options).init();
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-material-dropdown').
+            addChild(this.input);
+    }
+
+    focus() {
+        this.input.focus();
+        return this;
+    }
+
+    getValue() {
+        return this.input.getValue();
     }
 }
