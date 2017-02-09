@@ -10,7 +10,7 @@
   margin-top: 16px;
 }
 
-.rcd-body .rcd-material-field-input :extend(.rcd-flex-hbox) {
+.rcd-body .rcd-material-field-input {
   width: 20em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.38);
   //Material metrics
@@ -23,6 +23,11 @@
   border-bottom: 1px solid @rcd-accent-color;
 }
 
+.rcd-body .rcd-material-dropdown-input :extend(.rcd-flex-hbox) {
+  justify-content: space-between;
+}
+
 .rcd-body .rcd-material-dropdown-select {
   font-size: 16px;
+  flex-grow: 1;
 }

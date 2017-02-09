@@ -53,11 +53,15 @@ class RcdMaterialDropdownInput extends RcdDivElement {
         this.select = new RcdSelectElement().init().
             addOptions(options).
             addClass('rcd-material-dropdown-select');
+        this.icon = new RcdGoogleMaterialIcon('arrow_drop_down').init().
+            addClass('rcd-material-dropdown-icon');
     }
 
     init() {
         return this.addClass('rcd-material-field-input').
-            addChild(this.select);
+            addClass('rcd-material-dropdown-input').
+            addChild(this.select).
+            addChild(this.icon);
     }
 
     focus() {
