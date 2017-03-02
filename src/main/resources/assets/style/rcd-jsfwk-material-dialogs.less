@@ -17,6 +17,7 @@
 
 .rcd-material-dialog-content-body :extend(.rcd-flex-vbox) {
   color: rgba(0, 0, 0, 0.54);
+  max-height: 60vh; //Dirty firefox workaround
   overflow: auto;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .rcd-material-cache :extend(.rcd-flex-cbox) {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
