@@ -47,21 +47,19 @@ class RcdMaterialTextField extends RcdMaterialField {
     }
 }
 
-class RcdMaterialDropdownInput extends RcdDivElement {
-    constructor(options) {
-        super();
+class RcdMaterialDropdown extends RcdMaterialField {
+    constructor(labelText, options) {
+        super(labelText);
         this.select = new RcdSelectElement().init().
             addOptions(options).
-            addClass('rcd-material-dropdown-select');
-        this.icon = new RcdGoogleMaterialIcon('arrow_drop_down').init().
-            addClass('rcd-material-dropdown-icon');
+            addClass('rcd-material-dropdown-select').
+            addClass('rcd-material-field-input');
     }
 
     init() {
-        return this.addClass('rcd-material-field-input').
-            addClass('rcd-material-dropdown-input').
-            addChild(this.select).
-            addChild(this.icon);
+        return super.init().
+            addClass('rcd-material-dropdown').
+            addChild(this.select);
     }
 
     focus() {
@@ -71,27 +69,5 @@ class RcdMaterialDropdownInput extends RcdDivElement {
 
     getValue() {
         return this.select.getValue();
-    }
-}
-
-class RcdMaterialDropdown extends RcdMaterialField {
-    constructor(labelText, options) {
-        super(labelText);
-        this.input = new RcdMaterialDropdownInput(options).init();
-    }
-
-    init() {
-        return super.init().
-            addClass('rcd-material-dropdown').
-            addChild(this.input);
-    }
-
-    focus() {
-        this.input.focus();
-        return this;
-    }
-
-    getValue() {
-        return this.input.getValue();
     }
 }
