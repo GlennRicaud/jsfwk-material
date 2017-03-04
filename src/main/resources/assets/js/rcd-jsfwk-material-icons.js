@@ -10,6 +10,17 @@ class RcdGoogleMaterialIcon extends RcdIElement {
     }
 }
 
+class RcdCustomIcon extends RcdImgElement {
+    constructor(src) {
+        super(src);
+    }
+
+    init() {
+        super.init();
+        return this.addClass('rcd-custom-icon');
+    }
+}
+
 class RcdMaterialTooltip extends RcdTextDivElement {
     constructor(text) {
         super(text);
