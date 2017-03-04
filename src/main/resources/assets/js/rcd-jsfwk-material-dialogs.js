@@ -46,12 +46,16 @@ class RcdMaterialDialog extends RcdDivElement {
 }
 
 class RcdMaterialModalDialog extends RcdDivElement {
-    constructor(content, title) {
+    constructor(params) {
         super();
-        this.dialog = new RcdMaterialDialog(content, title).init();
+        this.overlay = params.overlay;
+        this.dialog = new RcdMaterialDialog(params.content || '', params.title).init();
     }
 
     init() {
+        if (this.overlay) {
+            this.addClass('rcd-material-overlay');
+        }
         return this.addClass('rcd-material-cache').
             addClass('rcd-body'). //Workaround for widget
             addChild(this.dialog);
@@ -78,7 +82,7 @@ function showInputDialog(params) {
     };
     var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog("", params.title).
+    var rcdDialog = new RcdMaterialModalDialog({title: params.title, overlay: true}).
         init().
         addField(inputField).
         addAction(cancelAction).
@@ -98,7 +102,7 @@ function showSelectionDialog(params) {
     };
     var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog("", params.title).
+    var rcdDialog = new RcdMaterialModalDialog({title: params.title, overlay: true}).
         init().
         addField(dropdownField).
         addAction(cancelAction).
@@ -117,7 +121,7 @@ function showConfirmationDialog(text, callback, parent) {
     };
     var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
     var okAction = new RcdMaterialActionText("OK", okCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog(text).
+    var rcdDialog = new RcdMaterialModalDialog({content: text, overlay: true}).
         init().
         addAction(cancelAction).
         addAction(okAction).
@@ -130,7 +134,7 @@ function showConfirmationDialog(text, callback, parent) {
 function showDetailsDialog(params) {
     var closeCallback = () => hideDialog(rcdDialog, params.parent);
     var closeAction = new RcdMaterialActionText("CLOSE", closeCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog(params.text, params.title).
+    var rcdDialog = new RcdMaterialModalDialog({content: params.text, title: params.title, overlay: true}).
         init().
         addAction(closeAction).
         addKeyUpListener('Enter', closeCallback).
@@ -140,7 +144,7 @@ function showDetailsDialog(params) {
 }
 
 function showInfoDialog(text, parent) {
-    var rcdDialog = new RcdMaterialModalDialog(text).init();
+    var rcdDialog = new RcdMaterialModalDialog({content: text}).init();
     rcdDialog.show(parent);
     return rcdDialog;
 }
