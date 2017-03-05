@@ -26,13 +26,17 @@
   justify-self: flex-end;
   //Material design metrics
   font-size: 24px;
-  color: rgba(0, 0, 0, 0.54);
+  
+  .rcd-material-card-action-icon :extend(.rcd-flex-hbox, .rcd-material-button) {
+    margin-left: 24px;
+    color: #000;
+    opacity: 0.54;
+  }
+  
+  .rcd-material-card-action-icon.disabled {
+    color: #000;
+    opacity: 0.26;
+  }
 }
 
-.rcd-material-card-action-icon :extend(.rcd-flex-hbox, .rcd-material-button) {
-  margin-left: 24px;
-}
 
-.rcd-material-card-action-icon.disabled {
-  color: rgba(0, 0, 0, 0.26);
-}

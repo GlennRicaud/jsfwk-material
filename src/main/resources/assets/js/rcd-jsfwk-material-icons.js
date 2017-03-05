@@ -5,7 +5,8 @@ class RcdGoogleMaterialIcon extends RcdIElement {
     }
 
     init() {
-        return this.addClass('material-icons').
+        return this.addClass('rcd-icon').
+            addClass('material-icon').
             setText(this.iconName);
     }
 }
@@ -17,7 +18,8 @@ class RcdCustomIcon extends RcdImgElement {
 
     init() {
         super.init();
-        return this.addClass('rcd-custom-icon');
+        return this.addClass('rcd-icon').
+            addClass('rcd-custom-icon');
     }
 }
 
@@ -76,7 +78,22 @@ class RcdMaterialActionIcon extends RcdMaterialAction {
 
     init() {
         return super.init().
+            addClass('rcd-action-icon').
             addClass('rcd-material-action-icon').
+            addChild(this.icon);
+    }
+}
+
+class RcdCustomActionIcon extends RcdMaterialAction {
+    constructor(src, callback) {
+        super(callback);
+        this.icon = new RcdCustomIcon(src).init();
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-action-icon').
+            addClass('rcd-custom-action-icon').
             addChild(this.icon);
     }
 }
