@@ -60,10 +60,10 @@ class RcdMaterialAction extends RcdDivElement {
         this.addMouseOverListener(() => {
             var boundingClientRect = this.domElement.getBoundingClientRect();
             tooltip.setPosition(boundingClientRect.left, boundingClientRect.bottom + 14);
-            tooltip.show(parent);
+            tooltip.setParent(parent);
         });
         this.addMouseOutListener(() => {
-            tooltip.hide(parent);
+            tooltip.removeParent();
         });
         return this;
 

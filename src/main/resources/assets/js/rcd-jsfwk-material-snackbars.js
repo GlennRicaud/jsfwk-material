@@ -16,11 +16,11 @@ class RcdMaterialSnackbar extends RcdDivElement {
 function showSnackbar(text, parent, timeout = 4000) {
     var rcdSnackbar = new RcdMaterialSnackbar(text).init().
         addClickListener(() => {
-            rcdSnackbar.hide(parent);
+            rcdSnackbar.removeParent();
         }).
-        show(parent);
+        setParent(parent);
     setTimeout(() => {
-        rcdSnackbar.hide(parent);
+        rcdSnackbar.removeParent();
     }, timeout);
     return rcdSnackbar;
 }

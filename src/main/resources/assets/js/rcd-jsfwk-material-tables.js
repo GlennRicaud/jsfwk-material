@@ -29,7 +29,7 @@ class RcdMaterialTableRow extends RcdTrElement {
     constructor() {
         super();
         this.checkbox = new RcdMaterialTableCheckbox().init().
-            setClickListener(() => {
+            addClickListener(() => {
                 this.select(!this.isSelected());
             });
         this.selectListeners = [];
