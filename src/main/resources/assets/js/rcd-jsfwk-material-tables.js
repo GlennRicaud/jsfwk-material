@@ -41,7 +41,7 @@ class RcdMaterialTableRow extends RcdTrElement {
     }
 
     addCell(value) {
-        var cell = new RcdMaterialTableCell().
+        const cell = new RcdMaterialTableCell().
             init().
             setText(value);
         if (this.icons) {
@@ -94,7 +94,7 @@ class RcdMaterialTableHeader extends RcdTheadElement {
     }
 
     addCell(value) {
-        var cell = new RcdMaterialTableCell().
+        const cell = new RcdMaterialTableCell().
             init().
             setText(value);
         return this.row.addChild(cell);
@@ -113,7 +113,7 @@ class RcdMaterialTableBody extends RcdTbodyElement {
     }
 
     createRow() {
-        var row = new RcdMaterialTableRow().
+        const row = new RcdMaterialTableRow().
             init();
 
         row.addSelectListener(() => this.fireSelectionEvent(row));

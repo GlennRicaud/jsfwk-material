@@ -1,7 +1,7 @@
 class RcdMaterialHeader extends RcdHeaderElement {
     constructor(title) {
         super();
-        var icon = new RcdGoogleMaterialIcon('menu').init();
+        const icon = new RcdGoogleMaterialIcon('menu').init();
         this.menuIcon = new RcdDivElement().
             init().
             addClass('rcd-material-menu').
@@ -49,7 +49,7 @@ class RcdMaterialNav extends RcdNavElement {
     }
 
     addLink(linkId, iconName, text, callback) {
-        var link = new RcdMaterialNavLink(iconName, text, callback).init();
+        const link = new RcdMaterialNavLink(iconName, text, callback).init();
         this.links[linkId] = link;
         return this.addChild(link);
     }
@@ -91,7 +91,7 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
         if (this.breadcrumbs.length > 1) {
             this.addChild(new RcdTextElement(' / ').init());
         }
-        var breadcrumb = new RcdTextDivElement(pathElement.name).init().
+        const breadcrumb = new RcdTextDivElement(pathElement.name).init().
             addClass('rcd-material-breadcrumb');
 
         if (pathElement.callback) {
@@ -127,7 +127,7 @@ class RcdMaterialView extends RcdDivElement {
     }
 
     setPathElements(pathElements) {
-        var title = pathElements[pathElements.length - 1].name;
+        const title = pathElements[pathElements.length - 1].name;
         this.title.setText(title);
         this.breadcrumbs.setPathElements(pathElements);
     }

@@ -73,16 +73,16 @@ class RcdMaterialModalDialog extends RcdDivElement {
 }
 
 function showInputDialog(params) {
-    var inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
+    const inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
         setValue(params.value || '');
-    var cancelCallback = () => hideDialog(rcdDialog);
-    var okCallback = () => {
+    const cancelCallback = () => hideDialog(rcdDialog);
+    const okCallback = () => {
         hideDialog(rcdDialog);
         params.callback(inputField.getValue());
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
-    var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog({title: params.title, overlay: true}).
+    const cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
+    const okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
+    const rcdDialog = new RcdMaterialModalDialog({title: params.title, overlay: true}).
         init().
         addField(inputField).
         addAction(cancelAction).
@@ -94,15 +94,15 @@ function showInputDialog(params) {
 }
 
 function showSelectionDialog(params) {
-    var dropdownField = new RcdMaterialDropdown(params.label, params.options).init();
-    var cancelCallback = () => hideDialog(rcdDialog);
-    var okCallback = () => {
+    const dropdownField = new RcdMaterialDropdown(params.label, params.options).init();
+    const cancelCallback = () => hideDialog(rcdDialog);
+    const okCallback = () => {
         hideDialog(rcdDialog);
         params.callback(dropdownField.getValue());
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
-    var okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog({title: params.title, overlay: true}).
+    const cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
+    const okAction = new RcdMaterialActionText(params.ok || "OK", okCallback).init();
+    const rcdDialog = new RcdMaterialModalDialog({title: params.title, overlay: true}).
         init().
         addField(dropdownField).
         addAction(cancelAction).
@@ -114,14 +114,14 @@ function showSelectionDialog(params) {
 }
 
 function showConfirmationDialog(text, callback, parent) {
-    var cancelCallback = () => hideDialog(rcdDialog);
-    var okCallback = () => {
+    const cancelCallback = () => hideDialog(rcdDialog);
+    const okCallback = () => {
         hideDialog(rcdDialog);
         callback();
     };
-    var cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
-    var okAction = new RcdMaterialActionText("OK", okCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog({content: text, overlay: true}).
+    const cancelAction = new RcdMaterialActionText("CANCEL", cancelCallback).init();
+    const okAction = new RcdMaterialActionText("OK", okCallback).init();
+    const rcdDialog = new RcdMaterialModalDialog({content: text, overlay: true}).
         init().
         addAction(cancelAction).
         addAction(okAction).
@@ -132,9 +132,9 @@ function showConfirmationDialog(text, callback, parent) {
 }
 
 function showDetailsDialog(params) {
-    var closeCallback = () => hideDialog(rcdDialog);
-    var closeAction = new RcdMaterialActionText("CLOSE", closeCallback).init();
-    var rcdDialog = new RcdMaterialModalDialog({content: params.text, title: params.title, overlay: true}).
+    const closeCallback = () => hideDialog(rcdDialog);
+    const closeAction = new RcdMaterialActionText("CLOSE", closeCallback).init();
+    const rcdDialog = new RcdMaterialModalDialog({content: params.text, title: params.title, overlay: true}).
         init().
         addAction(closeAction).
         addKeyUpListener('Enter', closeCallback).
@@ -144,7 +144,7 @@ function showDetailsDialog(params) {
 }
 
 function showInfoDialog(text, parent) {
-    var rcdDialog = new RcdMaterialModalDialog({content: text}).init();
+    const rcdDialog = new RcdMaterialModalDialog({content: text}).init();
     rcdDialog.setParent(parent);
     return rcdDialog;
 }

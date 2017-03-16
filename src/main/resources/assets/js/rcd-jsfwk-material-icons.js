@@ -56,9 +56,9 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     setTooltip(text, parent) {
-        var tooltip = new RcdMaterialTooltip(text).init();
+        const tooltip = new RcdMaterialTooltip(text).init();
         this.addMouseOverListener(() => {
-            var boundingClientRect = this.domElement.getBoundingClientRect();
+            const boundingClientRect = this.domElement.getBoundingClientRect();
             tooltip.setPosition(boundingClientRect.left, boundingClientRect.bottom + 14);
             tooltip.setParent(parent);
         });
