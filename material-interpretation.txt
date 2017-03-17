@@ -1,9 +1,15 @@
 RCD Material interpretation (browser display)
 
-Purpose here is to adapt the material specifications for use in RCD products.
-These specs will focus only on browser display and will provide a simpler version (remove most of animations, simpler shadow, ...) 
+The purpose of this document is to interpret the material specifications for use in RCD products.
+These specs will focus only on browser display (no plan on native app support, especially since a mid-term goal is to create  PWAs).
+It will simplify or skip some specifications (animations, shadows, ...).
+TODO: Apply to existing framework: styling but also structure
 
 
-Layout– Units & measurements:
-Density-independent pixels (dp) & Scaleable pixels (sp)  => Use pixels
+Environment:
+    Thickness: 1px
+    Shadow? TBD
+Layout
+    Units & measurements:
+        Replace dp & sp by pixels
 
