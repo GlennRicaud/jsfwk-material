@@ -1,4 +1,7 @@
-Material interprettion for browser
+RCD Material interpretation (browser display)
+
+Purpose here is to adapt the material specifications for use in RCD products.
+These specs will focus only on browser display and will provide a simpler version (remove most of animations, simpler shadow, ...) 
 
 
 Layout– Units & measurements:
