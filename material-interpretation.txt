@@ -4,7 +4,7 @@ The purpose of this document is to interpret the material specifications for use
 These specs will focus only on browser display (no plan on native app support, especially since a mid-term goal is to create  PWAs).
 It will simplify or skip some specifications (light theme, no animations, no ink ripples :S, simplified shadows, ...).
 TODO: Apply to existing framework: styling but also structure. Styles were applied by component type. Try to make them more generic
-
+TODO: Move icons developped into others projects into a separate repo
 
 Material design
     Environment:
@@ -60,6 +60,27 @@ Style
             Light icon
                 Active 1
                 Inactive 0.5
+        Back: They give example of #fafafa or #303030 for a background
+    
+    Icons
+        Product icon: 48px with 1px edge
+        System icon: 24px
+        TODO: Read product icon specs
+        System icon:
+            20px and 2px margin on each side
+            2px corner radius for silhouette forms. No round corner for strokes or interior corner
+            Stroke: 2px and squared end
+            Size of icon is 24, but element containing should be 48px
+            
+            Color (Incoherence !!!)
+                Dark
+                    Active: 0.54
+                    Inactive: 0.26
+                Light
+                    Active: 1
+                    Inactive: 0.3
+    TODO Read imagery
+    
         
         
 Layout
