@@ -3,7 +3,9 @@ RCD Material interpretation (browser display)
 The purpose of this document is to interpret the material specifications for use in RCD products.
 These specs will focus only on browser display (no plan on native app support, especially since a mid-term goal is to create  PWAs).
 It will simplify or skip some specifications (light theme, no animations, no ink ripples :S, simplified shadows, ...).
-TODO: Apply to existing framework: styling but also structure. Styles were applied by component type. Try to make them more generic
+TODO: Create a new version of framework and merge with existing.
+TODO Create demo at the same time in src/test using it and write down how to use framework in readme
+TODO: Adapt datatoolbox to new framework
 TODO: Move icons developped into others projects into a separate repo
 
 Material design
@@ -43,9 +45,8 @@ Style
             I will choose 1 primary (no need for more (no status bar for ex.)), 1 accent and no second color
         Primary color (The 500 indigo by default: #3F51B5): Most widely used
         Accent color: Text fields and cursors, Progress bars, Selection controls, buttons, and sliders, links
-        Fallback accent (When on dark color): Have to plan the case of light/dark
-            => Define primary-color, accent-color, is-primary-dark and is-accent-dark. By default primary and accent will be supposed to be dark
-            => Will not implement dark/night mode for now.
+        Fallback accent: None. I will suppose that primary and accent are always dark color and thus text is always white
+        => Will not implement dark/night mode for now.
 
         Text
             Dark text on light
@@ -102,6 +103,43 @@ Style
         
         
 Layout
+    Metrics
+        Appy for each component under
+        Touch target
+            Icon: 24px (48px container)
+            Avatar: 40xp (48px for container)
+            Button: 36px height (48px for container)
+    Structure
+        Follow following structure: https://storage.googleapis.com/material-design/publish/material_v_10/assets/0Bx4BSt6jniD7SnotM2RNN2FFMzQ/layout_structure_regions_desktop.png
+        
+        => Decision on structure (and html element)
+            App (body)
+                AppBar (header)
+                ? (div)
+                    SideNav (nav)
+                        SideNavToolbar? (header)
+                        SideNavContent
+                    Main (main)
+                        SecondaryToolbar
+                        Content
+                
+        Define later how to handle views
+        
+        
+        Components
+            AppBar
+                width:100%
+                color is white 
+                bg-color is primary
+                1. NavIcon : Open nav drawer
+                2. Title
+                3. Filter?
+                space
+                4. Action icons
+                5. Menu icon
+                
+        
+        
     Units & measurements:
         Replace dp & sp by pixels
 
