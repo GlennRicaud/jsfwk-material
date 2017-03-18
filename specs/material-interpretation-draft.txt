@@ -88,8 +88,8 @@ Style
     TODO Read imagery
     
     Typography
-        Typeface: Stack is defined after as: Roboto > Noto > sans-serif.
-                Wont include Noto until more info on OFL.               
+        Typeface: Stack is defined after as: Roboto > Noto > sans-serif. 
+                Wont include Noto until more info on OFL. (Actually not present in their stack... one of many incoherences)            
         App bar: Med 20px (title)
         Button: Med 14px (all caps)
         Sub head: Reg 15px (16px on dev)
@@ -152,6 +152,7 @@ Layout
         Rules
             <= 600: Single level of content
             > 600: Multiple content levels (summary + detail)
+            Adaptation for: 480, 600, 840, 960, 1280, 1440, and 1600
             Max width 1600 (then center or fix to left).
         Sidenav
             Permanent : Always there. Compress content
