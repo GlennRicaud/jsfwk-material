@@ -3,7 +3,7 @@ RCD Material interpretation (browser display)
 The purpose of this document is to interpret the material specifications for use in RCD products.
 These specs will focus only on browser display (no plan on native app support, especially since a mid-term goal is to create  PWAs).
 It will simplify or skip some specifications (light theme, no animations, no ink ripples :S, simplified shadows, ...).
-TODO: Create a new version of framework and merge with existing.
+TODO: Create a new version / Adapt-merge existing framework ( -> 2.0.0).
 TODO Create demo at the same time in src/test using it and write down how to use framework in readme
 TODO: Adapt datatoolbox to new framework
 TODO: Move icons developped into others projects into a separate repo
@@ -87,17 +87,17 @@ Style
                     Inactive: 0.3
     TODO Read imagery
     
-    Typography (Will use only desktop typo for now)
+    Typography
         Typeface: Stack is defined after as: Roboto > Noto > sans-serif.
                 Wont include Noto until more info on OFL.               
         App bar: Med 20px (title)
-        Button: Med 14px (caps)
-        Sub head: Reg 15px
-        Body: Reg 13px
+        Button: Med 14px (all caps)
+        Sub head: Reg 15px (16px on dev)
+        Body: Reg 13px (14px on dev)
         ...
         Display 1, 2, 3, 4: Reg 34, Reg 45, Reg 56 and Light 112
         Title: Med 20px (like app bar I guess)
-        Body2: Med 13px
+        Body2: Med 13px (14px on dev)
         Caption: Reg 12px
         
         
@@ -110,8 +110,8 @@ Layout
             Avatar: 40xp (48px for container)
             Button: 36px height (48px for container)
     Structure
-        Follow following structure: https://storage.googleapis.com/material-design/publish/material_v_10/assets/0Bx4BSt6jniD7SnotM2RNN2FFMzQ/layout_structure_regions_desktop.png
-        
+        When desktop : Fixed side nav inside, under appbar //TODO Decide min width for desktop
+        When device: Side nav as nav drawer that pass over app bar
         => Decision on structure (and html element)
             App (body)
                 AppBar (header)
@@ -126,18 +126,23 @@ Layout
         Define later how to handle views
         
         
-        Components
-            AppBar
+        Components (Will treat mobile landscape as mobile portrait (should be a bit thinner)
+            AppBar 
                 width:100%
                 color is white 
                 bg-color is primary
+                height: 64px for tab/desk (56px for mob)
+                padding-left/right: 12 for tab/desk (24 - 12 of icons), 4 for mob port (16-12)
                 1. NavIcon : Open nav drawer
+                    left-margin: 20 (80 - 12 - 48  for tab/desk, 72 - 4 - 48 for mob)
                 2. Title
                 3. Filter?
                 space
                 4. Action icons
                 5. Menu icon
-                
+            Status Bar: Will not implement for now  
+            Side nav
+                max-width: 400px desk, 320 for mob. 
         
         
     Units & measurements:
