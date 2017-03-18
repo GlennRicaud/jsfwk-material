@@ -2,25 +2,64 @@ RCD Material interpretation (browser display)
 
 The purpose of this document is to interpret the material specifications for use in RCD products.
 These specs will focus only on browser display (no plan on native app support, especially since a mid-term goal is to create  PWAs).
-It will simplify or skip some specifications (animations, shadows, ...).
-TODO: Apply to existing framework: styling but also structure
+It will simplify or skip some specifications (light theme, no animations, no ink ripples :S, simplified shadows, ...).
+TODO: Apply to existing framework: styling but also structure. Styles were applied by component type. Try to make them more generic
 
 
 Material design
     Environment:
         Thickness: 1px
-        Shadow? TBD
-    Properties
-        Principles: https://material.io/guidelines/material-design/material-properties.html#material-properties-physical-properties
     Elevation & shadows
         App bar: 4px
         Raised button: 2/8 or 0/2 (resting/pressed)
-        Floating button: 6/12
-        Card: 2/8 or 0/8
+        Floating button: 6/12 (resting/pressed)
+        Card: 2/8 or 0/8 (resting/hover)
         Menu: 8
         Sub menu: 8+1*each_sub_level
         Dialog: 24 (check if overlay mention)
         Nav drawer: 16
+        Modal botton sheet: 16
+        Refresh indic: 3
+        Search: 2/3 (resting/scrolled)
+        Snackbar: 6
+        Switch 1
+Motion
+    Duration & easing
+        Animation: approx. 200ms (adapation of specs)
+        Standard curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+        Deceleration curve: cubic-bezier(0.0, 0.0, 0.2, 1);
+        Acceleration curve: cubic-bezier(0.4, 0.0, 1, 1);
+        Sharp curve: cubic-bezier(0.4, 0.0, 0.6, 1);
+    Movement
+        Movement on screen -> standard curve
+        Entering/Leaving (if not pushing other content) -> dec/acc curve
+        Temporary leaving screen  -> sharp curve (For example side nav)
+        
+Style
+    Color: Not a big fan of the color palette. What is advised is to select 3 hues of primary color (500, 700, 800) and 1 accent color.
+            I will choose 1 primary (no need for more, no status bar for ex.), 1 accent and no second color
+        Primary color (The 500 indigo by default: #3F51B5): Most widely used
+        Accent color: Text fields and cursors, Text fields and cursors, Progress bars, Selection controls, buttons, and sliders, links
+        Fallback accent: Plan actually the possibiity to have 2 accent colors: on dark and light (For the moment I never needed the on dark)
+
+        Text
+            Dark text on light
+                Primary: #000 0.87
+                Sec: #000 0.54
+                Disabled/Hint: #000 0.38
+                Dividers: #000 0.12
+            Light text on dark
+                Primary: #fff 1
+                Sec: #fff 0.7
+                Disabled/Hint: #fff 0.5
+                Dividers: #fff 0.12
+        Icon
+            Dark icon
+                Active: 0.54
+                Inactive: 0.38
+            Light icon
+                Active 1
+                Inactive 0.5
         
         
 Layout
