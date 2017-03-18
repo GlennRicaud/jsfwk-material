@@ -143,7 +143,22 @@ Layout
             Status Bar: Will not implement for now  
             Side nav
                 max-width: 400px desk, 320 for mob. 
-        
+    Responsive
+        Widths
+            Mob port: ? - 600
+            Mob land: 480 - 960
+            Tab port: 600 - 840
+            Tab land: 860 - 1280
+        Rules
+            <= 600: Single level of content
+            > 600: Multiple content levels (summary + detail)
+            Max width 1600 (then center or fix to left).
+        Sidenav
+            Permanent : Always there. Compress content
+            Side panel: Appears. Compress content. 
+                Persistant:  Stays there when content is touched
+                Tempo: Is removed when content is touched
+        Tempo Overlay: Appears. Over content. Is removed when outside is touched
         
     Units & measurements:
         Replace dp & sp by pixels
