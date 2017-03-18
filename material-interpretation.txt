@@ -6,9 +6,23 @@ It will simplify or skip some specifications (animations, shadows, ...).
 TODO: Apply to existing framework: styling but also structure
 
 
-Environment:
-    Thickness: 1px
-    Shadow? TBD
+Material design
+    Environment:
+        Thickness: 1px
+        Shadow? TBD
+    Properties
+        Principles: https://material.io/guidelines/material-design/material-properties.html#material-properties-physical-properties
+    Elevation & shadows
+        App bar: 4px
+        Raised button: 2/8 or 0/2 (resting/pressed)
+        Floating button: 6/12
+        Card: 2/8 or 0/8
+        Menu: 8
+        Sub menu: 8+1*each_sub_level
+        Dialog: 24 (check if overlay mention)
+        Nav drawer: 16
+        
+        
 Layout
     Units & measurements:
         Replace dp & sp by pixels
