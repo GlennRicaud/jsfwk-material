@@ -27,6 +27,8 @@
 
   <build>
     <plugins>
+
+      <!-- JS Merge -->
       <plugin>
         <groupId>org.zcore.maven</groupId>
         <artifactId>merge-maven-plugin</artifactId>
@@ -57,13 +59,33 @@
           </execution>
         </executions>
       </plugin>
+      
+      <!-- Unpack dependencies -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>unpack-dependencies</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.basedir}/target/dependencies</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
+      <!-- Copy local LESS files for LESS transpilation -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.0.2</version>
         <executions>
           <execution>
-            <id>lessc-copy-resources</id>
+            <id>copy-local-less-resources</id>
             <phase>process-resources</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -83,25 +105,33 @@
         </executions>
       </plugin>
 
+      <!-- Copy dependant LESS files for LESS transpilation -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.0.0</version>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
         <executions>
           <execution>
-            <id>unpack-jsfwkc-core</id>
+            <id>copy-dependant-less-resources</id>
             <phase>process-resources</phase>
             <goals>
-              <goal>unpack-dependencies</goal>
+              <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <includes>**/*.less</includes>
               <outputDirectory>${project.basedir}/target/lessc</outputDirectory>
+              <resources>
+                <resource>
+                  <includes>
+                    <include>**/*.less</include>
+                  </includes>
+                  <directory>${project.basedir}/target/dependencies</directory>
+                </resource>
+              </resources>
             </configuration>
           </execution>
         </executions>
       </plugin>
 
+      <!-- LESS compilation -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -125,7 +155,7 @@
       </plugin>
 
 
-      <plugin>
+      <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
         <version>1.2</version>
@@ -144,8 +174,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
-
+      </plugin-->
 
       <!--plugin>
         <groupId>org.apache.maven.plugins</groupId>
