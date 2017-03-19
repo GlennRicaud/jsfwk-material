@@ -15,6 +15,15 @@
     </repository>
   </distributionManagement>
 
+  <dependencies>
+    <dependency>
+      <groupId>systems.rcd.js.fwk.core</groupId>
+      <artifactId>rcd-jsfwk-core</artifactId>
+      <version>2.0.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
 
   <build>
     <plugins>
@@ -32,10 +41,15 @@
             <configuration>
               <mergers>
                 <merger>
-                  <target>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material.js</target>
+                  <target>${project.basedir}/target/classes/assets/js/rcd-jsfwk-material.js</target>
                   <sources>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-cards.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-icons.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-inputs.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-skeleton.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-snackbars.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-tables.js</source>
                   </sources>
                 </merger>
               </mergers>
@@ -43,6 +57,51 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>lessc-copy-resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.basedir}/target/lessc</outputDirectory>
+              <resources>
+                <resource>
+                  <includes>
+                    <include>**/*.less</include>
+                  </includes>
+                  <directory>${project.basedir}/src/main/resources</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>unpack-jsfwkc-core</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <includes>**/*.less</includes>
+              <outputDirectory>${project.basedir}/target/lessc</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -50,20 +109,43 @@
         <executions>
           <execution>
             <id>lessc</id>
-            <phase>generate-test-sources</phase>
+            <phase>process-resources</phase>
             <goals>
               <goal>exec</goal>
             </goals>
             <configuration>
               <executable>lessc</executable>
               <arguments>
-                <argument>${project.basedir}/src/main/resources/assets/style/rcd-flex.less</argument>
-                <argument>${project.basedir}/src/test/resources/assets/style/rcd-flex.css</argument>
+                <argument>${project.basedir}/target/lessc/assets/style/rcd-jsfwk-material.less</argument>
+                <argument>${project.basedir}/target/classes/assets/style/rcd-jsfwk-material.css</argument>
               </arguments>
             </configuration>
           </execution>
         </executions>
       </plugin>
+
+
+      <!--plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>unpack-jsfwkc-core</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <includes>**/*.less</includes>
+              <includes>**/*.less</includes>
+              <outputDirectory>${project.basedir}/test-classes</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin-->
     </plugins>
   </build>
 </project>
