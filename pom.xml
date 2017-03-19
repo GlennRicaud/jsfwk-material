@@ -14,4 +14,31 @@
       <url>https://api.bintray.com/maven/rcd-systems/rcd-repo/rcd-jsfwk-material/;publish=1</url>
     </repository>
   </distributionManagement>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2</version>
+        <executions>
+          <execution>
+            <id>lessc</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>lessc</executable>
+              <arguments>
+                <argument>${project.basedir}/src/main/resources/assets/style/rcd-flex.less</argument>
+                <argument>${project.basedir}/aa.css</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

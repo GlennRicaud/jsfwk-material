@@ -156,11 +156,20 @@ Layout
             Max width 1600 (then center or fix to left).
         Sidenav
             Permanent : Always there. Compress content
-            Side panel: Appears. Compress content. 
-                Persistant:  Stays there when content is touched
-                Tempo: Is removed when content is touched
+            Side panel: Appears.
+                Persistant:  Stays there when content is touched. Compresses content
+                Tempo: Is removed when content is touched. Pushes content
         Tempo Overlay: Appears. Over content. Is removed when outside is touched
         
     Units & measurements:
         Replace dp & sp by pixels
 
+Pattern
+    Navigation
+        Up: Go to parent untill home screen
+        Back: Go to previous
+        "Make navigation more predictable by inserting the navigation path the user took to the app's topmost screen" -> Already done with breadcrumbs.
+        Nav not affected by tab action, swipe, dropdown
+        
+        => Toolbox: I should maybe pass to tabs instead of nav drawer for the main views. But from what I saw in android apps or examples, they have 2 /3 items: 4 starts to be too much to my taste.
+            => Google play has a side nav but tha behaves like a mix of perm and tempo ...
