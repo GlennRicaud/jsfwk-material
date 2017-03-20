@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html class="rcd-html">
 <head lang="en">
     <meta charset="UTF-8">
     <title>RCD JS FWK Material Demo</title>
     <link rel="stylesheet" type="text/css" href="../../../classes/assets/style/rcd-jsfwk-material.css"/>
 </head>
-<body>
+<body class="rcd-body">
 <script type="text/javascript" src="../../../dependencies/assets/js/rcd-jsfwk-core.js"></script>
-<script type="text/javascript" src="../../../classes/assets/js/rcd-jsfwk-material.js"></script>
+<script type="text/javascript" src="../../../classes/assets/js/rcd-jsfwk-material-structure.js"></script>
+<!--script type="text/javascript" src="../../../classes/assets/js/rcd-jsfwk-material.js"></script-->
 
 <script>
-    showDetailsDialog({text: "Demo"});
+
+    (function createStructure() {
+        let applicationBar = new RcdMaterialApplicationBar({title: 'Demo'}).
+                init();
+
+        new RcdMaterialApplication({applicationBar: applicationBar}).
+                init().
+                setParent(document.body);
+    })();
 </script>
 </body>
 </html>
