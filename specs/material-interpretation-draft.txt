@@ -178,4 +178,8 @@ Pattern
 
 
 From material website
-    Division mob <-> tab/site is done at 800px
+    Division mob <-> tab/desk is done at 800px on mat design site... (incoherence with their recommended sizes...)
+    Division mob <-> tab/desk is done at 600px on polymer
+        => Finally I will use 600 -> Biggest Mob portrait (And also contains small mob landsc).
+        => So if I follow the same principle, I will choose 960 for tab/desk breakpoint
+                => Both of these size a recommended breakpoints.
