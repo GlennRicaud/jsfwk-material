@@ -12,14 +12,31 @@
 
 <script>
 
-    (function createStructure() {
+    function createNavDrawer() {
+        let inboxItem = new RcdMaterialNavigationDrawerItem({
+            icon: new RcdGoogleMaterialIconArea({iconName: 'open_in_new'}).init(),
+            text: 'Dialogs'
+        }).init();
+
+        return new RcdMaterialNavigationDrawer({
+            items: [inboxItem]
+        }).init();
+    }
+
+    function createStructure() {
         let applicationBar = new RcdMaterialApplicationBar({title: 'Demo'}).
                 init();
+        let navDrawer = createNavDrawer();
 
-        new RcdMaterialApplication({applicationBar: applicationBar}).
-                init().
-                setParent(document.body);
-    })();
+        return new RcdMaterialApplication({
+            bar: applicationBar,
+            nav: navDrawer
+        }).init();
+    }
+
+    createStructure().
+            setParent(document.body);
+
 </script>
 </body>
 </html>

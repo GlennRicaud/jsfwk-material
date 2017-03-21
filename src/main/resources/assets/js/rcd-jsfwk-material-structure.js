@@ -16,17 +16,52 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
     }
 }
 
+class RcdMaterialNavigationDrawerItem extends RcdDivElement {
+    constructor(params = {}) {
+        super();
+        this.key = params.key;
+        this.icon = params.icon;
+        this.text = new RcdTextElement(params.text).
+            init().
+            addClass('rcd-material-nav-drawer-item-label');
+        this.callback = params.callback;
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-material-nav-drawer-item').
+            addChild(this.icon).
+            addChild(this.text);
+    }
+}
+
+class RcdMaterialNavigationDrawer extends RcdNavElement {
+    constructor(params = {}) {
+        super();
+        //TODO header
+        this.items = params.items || [];
+    }
+
+    init() {
+        super.init().
+            addClass('rcd-material-nav-drawer');
+        this.items.forEach((item) => this.addChild(item));
+        return this;
+    }
+}
+
 class RcdMaterialApplication extends RcdDivElement {
     constructor(params = {}) {
         super();
-        this.applicationBar = params.applicationBar;
-        this.navigationDrawer = params.navigationDrawer;
+        this.bar = params.bar;
+        this.nav = params.nav;
         this.main = new RcdMainElement().init();
     }
 
     init() {
-        return this.addClass('rcd-material-application').
-            addChild(this.applicationBar).
+        return super.init().
+            addClass('rcd-material-application').
+            addChild(this.bar).
             addChild(this.nav).
             addChild(this.main);
     }
