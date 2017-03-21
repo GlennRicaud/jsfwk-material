@@ -34,11 +34,39 @@ AppBar
         5. Menu icon //TODO Not for the moment
         
 NavigationDrawer (nav)
-    Follows metrics from lists     
+    Follows metrics from lists 
+    Icons align at screen left and right margins: 16px
+            => padding-left: 4 on mob (16 - 12 of icons),12 on tab/desk (24 - 12)
+            => padding-right: 16px on mob, 24 on desk;
     Children
         NavigationDrawerHeader? (header) //TODO Not for now
         NavigationDrawerBody 
         
 NavigationDrawerBody
-    list items
-        font: Reg, 14px, 87%
+    List item: Roboto Medium, 14sp, 87% #000000
+    Subheader: Roboto Medium, 14sp, 54% #000000 //TODO Not for now
+    
+    
+    Icon values: 54% #000000
+        => classic, nothing to do here
+    Content associated with an icon or avatar left margin: 72px
+        => margin-left: 20 (72 - 48 - 4)
+    Side nav width: Equal to the screen width minus the height of the action bar
+        => 56px for mob, 64 for tablet and desk
+        => Will be difficult to implement on web. Thei website does not even care and simple set the width to 256px all the time.
+                I will then set it to 256px. Sorry for mobiles with less than 312px
+    Maximum width: The maximum width of the nav drawer is 280dp on mobile and 320dp on tablet. 
+        => Incoherence again and again: In strucutre mob is define with max: 320px
+        => Other incoherence, they tell to multiply standard increment by 5. But for desktop while it should then be 320, it is 400 in structure...
+        => Their webpages does not even respect it: THey put it to 256px all the time...
+        => I will merge them
+            => mob: 280px
+            => tab: 320px
+            => mob: 400px
+    Status bar: 24px //TODO
+    Subtitle: 56px //TODO
+    Space between content areas: 8px //TODO
+    Subtitles and list items: 48px
+    
+    Item selected
+        color: primary color
