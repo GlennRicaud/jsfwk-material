@@ -1,19 +1,19 @@
 class RcdGoogleMaterialIcon extends RcdIElement {
-    constructor(iconName) {
+    constructor(params) {
         super();
-        this.iconName = iconName;
+        this.iconName = params.iconName;
     }
 
     init() {
         return this.addClass('rcd-icon').
-            addClass('material-icon').
+            addClass('rcd-material-icon').
             setText(this.iconName);
     }
 }
 
 class RcdCustomIcon extends RcdImgElement {
-    constructor(src) {
-        super(src);
+    constructor(params) {
+        super(params.src);
     }
 
     init() {
@@ -24,8 +24,8 @@ class RcdCustomIcon extends RcdImgElement {
 }
 
 class RcdMaterialTooltip extends RcdTextDivElement {
-    constructor(text) {
-        super(text);
+    constructor(params) {
+        super(params.text);
     }
 
     init() {
@@ -35,9 +35,9 @@ class RcdMaterialTooltip extends RcdTextDivElement {
 }
 
 class RcdMaterialAction extends RcdDivElement {
-    constructor(callback) {
+    constructor(params) {
         super();
-        this.callback = callback;
+        this.callback = params.callback;
     }
 
     init() {
@@ -71,9 +71,9 @@ class RcdMaterialAction extends RcdDivElement {
 }
 
 class RcdMaterialActionIcon extends RcdMaterialAction {
-    constructor(iconName, callback) {
-        super(callback);
-        this.icon = new RcdGoogleMaterialIcon(iconName).init();
+    constructor(params) {
+        super({callback: params.callback});
+        this.icon = new RcdGoogleMaterialIcon({iconName: params.iconName}).init();
     }
 
     init() {
@@ -101,13 +101,13 @@ class RcdCustomActionIcon extends RcdMaterialAction {
 class RcdMaterialActionText extends RcdMaterialAction {
     constructor(text, callback) {
         super(callback);
-        this.tmp2 = new RcdTextElement(text).init(); //TODO
+        this.textElement = new RcdTextElement(text).init();
     }
 
     init() {
         return super.init().
             addClass('rcd-material-action-text').
-            addChild(this.tmp2);
+            addChild(this.textElement);
     }
 }
 

@@ -22,7 +22,9 @@ AppBar
     Text: Med 20px
     1. NavIcon : Open nav drawer
     2. Title
-        left-margin: 20
+        left-margin: 
+            20 if icon
+            12 if no icon
     3. Filter?
     space
     4. Action icons

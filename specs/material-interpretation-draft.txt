@@ -135,7 +135,9 @@ Layout
                 padding-left/right: 12 for tab/desk (24 - 12 of icons), 4 for mob port (16-12)
                 1. NavIcon : Open nav drawer         
                 2. Title
-                    left-margin: 20 (80 - 12 - 48  for tab/desk, 72 - 4 - 48 for mob)
+                    left-margin: 
+                        20 if icon(80 - 12 - 48  for tab/desk, 72 - 4 - 48 for mob)
+                        12 if no icon (24 - 12 for tab desk, 16 - 4)
                 3. Filter?
                 space
                 4. Action icons
