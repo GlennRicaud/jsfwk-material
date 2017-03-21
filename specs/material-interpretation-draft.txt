@@ -177,9 +177,5 @@ Pattern
             => Google play has a side nav but tha behaves like a mix of perm and tempo ...
 
 
-
-
-
 From material website
-
     Division mob <-> tab/site is done at 800px

@@ -28,7 +28,17 @@ AppBar
             left-margin: 
                 20 if icon
                 12 if no icon
-        3. Filter?
+        3. Filter? //TODO Not for the moment
         space
-        4. Action icons
-        5. Menu icon
+        4. Action icons //TODO Not for the moment
+        5. Menu icon //TODO Not for the moment
+        
+NavigationDrawer (nav)
+    Follows metrics from lists     
+    Children
+        NavigationDrawerHeader? (header) //TODO Not for now
+        NavigationDrawerBody 
+        
+NavigationDrawerBody
+    list items
+        font: Reg, 14px, 87%
