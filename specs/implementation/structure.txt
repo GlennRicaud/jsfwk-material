@@ -1,0 +1,28 @@
+Structure (ex-skeleton)
+
+Desktop mode: SideNav permanent under app bar -> No menu icon
+Device mode: SideNav temporary over appbar and content (no push or shrink) -> Closed by def. Menu icon to open.
+
+Application (div, vbox)
+    ApplicationBar (header, hbox)
+    SideNav (nav)
+        SideNavToolbar? (header)
+        SideNavContent
+    Main (main)
+        SecondaryToolbar? (header)
+        Content
+        
+        
+AppBar 
+    Width: 100%
+    Color: White 
+    Bg-color: Primary color
+    height: 64px for tab/desk (56px for mob)
+    padding-left/right: 12 for tab/desk (24 - 12 of icons), 4 for mob port (16-12)
+    1. NavIcon : Open nav drawer
+        left-margin: 20 (80 - 12 - 48  for tab/desk, 72 - 4 - 48 for mob)
+    2. Title
+    3. Filter?
+    space
+    4. Action icons
+    5. Menu icon

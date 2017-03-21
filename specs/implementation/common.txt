@@ -1,0 +1,13 @@
+Text
+    Dark text
+        Primary: #000 0.87
+        Sec: #000 0.54
+        Disabled/Hint: #000 0.38
+        Dividers: #000 0.12
+    Light text
+        Primary: #fff 1
+        Sec: #fff 0.7
+        Disabled/Hint: #fff 0.5
+        Dividers: #fff 0.12
+        
+        
