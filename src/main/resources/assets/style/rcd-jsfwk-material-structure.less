@@ -53,6 +53,12 @@
   @media (min-width: 961px) {
     max-width: 400px;
   }
+
+  @media (max-width: 960px) {
+    :not(.toggled) {
+      display: none;
+    }
+  }
 }
 
 .rcd-material-nav-drawer-item :extend(.rcd-flex-hbox) {
