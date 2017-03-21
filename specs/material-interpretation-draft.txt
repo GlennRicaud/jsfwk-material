@@ -90,7 +90,7 @@ Style
     Typography
         Typeface: Stack is defined after as: Roboto > Noto > sans-serif. 
                 Wont include Noto until more info on OFL. (Actually not present in their stack... one of many incoherences)            
-        App bar: Med 20px (title)
+            App bar: Med 20px (title)
         Button: Med 14px (all caps)
         Sub head: Reg 15px (16px on dev)
         Body: Reg 13px (14px on dev)
@@ -133,9 +133,9 @@ Layout
                 bg-color is primary
                 height: 64px for tab/desk (56px for mob)
                 padding-left/right: 12 for tab/desk (24 - 12 of icons), 4 for mob port (16-12)
-                1. NavIcon : Open nav drawer
-                    left-margin: 20 (80 - 12 - 48  for tab/desk, 72 - 4 - 48 for mob)
+                1. NavIcon : Open nav drawer         
                 2. Title
+                    left-margin: 20 (80 - 12 - 48  for tab/desk, 72 - 4 - 48 for mob)
                 3. Filter?
                 space
                 4. Action icons
