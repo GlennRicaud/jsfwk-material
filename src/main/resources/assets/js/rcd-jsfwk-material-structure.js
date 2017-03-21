@@ -4,13 +4,14 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
         this.title = new RcdTextDivElement(params.title).
             init().
             addClass('rcd-material-application-title');
-        this.navIcon = new RcdGoogleMaterialIconArea({iconName: 'menu', light: true}).
-            init();
+        this.icon = new RcdGoogleMaterialIconArea({iconName: 'menu', light: true}).
+            init().
+            addClass('rcd-material-application-bar-icon');
     }
 
     init() {
         return this.addClass('rcd-material-application-bar').
-            addChild(this.navIcon).
+            addChild(this.icon).
             addChild(this.title);
     }
 }

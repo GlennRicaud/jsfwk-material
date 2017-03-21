@@ -1,0 +1,4 @@
+//TODO
+Make the following generic:
+    For the moment, desktop display of nav drawer supposed to be permanent clipped
+    For the moment, the navigation is supposed to be navigationDrawer
