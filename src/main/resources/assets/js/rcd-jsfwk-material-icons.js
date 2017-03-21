@@ -6,12 +6,12 @@ class RcdGoogleMaterialIcon extends RcdIElement {
 
     init() {
         return this.addClass('rcd-icon').
-            addClass('rcd-material-icon').
+            addClass('rcd-gmaterial-icon').
             setText(this.iconName);
     }
 }
 
-class RcdCustomIcon extends RcdImgElement {
+class RcdImageIcon extends RcdImgElement {
     constructor(params) {
         super(params.src);
     }
@@ -53,10 +53,11 @@ class RcdMaterialAction extends RcdDivElement {
             return this.addClass('disabled').
                 removeClickListener(this.callback);
         }
+        return this;
     }
 
     setTooltip(text, parent) {
-        const tooltip = new RcdMaterialTooltip(text).init();
+        const tooltip = new RcdMaterialTooltip({text: text}).init();
         this.addMouseOverListener(() => {
             const boundingClientRect = this.domElement.getBoundingClientRect();
             tooltip.setPosition(boundingClientRect.left, boundingClientRect.bottom + 14);
@@ -70,37 +71,51 @@ class RcdMaterialAction extends RcdDivElement {
     }
 }
 
-class RcdMaterialActionIcon extends RcdMaterialAction {
+class RcdMaterialIconArea extends RcdMaterialAction {
     constructor(params) {
-        super({callback: params.callback});
+        super(params);
+        this.light = params.light;
+    }
+
+    init() {
+        super.init().
+            addClass('rcd-material-icon-area');
+        if (this.light) {
+            this.addClass('light');
+        }
+        return this;
+    }
+}
+
+class RcdGoogleMaterialIconArea extends RcdMaterialIconArea {
+    constructor(params) {
+        super(params);
         this.icon = new RcdGoogleMaterialIcon({iconName: params.iconName}).init();
     }
 
     init() {
         return super.init().
-            addClass('rcd-action-icon').
-            addClass('rcd-material-action-icon').
+            addClass('rcd-gmaterial-icon-area').
             addChild(this.icon);
     }
 }
 
-class RcdCustomActionIcon extends RcdMaterialAction {
-    constructor(src, callback) {
-        super(callback);
-        this.icon = new RcdCustomIcon(src).init();
+class RcdImageActionIconArea extends RcdMaterialIconArea {
+    constructor(params) {
+        super(params);
+        this.icon = new RcdCustomIcon(params.src).init();
     }
 
     init() {
         return super.init().
-            addClass('rcd-action-icon').
-            addClass('rcd-custom-action-icon').
+            addClass('rcd-image-icon-area').
             addChild(this.icon);
     }
 }
 
 class RcdMaterialActionText extends RcdMaterialAction {
     constructor(text, callback) {
-        super(callback);
+        super(params);
         this.textElement = new RcdTextElement(text).init();
     }
 
@@ -128,5 +143,6 @@ class RcdMaterialCheckbox extends RcdGoogleMaterialIcon {
         } else {
             this.setText('check_box_outline_blank');
         }
+        return this;
     }
 }

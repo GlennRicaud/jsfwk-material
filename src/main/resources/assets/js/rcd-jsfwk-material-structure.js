@@ -1,3 +1,17 @@
+class RcdMaterialApplicationBar extends RcdHeaderElement {
+    constructor(params = {}) {
+        super();
+        this.title = new RcdTextDivElement(params.title).init();
+        this.navIcon = new RcdGoogleMaterialIconArea({iconName: 'menu', light: true}).init();
+    }
+
+    init() {
+        return this.addClass('rcd-material-application-bar').
+            addChild(this.navIcon).
+            addChild(this.title);
+    }
+}
+
 class RcdMaterialApplication extends RcdDivElement {
     constructor(params = {}) {
         super();
@@ -11,17 +25,5 @@ class RcdMaterialApplication extends RcdDivElement {
             addChild(this.applicationBar).
             addChild(this.nav).
             addChild(this.main);
-    }
-}
-
-class RcdMaterialApplicationBar extends RcdHeaderElement {
-    constructor(params = {}) {
-        super();
-        this.title = new RcdTextDivElement(params.title).init();
-    }
-
-    init() {
-        return this.addClass('rcd-material-application-bar').
-            addChild(this.title);
     }
 }

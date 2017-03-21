@@ -1,0 +1,20 @@
+ Icons
+    Product icon: 48px with 1px edge
+    System icon: 24px
+    TODO: Read product icon specs
+    System icon:
+        20px and 2px margin on each side
+        2px corner radius for silhouette forms. No round corner for strokes or interior corner
+        Stroke: 2px and squared end
+        Size of icon is 24, but element containing should be 48px
+        
+        Color
+            Dark (#000)
+                Active: 0.54
+                Inactive: 0.26
+            Light (#000)
+                Active: 1
+                Inactive: 0.3
+                
+Touch target
+    Icon: 24px (48px container -> padding: 12s)

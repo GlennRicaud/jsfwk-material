@@ -20,12 +20,15 @@ AppBar
     Height: 64px for tab/desk, 56px for mob
     Padding-left/right: 12 for tab/desk, 4 for mob
     Text: Med 20px
-    1. NavIcon : Open nav drawer
-    2. Title
-        left-margin: 
-            20 if icon
-            12 if no icon
-    3. Filter?
-    space
-    4. Action icons
-    5. Menu icon
+    
+    Children
+        NavIcon
+            Follow icon specs: name=menu
+        2. Title
+            left-margin: 
+                20 if icon
+                12 if no icon
+        3. Filter?
+        space
+        4. Action icons
+        5. Menu icon
