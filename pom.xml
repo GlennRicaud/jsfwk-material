@@ -45,13 +45,7 @@
                 <merger>
                   <target>${project.basedir}/target/classes/assets/js/rcd-jsfwk-material.js</target>
                   <sources>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-cards.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-icons.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-inputs.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-skeleton.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-snackbars.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-tables.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-structure.js</source>
                   </sources>
                 </merger>
               </mergers>
