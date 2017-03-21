@@ -173,3 +173,11 @@ Pattern
         
         => Toolbox: I should maybe pass to tabs instead of nav drawer for the main views. But from what I saw in android apps or examples, they have 2 /3 items: 4 starts to be too much to my taste.
             => Google play has a side nav but tha behaves like a mix of perm and tempo ...
+
+
+
+
+
+From material website
+
+    Division mob <-> tab/site is done at 800px
