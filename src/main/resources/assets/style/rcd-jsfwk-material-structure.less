@@ -1,4 +1,5 @@
 .rcd-material-application-bar :extend(.rcd-flex-hbox, .rcd-material-shadow) {
+  position: fixed;
   z-index: 2;
   //Material specs
   width: 100%;
@@ -35,7 +36,11 @@
   }
 }
 
-.rcd-material-nav-drawer :extend(.rcd-flex-vbox) {
+.rcd-material-nav-drawer :extend(.rcd-flex-vbox, .rcd-material-shadow) {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: white;
   min-width: 256px;
   //Material specs
   @media (max-width: 600px) {
@@ -52,6 +57,7 @@
   }
   @media (min-width: 961px) {
     max-width: 400px;
+    top: 64px;
   }
 
   @media (max-width: 960px) {
@@ -62,9 +68,11 @@
 }
 
 .rcd-material-nav-drawer-item :extend(.rcd-flex-hbox) {
+  //Material specs
   font-size: @rcd-nav-item-font-size;
   font-weight: @rcd-nav-item-font-weight;
   color: @rcd-primary-text-dark-color;
+  height: 48px;
 }
 
 .rcd-material-nav-drawer-item-label {
