@@ -7,6 +7,8 @@ TODO: Create a new version / Adapt-merge existing framework ( -> 2.0.0).
 TODO Create demo at the same time in src/test using it and write down how to use framework in readme
 TODO: Adapt datatoolbox to new framework
 TODO: Move icons developped into others projects into a separate repo
+TODO: This framework includes also non material concepts lie breadcrumbs. Extract in seperate
+TODO: THis framework is aimed for single page apps. COuld be more generic
 
 Material design
     Environment:

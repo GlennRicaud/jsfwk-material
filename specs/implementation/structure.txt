@@ -70,3 +70,10 @@ NavigationDrawerBody
     
     Item selected
         color: primary color
+        Highlight on click (//TODO Ink ripple later)
+            If refreshed, the link is only select and not highlighted
+            The color is not defined though. 
+                Mat design site uses #eee (no transparency, after all they repeated. Always inconsistencies.)
+                Their screenshots show a 0xe8e8e8 color. Which would be the same as a #000 with opacity 9% (expl: 0xe8 == 232. 232/255 == 91%)
+                    => #000 9% then
+      

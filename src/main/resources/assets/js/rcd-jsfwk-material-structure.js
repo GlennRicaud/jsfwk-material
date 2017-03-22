@@ -64,12 +64,10 @@ class RcdMaterialNavigationDrawerItem extends RcdDivElement {
             addChild(this.text).
             addClickListener(() => {
                 if (this.state) {
-                    let router = RcdHistoryRouter.getInstance();
-                    if (router) {
-                        router.setState(this.state);
-                    }
+                    RcdHistoryRouter.getInstance().setState(this.state);
                 }
-                this.addClass('selected');
+                this.addClass('selected').
+                    addClass('highlighted');
             });
     }
 }
