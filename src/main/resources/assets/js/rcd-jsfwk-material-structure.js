@@ -104,7 +104,7 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
     }
 }
 
-class RcdMaterialApplication extends RcdDivElement {
+class RcdMaterialApplicationShell extends RcdDivElement {
     constructor(params) {
         super();
         this.nav = params.nav;
