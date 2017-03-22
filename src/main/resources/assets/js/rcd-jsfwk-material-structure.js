@@ -66,8 +66,6 @@ class RcdMaterialNavigationDrawerItem extends RcdDivElement {
                 if (this.state) {
                     RcdHistoryRouter.getInstance().setState(this.state);
                 }
-                this.addClass('selected').
-                    addClass('highlighted');
             });
     }
 }
@@ -87,6 +85,11 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
 
     addItem(item) {
         this.items.push(item);
+        item.addClickListener((clickedItem) => {
+            this.items.forEach((item) => item.removeClass('selected').removeClass('highlighted'));
+            clickedItem.addClass('selected').
+                addClass('highlighted');
+        })
         return this.addChild(item);
     }
 
