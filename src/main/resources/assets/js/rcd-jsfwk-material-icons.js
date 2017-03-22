@@ -19,7 +19,7 @@ class RcdImageIcon extends RcdImgElement {
     init() {
         super.init();
         return this.addClass('rcd-icon').
-            addClass('rcd-custom-icon');
+            addClass('rcd-image-icon');
     }
 }
 
@@ -42,6 +42,7 @@ class RcdMaterialAction extends RcdDivElement {
 
     init() {
         return super.init().
+            addClass('rcd-material-action').
             addClickListener(this.callback);
     }
 
