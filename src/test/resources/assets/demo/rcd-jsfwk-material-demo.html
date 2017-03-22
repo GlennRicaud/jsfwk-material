@@ -13,14 +13,19 @@
 <script>
 
     function createNavDrawer() {
-        let inboxItem = new RcdMaterialNavigationDrawerItem({
+        let dialogsItem = new RcdMaterialNavigationDrawerItem({
             iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
             text: 'Dialogs'
+        }).init();
+        let tablesItem = new RcdMaterialNavigationDrawerItem({
+            iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
+            text: 'Tables'
         }).init();
 
         return new RcdMaterialNavigationDrawer().
                 init().
-                addItem(inboxItem);
+                addItem(dialogsItem).
+                addItem(tablesItem);
     }
 
     function createStructure() {
