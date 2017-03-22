@@ -1,23 +1,47 @@
+class RcdMaterialNavIconArea extends RcdGoogleMaterialIconArea {
+    constructor() {
+        super('menu');
+        this.toggled = false;
+        this.navigationDrawer;
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-material-application-nav-icon').
+            setLight(true).
+            addClickListener(() => {
+                this.iconArea.setText(this.toggled ? 'menu' : 'close');
+                if (this.navigationDrawer) {
+                    this.navigationDrawer.toggle()
+                }
+                this.toggled = !this.toggled;
+            });
+    }
+
+    setNavigationDrawer(navigationDrawer) {
+        this.navigationDrawer = navigationDrawer;
+        return this;
+    }
+}
+
+
 class RcdMaterialApplicationBar extends RcdHeaderElement {
     constructor(title) {
         super();
         this.title = new RcdTextDivElement(title).
             init().
             addClass('rcd-material-application-title');
-        this.iconArea = new RcdGoogleMaterialIconArea('menu').
-            init().
-            setLight(true).
-            addClass('rcd-material-application-bar-icon');
+        this.navIconArea = new RcdMaterialNavIconArea().init();
     }
 
     init() {
         return this.addClass('rcd-material-application-bar').
-            addChild(this.iconArea).
+            addChild(this.navIconArea).
             addChild(this.title);
     }
 
-    linkNavigationDrawer(navigationDrawer) {
-        this.iconArea.addClickListener(() => navigationDrawer.toggle());
+    setNavigationDrawer(navigationDrawer) {
+        this.navIconArea.setNavigationDrawer(navigationDrawer);
         return this;
     }
 }
@@ -61,12 +85,11 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
 
     toggle() {
         if (this.toggled) {
-            this.toggled = false;
             this.removeClass('toggled');
         } else {
-            this.toggled = true;
             this.addClass('toggled');
         }
+        this.toggled = !this.toggled;
         return this;
     }
 }
@@ -75,7 +98,7 @@ class RcdMaterialApplication extends RcdDivElement {
     constructor(params) {
         super();
         this.nav = params.nav;
-        this.bar = params.bar.linkNavigationDrawer(params.nav);
+        this.bar = params.bar.setNavigationDrawer(params.nav);
         this.main = new RcdMainElement().init();
     }
 
