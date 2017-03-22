@@ -21,14 +21,14 @@ class RcdMaterialHeader extends RcdHeaderElement {
 class RcdMaterialNavLink extends RcdDivElement {
     constructor(iconName, text, callback) {
         super();
-        this.icon = new RcdGoogleMaterialIcon(iconName).init().addClass('rcd-material-nav-icon');
+        this.iconArea = new RcdGoogleMaterialIcon(iconName).init().addClass('rcd-material-nav-icon');
         this.text = new RcdTextElement(text).init();
         this.callback = callback;
     }
 
     init() {
         this.addClass('rcd-material-nav-link').
-            addChild(this.icon).
+            addChild(this.iconArea).
             addChild(this.text);
 
         if (this.callback) {

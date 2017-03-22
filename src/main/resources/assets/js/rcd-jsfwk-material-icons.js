@@ -94,26 +94,26 @@ class RcdMaterialIconArea extends RcdMaterialAction {
 class RcdGoogleMaterialIconArea extends RcdMaterialIconArea {
     constructor(iconName, callback) {
         super(callback);
-        this.icon = new RcdGoogleMaterialIcon(iconName).init();
+        this.iconArea = new RcdGoogleMaterialIcon(iconName).init();
     }
 
     init() {
         return super.init().
             addClass('rcd-gmaterial-icon-area').
-            addChild(this.icon);
+            addChild(this.iconArea);
     }
 }
 
 class RcdImageActionIconArea extends RcdMaterialIconArea {
     constructor(callback, src) {
         super(callback);
-        this.icon = new RcdImageIcon(src).init();
+        this.iconArea = new RcdImageIcon(src).init();
     }
 
     init() {
         return super.init().
             addClass('rcd-image-icon-area').
-            addChild(this.icon);
+            addChild(this.iconArea);
     }
 }
 
