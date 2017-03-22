@@ -29,7 +29,7 @@ class RcdMaterialNavigationDrawerItem extends RcdDivElement {
 
     init() {
         return super.init().
-            addClass('rcd-material-nav-drawer-item').
+            addClass('rcd-material-nav-drawer').
             addChild(this.icon).
             addChild(this.text);
     }
