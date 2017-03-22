@@ -14,10 +14,12 @@
 
     function createNavDrawer() {
         let dialogsItem = new RcdMaterialNavigationDrawerItem({
+            state: 'dialogs',
             iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
             text: 'Dialogs'
         }).init();
         let tablesItem = new RcdMaterialNavigationDrawerItem({
+            state: 'tables',
             iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
             text: 'Tables'
         }).init();
