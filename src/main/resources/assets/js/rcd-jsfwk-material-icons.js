@@ -1,7 +1,7 @@
 class RcdGoogleMaterialIcon extends RcdIElement {
-    constructor(params) {
+    constructor(iconName) {
         super();
-        this.iconName = params.iconName;
+        this.iconName = iconName;
     }
 
     init() {
@@ -12,8 +12,8 @@ class RcdGoogleMaterialIcon extends RcdIElement {
 }
 
 class RcdImageIcon extends RcdImgElement {
-    constructor(params) {
-        super(params.src);
+    constructor(src) {
+        super(src);
     }
 
     init() {
@@ -24,8 +24,8 @@ class RcdImageIcon extends RcdImgElement {
 }
 
 class RcdMaterialTooltip extends RcdTextDivElement {
-    constructor(params) {
-        super(params.text);
+    constructor(text) {
+        super(text);
     }
 
     init() {
@@ -35,9 +35,9 @@ class RcdMaterialTooltip extends RcdTextDivElement {
 }
 
 class RcdMaterialAction extends RcdDivElement {
-    constructor(params) {
+    constructor(callback) {
         super();
-        this.callback = params.callback;
+        this.callback = callback;
     }
 
     init() {
@@ -72,25 +72,29 @@ class RcdMaterialAction extends RcdDivElement {
 }
 
 class RcdMaterialIconArea extends RcdMaterialAction {
-    constructor(params) {
-        super(params);
-        this.light = params.light;
+    constructor(callback) {
+        super(callback);
     }
 
     init() {
         super.init().
             addClass('rcd-material-icon-area');
-        if (this.light) {
-            this.addClass('light');
-        }
         return this;
+    }
+
+    setLight(light) {
+        if (light) {
+            return this.addClass('light');
+        } else {
+            return this.removeClass('light');
+        }
     }
 }
 
 class RcdGoogleMaterialIconArea extends RcdMaterialIconArea {
-    constructor(params) {
-        super(params);
-        this.icon = new RcdGoogleMaterialIcon({iconName: params.iconName}).init();
+    constructor(iconName, callback) {
+        super(callback);
+        this.icon = new RcdGoogleMaterialIcon(iconName).init();
     }
 
     init() {
@@ -101,9 +105,9 @@ class RcdGoogleMaterialIconArea extends RcdMaterialIconArea {
 }
 
 class RcdImageActionIconArea extends RcdMaterialIconArea {
-    constructor(params) {
-        super(params);
-        this.icon = new RcdCustomIcon(params.src).init();
+    constructor(callback, src) {
+        super(callback);
+        this.icon = new RcdImageIcon(src).init();
     }
 
     init() {
@@ -115,7 +119,7 @@ class RcdImageActionIconArea extends RcdMaterialIconArea {
 
 class RcdMaterialActionText extends RcdMaterialAction {
     constructor(text, callback) {
-        super(params);
+        super(callback);
         this.textElement = new RcdTextElement(text).init();
     }
 

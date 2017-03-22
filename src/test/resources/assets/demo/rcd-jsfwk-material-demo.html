@@ -14,17 +14,17 @@
 
     function createNavDrawer() {
         let inboxItem = new RcdMaterialNavigationDrawerItem({
-            icon: new RcdGoogleMaterialIconArea({iconName: 'open_in_new'}).init(),
+            iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
             text: 'Dialogs'
         }).init();
 
-        return new RcdMaterialNavigationDrawer({
-            items: [inboxItem]
-        }).init();
+        return new RcdMaterialNavigationDrawer().
+                init().
+                addItem(inboxItem);
     }
 
     function createStructure() {
-        let applicationBar = new RcdMaterialApplicationBar({title: 'Demo'}).
+        let applicationBar = new RcdMaterialApplicationBar('Demo').
                 init();
         let navDrawer = createNavDrawer();
 

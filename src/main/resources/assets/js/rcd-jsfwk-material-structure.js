@@ -1,11 +1,12 @@
 class RcdMaterialApplicationBar extends RcdHeaderElement {
-    constructor(params = {}) {
+    constructor(title) {
         super();
-        this.title = new RcdTextDivElement(params.title).
+        this.title = new RcdTextDivElement(title).
             init().
             addClass('rcd-material-application-title');
-        this.icon = new RcdGoogleMaterialIconArea({iconName: 'menu', light: true}).
+        this.icon = new RcdGoogleMaterialIconArea('menu').
             init().
+            setLight(true).
             addClass('rcd-material-application-bar-icon');
     }
 
@@ -17,10 +18,10 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
 }
 
 class RcdMaterialNavigationDrawerItem extends RcdDivElement {
-    constructor(params = {}) {
+    constructor(params) {
         super();
         this.key = params.key;
-        this.icon = params.icon;
+        this.iconArea = params.iconArea;
         this.text = new RcdTextElement(params.text).
             init().
             addClass('rcd-material-nav-drawer-item-label');
@@ -29,29 +30,32 @@ class RcdMaterialNavigationDrawerItem extends RcdDivElement {
 
     init() {
         return super.init().
-            addClass('rcd-material-nav-drawer').
-            addChild(this.icon).
+            addClass('rcd-material-nav-drawer-item').
+            addChild(this.iconArea).
             addChild(this.text);
     }
 }
 
 class RcdMaterialNavigationDrawer extends RcdNavElement {
-    constructor(params = {}) {
+    constructor() {
         super();
-        //TODO header
-        this.items = params.items || [];
+        this.items = [];
     }
 
     init() {
         super.init().
             addClass('rcd-material-nav-drawer');
-        this.items.forEach((item) => this.addChild(item));
         return this;
+    }
+
+    addItem(item) {
+        this.items.push(item);
+        return this.addChild(item);
     }
 }
 
 class RcdMaterialApplication extends RcdDivElement {
-    constructor(params = {}) {
+    constructor(params) {
         super();
         this.bar = params.bar;
         this.nav = params.nav;
