@@ -30,7 +30,7 @@
                 addItem(tablesItem);
     }
 
-    function createStructure() {
+    function createAppShell() {
         let applicationBar = new RcdMaterialApplicationBar('Demo').
                 init();
         let navDrawer = createNavDrawer();
@@ -41,8 +41,13 @@
         }).init();
     }
 
-    createStructure().
-            setParent(document.body);
+    function createApp() {
+        new RcdMaterialSinglePageApplication(createAppShell()).
+                init().
+                setParent(document.body);
+    }
+
+    createApp();
 
 </script>
 </body>

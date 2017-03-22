@@ -47,6 +47,7 @@
                   <sources>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-icons.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-structure.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-app.js</source>
                   </sources>
                 </merger>
               </mergers>
