@@ -41,9 +41,11 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     init() {
-        return super.init().
-            addClass('rcd-material-action').
-            addClickListener(this.callback);
+        super.init().addClass('rcd-material-action');
+        if (this.callback) {
+            this.addClickListener(this.callback);
+        }
+        return this;
     }
 
     enable(enabled) {
