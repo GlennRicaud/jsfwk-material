@@ -49,12 +49,10 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
 class RcdMaterialNavigationDrawerItem extends RcdDivElement {
     constructor(params) {
         super();
-        this.state = params.state;
         this.iconArea = params.iconArea;
         this.text = new RcdTextElement(params.text).
             init().
             addClass('rcd-material-nav-drawer-item-label');
-        this.callback = params.callback;
     }
 
     init() {
@@ -84,12 +82,12 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
     }
 
     addItem(item) {
-        this.items.push(item);
         item.addClickListener((clickedItem) => {
             this.items.forEach((item) => item.removeClass('selected').removeClass('highlighted'));
             clickedItem.addClass('selected').
                 addClass('highlighted');
-        })
+        });
+        this.items.push(item);
         return this.addChild(item);
     }
 

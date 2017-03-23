@@ -1,18 +1,34 @@
 class RcdMaterialRoute {
     constructor(params) {
         this.state = params.state;
+        this.name = params.name;
+        this.iconArea = params.iconArea;
         this.view = params.view;
         this.callback = params.callback;
     }
 }
 
 class RcdMaterialSinglePageApplication {
-    constructor(shell) {
-        this.shell = shell;
+    constructor(title) {
+        this.title = title;
+        this.bar = new RcdMaterialApplicationBar(title).init();
+        this.nav = new RcdMaterialNavigationDrawer().init();
+
+        this.shell = new RcdMaterialApplicationShell({
+            bar: this.bar,
+            nav: this.nav
+        }).init();
         this.routes = {};
+        this.defaultRoute;
     }
 
     init() {
+        return this;
+    }
+
+    setDefaultRoute(route) {
+        this.defaultRoute = route;
+        RcdHistoryRouter.getInstance().setDefaultRoute(route.callback);
         return this;
     }
 
@@ -20,9 +36,13 @@ class RcdMaterialSinglePageApplication {
         this.routes[route.state] = route;
         RcdHistoryRouter.getInstance().addRoute(route.state, () => {
             route.callback();
-            //TODO Display view
-            this.shell.refresh();
+            //this.shell.refresh();
         });
+        let navDrawerItem = new RcdMaterialNavigationDrawerItem({
+            iconArea: route.iconArea,
+            text: route.name
+        }).init().addClickListener(() => RcdHistoryRouter.getInstance().setState(route.state));
+        this.nav.addItem(navDrawerItem);
         return this;
     }
 

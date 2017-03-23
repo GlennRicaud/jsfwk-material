@@ -16,6 +16,7 @@ class RcdMaterialCard extends RcdDivElement {
     }
 
     init() {
+        let a = () => alert('aa');
         return this.addClass('rcd-material-card').
             addChild(this.header).
             addChild(this.content);

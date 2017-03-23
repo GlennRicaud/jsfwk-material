@@ -11,43 +11,26 @@
 <script type="text/javascript" src="../../../classes/assets/js/rcd-jsfwk-material.js"></script>
 
 <script>
-
-    function createNavDrawer() {
-        let dialogsItem = new RcdMaterialNavigationDrawerItem({
-            state: 'dialogs',
-            iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
-            text: 'Dialogs'
-        }).init();
-        let tablesItem = new RcdMaterialNavigationDrawerItem({
-            state: 'tables',
-            iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
-            text: 'Tables'
-        }).init();
-
-        return new RcdMaterialNavigationDrawer().
-                init().
-                addItem(dialogsItem).
-                addItem(tablesItem);
-    }
-
-    function createAppShell() {
-        let applicationBar = new RcdMaterialApplicationBar('Demo').
-                init();
-        let navDrawer = createNavDrawer();
-
-        return new RcdMaterialApplicationShell({
-            bar: applicationBar,
-            nav: navDrawer
-        }).init();
-    }
-
     function createApp() {
-        new RcdMaterialSinglePageApplication(createAppShell()).
+        return new RcdMaterialSinglePageApplication('Demo').
                 init().
-                setParent(document.body);
+                setDefaultRoute({
+                    callback: () => alert('default')
+                }).
+                addRoute({
+                    state: 'dialogs',
+                    name: 'Dialogs',
+                    iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
+                    callback: () => alert('dialogs')
+                }).
+                addRoute({
+                    state: 'tables',
+                    name: 'Tables',
+                    iconArea: new RcdGoogleMaterialIconArea('grid_on').init()
+                });
     }
 
-    createApp();
+    createApp().setParent(document.body);
 
 </script>
 </body>
