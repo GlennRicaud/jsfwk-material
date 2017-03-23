@@ -10,12 +10,25 @@ class RcdMaterialNavIconArea extends RcdGoogleMaterialIconArea {
             addClass('rcd-material-application-nav-icon').
             setLight(true).
             addClickListener(() => {
-                this.iconArea.setText(this.toggled ? 'menu' : 'close');
+                this.toggle();
                 if (this.navigationDrawer) {
                     this.navigationDrawer.toggle()
                 }
-                this.toggled = !this.toggled;
             });
+    }
+
+
+    toggle() {
+        this.toggled = !this.toggled;
+        return this.setToggled(this.toggled);
+    }
+
+    setToggled(toggled) {
+        if (toggled) {
+            this.iconArea.setText('close');
+        } else {
+            this.iconArea.setText('menu');
+        }
     }
 
     setNavigationDrawer(navigationDrawer) {
@@ -77,6 +90,7 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
         super();
         this.items = [];
         this.toggled = false;
+        this.navIconArea;
     }
 
     init() {
@@ -91,6 +105,9 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
             clickedItem.addClass('selected').
                 addClass('highlighted');
             this.setToggled(false);
+            if (this.navIconArea) {
+                this.navIconArea.setToggled(false);
+            }
         });
         this.items.push(item);
         return this.addChild(item);
@@ -108,6 +125,11 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
             return this.removeClass('toggled');
         }
     }
+    
+    setNavIconArea(navIconArea) {
+        this.navIconArea = navIconArea;
+        return this;
+    }
 }
 
 class RcdMaterialMain extends RcdDivElement {
@@ -124,7 +146,7 @@ class RcdMaterialMain extends RcdDivElement {
 class RcdMaterialApplicationShell extends RcdDivElement {
     constructor(params) {
         super();
-        this.nav = params.nav;
+        this.nav = params.nav.setNavIconArea(params.bar.navIconArea);
         this.bar = params.bar.setNavigationDrawer(params.nav);
         this.main = params.main;
     }
