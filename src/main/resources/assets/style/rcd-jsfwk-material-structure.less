@@ -89,6 +89,7 @@
 
 .rcd-material-main {
   position: fixed;
+  right: 0;
   @media (max-width: 600px) {
     top: 56px;
   }
@@ -97,9 +98,11 @@
   }
   @media (max-width: 960px) {
     left: 0;
+    font-size: @rcd-body-device-font-size;
   }
   @media (min-width: 961px) {
     left: 256px; //TODO
+    font-size: @rcd-body-desktop-font-size;
   }
 }
 

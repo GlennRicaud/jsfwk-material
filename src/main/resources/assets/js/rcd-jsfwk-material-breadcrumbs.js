@@ -6,7 +6,7 @@ class RcdMaterialBreadcrumb extends RcdTextDivElement{
     }
 
     init() {
-        return this.addClass('rcd-material-breadcrumb');
+        return super.init().addClass('rcd-material-breadcrumb');
     }
 }
 
@@ -37,7 +37,7 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
             this.addChild(new RcdTextElement(' / ').init());
         }
         if (breadcrumb.callback) {
-            breadcrumb.addClickListener(pathElement.callback);
+            breadcrumb.addClickListener(breadcrumb.callback);
         }
         return this.addChild(breadcrumb);
     }

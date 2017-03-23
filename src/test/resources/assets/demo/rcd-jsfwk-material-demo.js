@@ -1,12 +1,15 @@
 function createApp() {
 
     function createDialogsRoute() {
+        const breadCrumbs = new RcdMaterialBreadcrumbs().init().
+            addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
+            addBreadcrumb(new RcdMaterialBreadcrumb('Dialogs').init());
         const view = new RcdTextElement('Dialogs').init();
         return {
             state: 'dialogs',
             name: 'Dialogs',
             iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
-            callback: (main) => main.addChild(view)
+            callback: (main) => main.addChild(breadCrumbs)
         };
     }
 
