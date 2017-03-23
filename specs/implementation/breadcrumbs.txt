@@ -1,0 +1,4 @@
+Not defined in material design specifically but it is mentionned that:
+    "Make navigation more predictable by inserting the navigation path the user took to the app's topmost screen"
+    
+Implementation will be inspired by Materialized

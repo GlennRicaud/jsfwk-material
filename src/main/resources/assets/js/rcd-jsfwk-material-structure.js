@@ -106,12 +106,23 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
     }
 }
 
+class RcdMaterialMain extends RcdDivElement {
+    constructor() {
+        super();   
+    }
+    
+    init() {
+        return super.init().
+            addClass('rcd-material-main');
+    }
+}
+
 class RcdMaterialApplicationShell extends RcdDivElement {
     constructor(params) {
         super();
         this.nav = params.nav;
         this.bar = params.bar.setNavigationDrawer(params.nav);
-        this.main = new RcdMainElement().init();
+        this.main = params.main;
     }
 
     init() {

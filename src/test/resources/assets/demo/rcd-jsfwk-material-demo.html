@@ -10,28 +10,6 @@
 <script type="text/javascript" src="../../../dependencies/assets/js/rcd-jsfwk-core.js"></script>
 <script type="text/javascript" src="../../../classes/assets/js/rcd-jsfwk-material.js"></script>
 
-<script>
-    function createApp() {
-        return new RcdMaterialSinglePageApplication('Demo').
-                init().
-                setDefaultRoute({
-                    callback: () => alert('default')
-                }).
-                addRoute({
-                    state: 'dialogs',
-                    name: 'Dialogs',
-                    iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
-                    callback: () => alert('dialogs')
-                }).
-                addRoute({
-                    state: 'tables',
-                    name: 'Tables',
-                    iconArea: new RcdGoogleMaterialIconArea('grid_on').init()
-                }).start();
-    }
-
-    createApp().start(document.body);
-
-</script>
+<script type="text/javascript" src="rcd-jsfwk-material-demo.js"></script>
 </body>
 </html>
