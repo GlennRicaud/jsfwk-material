@@ -1,0 +1,11 @@
+Breakpoints: (Not respected by the website. They use 360, 800, 1240,...)
+    480, 600, 840, 960, 1280, 1440, and 1600px
+        => Try to make a layout with fixed size for all of them
+            => 0 - 480: width 100% & padding with margin;
+            => 480 - 600: fixed to 480 (still padding)
+            ...
+            >1440: Fixed to 1600 (still padding)
+    Max layout: 1600px.Then centee align
+    
+Margins and gutters can be 8, 16, 24, or 40dp wide.
+    =>I will use 24 for now and for both
