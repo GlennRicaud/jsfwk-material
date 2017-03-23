@@ -44,6 +44,10 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
         this.navIconArea.setNavigationDrawer(navigationDrawer);
         return this;
     }
+    
+    setTitle(title) {
+        this.title.setText(title);
+    }
 }
 
 class RcdMaterialNavigationDrawerItem extends RcdDivElement {

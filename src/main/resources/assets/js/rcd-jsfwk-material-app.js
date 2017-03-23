@@ -35,6 +35,7 @@ class RcdMaterialSinglePageApplication {
     addRoute(route) {
         this.routes[route.state] = route;
         RcdHistoryRouter.getInstance().addRoute(route.state, () => {
+            this.bar.setTitle(route.name);
             route.callback();
             //this.shell.refresh();
         });
@@ -45,8 +46,9 @@ class RcdMaterialSinglePageApplication {
         this.nav.addItem(navDrawerItem);
         return this;
     }
-
-    setParent(parent) {
+    
+    start(parent) {
+        RcdHistoryRouter.getInstance().setState(RcdHistoryRouter.getInstance().getCurrentState());
         this.shell.setParent(parent);
     }
 }
