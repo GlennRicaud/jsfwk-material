@@ -1,10 +1,23 @@
 function createApp() {
 
+    function createLayoutRoute() {
+        const breadCrumbs = new RcdMaterialBreadcrumbs().init().
+            addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
+            addBreadcrumb(new RcdMaterialBreadcrumb('Layout').init());
+        const layout= new RcdMaterialLayout().init().addChild(new RcdTextElement('Test').init());
+        return {
+            state: 'layout',
+            name: 'Layout',
+            iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
+            callback: (main) => main.addChild(breadCrumbs).addChild(layout)
+        };
+    }
+
     function createDialogsRoute() {
         const breadCrumbs = new RcdMaterialBreadcrumbs().init().
             addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
             addBreadcrumb(new RcdMaterialBreadcrumb('Dialogs').init());
-        const view = new RcdTextElement('Dialogs').init();
+        
         return {
             state: 'dialogs',
             name: 'Dialogs',
@@ -33,6 +46,7 @@ function createApp() {
     return new RcdMaterialSinglePageApplication('Demo').
         init().
         setDefaultRoute(createDefaultRoute()).
+        addRoute(createLayoutRoute()).
         addRoute(createDialogsRoute()).
         addRoute(createTablesRoute());
 }

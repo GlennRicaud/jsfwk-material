@@ -1,0 +1,40 @@
+@rcd-material-layout-margin: 24px;
+.rcd-material-layout :extend(.rcd-flex-vbox) {
+  background-color: red;
+  padding: @rcd-material-layout-margin;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+  @media (min-width: 481px) and (max-width: 600px) {
+    width: 480px;
+    margin: auto;
+  }
+  @media (min-width: 601px) and (max-width: 840px) {
+    width: 600px;
+    margin: auto;
+  }
+  @media (min-width: 841px) and (max-width: 960px) {
+    width: 840px;
+    margin: auto;
+  }
+  @media (min-width: 961px) and (max-width: 1280px) {
+    width: 704px; //TODO: 960 - 254. Fix
+    margin: auto;
+  }
+  @media (min-width: 1281px) and (max-width: 1440px) {
+    width: 1026px; //TODO: 1280 - 254. Fix
+    margin: auto;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 1184px; //TODO: 1440 - 254. Fix
+    margin: auto;
+  }
+  @media (min-width: 1601px) {
+    width: 1346px;//TODO: 1600 - 254. Fix
+    margin: auto;
+  }
+}
+
+.rcd-material-breadcrumb:not(:last-of-type) :extend(.rcd-material-link) {
+}
