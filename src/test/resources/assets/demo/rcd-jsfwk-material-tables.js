@@ -40,7 +40,27 @@ function createTablesRoute() {
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
         addCell('');
-    tableCard.setFooter({start: 0, count: 2, total: 2});
+    const previousCallback = () => {
+        tableCard.deleteRows();
+        tableCard.createRow().
+            addCell('First value').
+            addCell('2', {numeric: true}).
+            addCell('Last value');
+        tableCard.createRow().
+            addCell('Second col first value').
+            addCell('234.0', {numeric: true}).
+            addCell('');
+        tableCard.setFooter({start: 0, count: 2, total: 3});
+    };
+    const nextCallback = () => {
+        tableCard.deleteRows();
+        tableCard.createRow().
+            addCell('Third result').
+            addCell('3/4', {numeric: true}).
+            addCell('');
+        tableCard.setFooter({start: 2, count: 1, total: 3});
+    };
+    tableCard.setFooter({start: 0, count: 2, total: 3, previousCallback: previousCallback, nextCallback: nextCallback});
     const tableCardLayout = new RcdMaterialLayout().init().
         addChild(tableCard);
 

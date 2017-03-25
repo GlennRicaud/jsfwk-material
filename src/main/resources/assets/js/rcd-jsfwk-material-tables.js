@@ -292,13 +292,18 @@ class RcdMaterialTableCard extends RcdDivElement {
         return this;
     }
 
+    deleteRows() {
+        this.table.clear();
+        return this;
+    }
+
     createRow() {
         return this.table.createRow();
     }
 
     setFooter(params) {
         if (this.footer) {
-            this.footer.setValues(params);
+            this.footer.setIteratorValues(params);
         } else {
             this.footer = new RcdMaterialTableCardFooter(params).init();
             this.addChild(this.footer);
