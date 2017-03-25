@@ -123,11 +123,22 @@ class RcdMaterialTableCard extends RcdDivElement {
     constructor(title) {
         super();
         this.header = new RcdMaterialTableCardHeader(title).init();
+        this.table = new RcdMaterialTable().init();
     }
 
     init() {
         return super.init().
             addClass('rcd-material-table-card').
-            addChild(this.header);
+            addChild(this.header).
+            addChild(this.table);
+    }
+
+    addColumn(value, options) {
+        this.table.addColumn(value, options);
+        return this;
+    }
+
+    createRow() {
+        return this.table.createRow();
     }
 }

@@ -13,11 +13,26 @@ function createTablesRoute() {
         addCell('First value').
         addCell('2', {numeric: true}).
         addCell('Last value');
+    standaloneTable.createRow().
+        addCell('Second col first value').
+        addCell('234.0', {numeric: true}).
+        addCell('');
     const standaloneTableLayout = new RcdMaterialLayout().init().
         addChild(standaloneTable);
 
 
-    const tableCard = new RcdMaterialTableCard('Table card').init();
+    const tableCard = new RcdMaterialTableCard('Table card').init().
+        addColumn('First column').
+        addColumn('Numeric column', {numeric: true}).
+        addColumn('Last column');
+    tableCard.createRow().
+        addCell('First value').
+        addCell('2', {numeric: true}).
+        addCell('Last value');
+    tableCard.createRow().
+        addCell('Second col first value').
+        addCell('234.0', {numeric: true}).
+        addCell('');
     const tableCardLayout = new RcdMaterialLayout().init().
         addChild(tableCard);
 

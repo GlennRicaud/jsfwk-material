@@ -1,5 +1,9 @@
 .rcd-material-table-card :extend(.rcd-flex-vbox, .rcd-material-shadow) {
   background-color: #fff;
+
+  .rcd-material-table {
+    width: 100%;
+  }
 }
 
 .rcd-material-table-card-header :extend(.rcd-flex-hbox) {
@@ -46,6 +50,7 @@
 }
 
 .rcd-material-table-row {
+  border-bottom: @rcd-divider-dark-border;
   //Material specs
   height: 48px;
   padding-left: 12px;
