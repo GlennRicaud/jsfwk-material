@@ -39,12 +39,16 @@
   color: @rcd-table-header-color;
 }
 
+.rcd-material-table-body {
+  //Material specs
+  font-size: @rcd-table-body-font-size;
+  color: @rcd-table-body-color;
+}
+
 .rcd-material-table-row {
   //Material specs
   height: 48px;
   padding-left: 12px;
-  font-size: @rcd-table-row-font-size;
-  color: @rcd-table-row-color;
 }
 
 .rcd-material-table-row.selected {
@@ -68,14 +72,25 @@
   text-align: @rcd-table-row-numeric-text-align;
 }
 
-.rcd-material-table-checkbox {
+.rcd-material-table-checkbox-cell {
   margin-left: 9px;
   margin-right: 9px;
+
+  .rcd-icon-area {
+    padding: 15px;
+    .rcd-icon {
+      font-size: 18px;
+    }
+  }
 }
 
-.rcd-material-table-checkbox.selected {
+.rcd-material-table-checkbox-cell {
+
+}
+
+.rcd-material-table-checkbox-cell.selected {
   //Material specs
-  background-color: @rcd-table-selected-checkbox-color;
+  color: @rcd-table-selected-checkbox-color;
 }
 
 
