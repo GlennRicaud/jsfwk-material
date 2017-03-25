@@ -37,6 +37,7 @@ class RcdMaterialTooltip extends RcdTextDivElement {
 class RcdMaterialAction extends RcdDivElement {
     constructor(callback) {
         super();
+        this.enabled = true;
         this.callback = callback;
     }
 
@@ -49,12 +50,26 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     enable(enabled) {
-        if (enabled) {
-            return this.removeClass('disabled').
-                addClickListener(this.callback);
-        } else {
-            return this.addClass('disabled').
-                removeClickListener(this.callback);
+        if (this.enabled != enabled) {
+            this.enabled = enabled;
+            if (enabled) {
+                return this.removeClass('disabled').
+                    addClickListener(this.callback);
+            } else {
+                return this.addClass('disabled').
+                    removeClickListener(this.callback);
+            }
+        }
+        return this;
+    }
+
+    setCallback(callback) {
+        if (this.callback) {
+            this.removeClickListener(this.callback);
+        }
+        this.callback = callback;
+        if (this.enabled) {
+            this.addClickListener(callback);
         }
         return this;
     }
@@ -97,13 +112,13 @@ class RcdMaterialIconArea extends RcdMaterialAction {
 class RcdGoogleMaterialIconArea extends RcdMaterialIconArea {
     constructor(iconName, callback) {
         super(callback);
-        this.iconArea = new RcdGoogleMaterialIcon(iconName).init();
+        this.icon = new RcdGoogleMaterialIcon(iconName).init();
     }
 
     init() {
         return super.init().
             addClass('rcd-gmaterial-icon-area').
-            addChild(this.iconArea);
+            addChild(this.icon);
     }
 }
 

@@ -8,10 +8,26 @@ class RcdMaterialTableCell extends RcdTdElement {
     }
 }
 
+class RcdMaterialTableCheckbox extends RcdGoogleMaterialIconArea {
+    constructor() {
+        super('check_box_outline_blank');
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-material-table-checkbox').
+            setCallback(() => {
+                const wasSelected = this.isSelected();
+                this.select(!wasSelected);
+                this.icon.setText(wasSelected ? 'check_box_outline_blank' : 'check_box');
+            });
+    }
+}
+
 class RcdMaterialTableCheckboxCell extends RcdMaterialTableCell {
     constructor() {
         super();
-        this.iconArea = new RcdGoogleMaterialIconArea('check_box_outline_blank').init();
+        this.iconArea = new RcdMaterialTableCheckbox().init();
     }
 
     init() {

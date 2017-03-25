@@ -25,9 +25,9 @@ class RcdMaterialNavIconArea extends RcdGoogleMaterialIconArea {
 
     setToggled(toggled) {
         if (toggled) {
-            this.iconArea.setText('close');
+            this.icon.setText('close');
         } else {
-            this.iconArea.setText('menu');
+            this.icon.setText('menu');
         }
     }
 
@@ -125,7 +125,7 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
             return this.removeClass('toggled');
         }
     }
-    
+
     setNavIconArea(navIconArea) {
         this.navIconArea = navIconArea;
         return this;
