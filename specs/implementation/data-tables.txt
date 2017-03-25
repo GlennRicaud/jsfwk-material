@@ -1,0 +1,59 @@
+Data tables
+
+In a card or not
+Nav or not
+
+
+Text
+    Content: Reg 13px 0.87 black
+    Header: Med 12px 0.54 black
+    Sorted header: Med 12px 0.87 black
+    Placeholder text: Reg 13px 0.38 black //TODO Editable field
+    
+    Numeric column: Right aligned
+    Text column: Left aligned
+
+
+Interaction
+    Hover: #eee
+    Selected: #f5f5f5
+    Selected checkbox: Secondary app color (Not accent color like I did)
+    
+Sort //TODO
+    Sort icon: 16px 0.87 container (=> From spec they talk about the icon, not the touch area. How big is supposed to the touch area for 16px icons?)
+    Sortable header (hover): Display 16px 0.38 sort icon
+    
+Edit dialog //TODO
+Inline menu //TODO
+
+
+If table nav and data manipulation tools -> inside a card 
+    => Will create a specific table card first and then make it generic
+    
+    
+Table card (header,body,footer)
+    Title: Reg 20px 0.87
+    Action icon (header/footer): 24px container 0.54
+    Footer labels: Reg 12px 0.54
+    Alternate header
+        Persistant action: Borderless button
+        On selection header
+            0.5 of sec color
+            Display number of selected items
+            May change icons on selection (May be better to void confusion with disabled icons like I did)
+            (I suppose that the text color is the same as for a button)
+Sizes
+    Card header height: 64px
+    Footer: 56px
+    Data row: 48px
+    
+    Padding of 24px at left:
+        For data row, there is an icon so: 12 (24 - 12)
+        For title: 24
+    24px space between icons
+        No need since they already have 12px of touch area on each side
+    Padding right 14px
+        Header: icons so, 2 (14 - 12)
+        
+        
+        
