@@ -42,6 +42,16 @@ Table card (header,body,footer)
             Display number of selected items
             May change icons on selection (May be better to void confusion with disabled icons like I did)
             (I suppose that the text color is the same as for a button)
+
+Icons   
+    In other chapters, icons are said to be 24px (or 20px if dense) with a container of 48px.
+    But here the container is 24px directly on the icon (Checkbox is 18 icon with 24px container).
+    => Here, I think I will diverge from specs. THere is no reason to reduce the touch area for most of them. They all seem to have 12px of each side  
+        => Adapt checkbox to have an icon of 18px
+        => For the case of  rows/page icon, merge it with the text in a common component //TODO Later
+        
+    
+
 Sizes
     Card header height: 64px
     Footer: 56px
@@ -54,6 +64,11 @@ Sizes
         No need since they already have 12px of touch area on each side
     Padding right 14px
         Header: icons so, 2 (14 - 12)
+    Footer
+        Between control set: 20px (32 - 12 of icon)
+    Data rows
+        Checkbox left/right margin: 9 (24 - 15)
+        Column right margin (except last): 56px (last: 24px)
         
         
         
