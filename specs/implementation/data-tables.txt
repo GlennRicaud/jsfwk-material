@@ -33,7 +33,7 @@ If table nav and data manipulation tools -> inside a card
     
 Table card (header,body,footer)
     Title: Reg 20px 0.87
-    Action icon (header/footer): 24px container 0.54
+    Action icon (header/footer): 24px container 0.54 => Same color as other icon, for the size see paragraph below
     Footer labels: Reg 12px 0.54
     Alternate header
         Persistant action: Borderless button
@@ -58,7 +58,7 @@ Sizes
     Data row: 48px
     
     Padding of 24px at left:
-        For data row, there is an icon so: 12 (24 - 12)
+        For data row, will be done by checkbox
         For title: 24
     24px space between icons
         No need since they already have 12px of touch area on each side

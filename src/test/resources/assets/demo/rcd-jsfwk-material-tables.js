@@ -3,16 +3,18 @@ function createTablesRoute() {
         init().
         addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
         addBreadcrumb(new RcdMaterialBreadcrumb('Tables').init());
-    
-    
+
+
+    const tableCard = new RcdMaterialTableCard('Table card').init();
+
     const layout = new RcdMaterialLayout().init().
-        addChild();
+        addChild(tableCard);
 
 
     return {
         state: 'tables',
         name: 'Tables',
         iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
-        callback: (main) => main.addChild(breadcrumbsLayout)
+        callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout)
     };
 }

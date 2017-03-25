@@ -1,0 +1,77 @@
+.rcd-material-table-card :extend(.rcd-flex-vbox, .rcd-material-shadow) {
+  background-color: #fff;
+}
+
+.rcd-material-table-card-header :extend(.rcd-flex-hbox) {
+  //Material specs
+  height: 64px;
+  padding-left: 24px;
+  padding-right: 2px;
+}
+
+.rcd-material-table-card-header.selection {
+  //Material specs
+  background-color: @rcd-table-card-header-alt-bg-color;
+}
+
+.rcd-material-table-card-title {
+  //Material specs
+  font-size: @rcd-table-title-font-size;
+  color: @rcd-table-title-color;
+}
+
+.rcd-material-table-card-footer :extend(.rcd-flex-hbox) {
+  //Material specs
+  height: 56px;
+  font-size: @rcd-table-card-footer-font-size;
+  color: @rcd-table-card-footer-color;
+}
+
+.rcd-material-table-header {
+  //Material specs
+  height: 48px;
+  font-size: @rcd-table-header-font-size;
+  font-weight: @rcd-table-header-font-weight;
+  color: @rcd-table-header-color;
+}
+
+.rcd-material-table-row {
+  //Material specs
+  height: 48px;
+  padding-left: 12px;
+  font-size: @rcd-table-row-font-size;
+  color: @rcd-table-row-color;
+}
+
+.rcd-material-table-row.selected {
+  //Material specs
+  background-color: @rcd-table-selected-row-bg-color;
+}
+
+.rcd-material-table-column:not(:last-of-type) {
+  margin-right: 56px;
+}
+
+.rcd-material-table-column:last-of-type {
+  margin-right: 24px;
+}
+
+.rcd-material-table-text-column {
+  text-align: @rcd-table-row-text-align;
+}
+
+.rcd-material-table-numeric-column {
+  text-align: @rcd-table-row-numeric-text-align;
+}
+
+.rcd-material-table-checkbox {
+  margin-left: 9px;
+  margin-right: 9px;
+}
+
+.rcd-material-table-checkbox.selected {
+  //Material specs
+  background-color: @rcd-table-selected-checkbox-color;
+}
+
+
