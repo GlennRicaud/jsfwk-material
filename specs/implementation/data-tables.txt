@@ -58,7 +58,7 @@ Sizes
     Data row: 48px
     
     Padding of 24px at left:
-        For data row, will be done by checkbox
+        For data row, will be done by checkbox cell
         For title: 24
     24px space between icons
         No need since they already have 12px of touch area on each side
@@ -67,8 +67,13 @@ Sizes
     Footer
         Between control set: 20px (32 - 12 of icon)
     Data rows
-        Checkbox left/right margin: 9 (24 - 15)
+        Checkbox cell
+            left/right padding: 9 (24 - 15)
+            width: 66px (48 + 9*2))
+            Checkbox icon area
+                Left/right padding: 15px
+                Icon: 18px
         Column right margin (except last): 56px (last: 24px)
-        
+            => Second divergence: 56px is a bit much for mobile display. Will take 24px for all of them ... or finally 24px for all if not desktop
         
         

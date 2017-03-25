@@ -27,7 +27,7 @@
   color: @rcd-table-card-footer-color;
 }
 
-.rcd-material-table :extend(.rcd-flex-vbox) {
+.rcd-material-table {
   background-color: #fff;
 }
 
@@ -56,12 +56,20 @@
   background-color: @rcd-table-selected-row-bg-color;
 }
 
-.rcd-material-table-column:not(:last-of-type) {
-  margin-right: 56px;
+@media (max-width: 960px) {
+  .rcd-material-table-cell {
+    padding-right: 24px;
+  }
 }
 
-.rcd-material-table-column:last-of-type {
-  margin-right: 24px;
+@media (min-width: 961px) {
+  .rcd-material-table-cell {
+    padding-right: 56px;
+  }
+
+  .rcd-material-table-cell:last-of-type {
+    padding-right: 24px;
+  }
 }
 
 .rcd-material-table-text-column {
@@ -73,11 +81,12 @@
 }
 
 .rcd-material-table-checkbox-cell {
-  margin-left: 9px;
-  margin-right: 9px;
-
-  .rcd-icon-area {
+  padding-left: 9px;
+  padding-right: 9px;
+  width: 66px;
+  .rcd-material-icon-area {
     padding: 15px;
+    width: 48px;
     .rcd-icon {
       font-size: 18px;
     }
