@@ -3,8 +3,7 @@ function createTablesRoute() {
         init().
         addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
         addBreadcrumb(new RcdMaterialBreadcrumb('Tables').init());
-
-
+    
     const standaloneTable = new RcdMaterialTable().init().
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
