@@ -234,50 +234,50 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
     }
 }
 
-class RcdMaterialTableFooter extends RcdDivElement {
-    constructor(beforeCallback, nextCallback) {
+class RcdMaterialTableCardFooter extends RcdFooterElement {
+    constructor(params) {
         super();
-        this.start = 0;
-        this.count = 1;
-        this.total = 0;
-        this.iterator = new RcdTextDivElement('').
-            init().
-            addClass('rcd-material-table-nav-iterator');
-        this.beforeIcon = new RcdMaterialActionIcon('navigate_before', beforeCallback).
-            init().
-            addClass('rcd-material-table-nav-icon');
-        this.nextIcon = new RcdMaterialActionIcon('navigate_next', nextCallback).
-            init().
-            addClass('rcd-material-table-nav-icon');
+        this.start = params.start == null ? 0 : params.start;
+        this.count = params.count == null ? 0 : params.count;
+        this.total = params.total == null ? 0 : params.total;
+        this.iterator = new RcdTextDivElement('').init().
+            addClass('rcd-material-table-card-footer-iterator');
+        this.previousIconArea = new RcdGoogleMaterialIconArea('navigate_before', params.previousCallback).init().
+            addClass('rcd-material-table-card-footer-icon');
+        this.nextIconArea = new RcdGoogleMaterialIconArea('navigate_next', params.nextCallback).init().
+            addClass('rcd-material-table-card-footer-icon');
     }
 
     init() {
-        this.iterator.setText(this.generateIteratorText());
-        return this.addClass('rcd-material-table-nav').
+        return super.init().
+            setIteratorValues({start: this.start, count: this.count, total: this.total}).
+            addClass('rcd-material-table-card-footer').
             addChild(this.iterator).
-            addChild(this.beforeIcon).
-            addChild(this.nextIcon);
+            addChild(this.previousIconArea).
+            addChild(this.nextIconArea);
     }
 
     generateIteratorText() {
         return (this.start + 1) + ' - ' + (this.start + Math.max(1, this.count)) + ' of ' + this.total;
     }
 
-    setValues(start, count, total) {
-        this.start = start;
-        this.count = count;
-        this.total = total;
-        this.beforeIcon.enable(this.start > 0);
-        this.nextIcon.enable((this.start + this.count) < this.total);
+    setIteratorValues(params) {
+        this.start = params.start;
+        this.count = params.count;
+        this.total = params.total;
+        this.previousIconArea.enable(this.start > 0);
+        this.nextIconArea.enable((this.start + this.count) < this.total);
         this.iterator.setText(this.generateIteratorText());
+        return this;
     }
 }
 
 class RcdMaterialTableCard extends RcdDivElement {
-    constructor(title) {
+    constructor(title, options) {
         super();
         this.header = new RcdMaterialTableCardHeader(title).init();
         this.table = new RcdMaterialTable().init();
+        this.footer;
     }
 
     init() {
@@ -294,5 +294,15 @@ class RcdMaterialTableCard extends RcdDivElement {
 
     createRow() {
         return this.table.createRow();
+    }
+
+    setFooter(params) {
+        if (this.footer) {
+            this.footer.setValues(params);
+        } else {
+            this.footer = new RcdMaterialTableCardFooter(params).init();
+            this.addChild(this.footer);
+        }
+
     }
 }

@@ -40,8 +40,17 @@ function createTablesRoute() {
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
         addCell('');
+    tableCard.setFooter({start: 0, count: 2, total: 2});
     const tableCardLayout = new RcdMaterialLayout().init().
         addChild(tableCard);
+
+    const emptyTableCard = new RcdMaterialTableCard('Table card').init().
+        addColumn('First column').
+        addColumn('Numeric column', {numeric: true}).
+        addColumn('Last column');
+    emptyTableCard.setFooter({start: 0, count: 0, total: 0});
+    const emptyTableCardLayout = new RcdMaterialLayout().init().
+        addChild(emptyTableCard);
 
 
     return {
@@ -51,6 +60,7 @@ function createTablesRoute() {
         callback: (main) => main.addChild(breadcrumbsLayout).
             addChild(standaloneTableLayout).
             addChild(emptyTableLayout).
-            addChild(tableCardLayout)
+            addChild(tableCardLayout).
+            addChild(emptyTableCardLayout)
     };
 }

@@ -63,7 +63,7 @@ Sizes
     24px space between icons
         No need since they already have 12px of touch area on each side
     Padding right 14px
-        Header: icons so, 2 (14 - 12)
+        Header/Footer: icons so, 2 (14 - 12)
     Footer
         Between control set: 20px (32 - 12 of icon)
     Data rows
