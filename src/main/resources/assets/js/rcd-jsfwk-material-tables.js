@@ -55,7 +55,7 @@ class RcdMaterialTableRow extends RcdTrElement {
             setCallback(() => {
                 this.select(!this.isSelected());
             });
-        this.selectListeners = [];
+        this.selectionListeners = [];
     }
 
     init() {
@@ -79,16 +79,16 @@ class RcdMaterialTableRow extends RcdTrElement {
         super.select(selected);
         this.checkbox.select(selected);
         if (!silent) {
-            this.fireSelectEvent();
+            this.fireSelectionEvent();
         }
     }
 
-    fireSelectEvent() {
-        this.selectListeners.forEach((listener) => listener());
+    fireSelectionEvent() {
+        this.selectionListeners.forEach((listener) => listener());
     }
 
-    addSelectListener(listener) {
-        this.selectListeners.push(listener);
+    addSelectionListener(listener) {
+        this.selectionListeners.push(listener);
     }
 }
 
@@ -113,6 +113,7 @@ class RcdMaterialTableBody extends RcdTbodyElement {
     constructor() {
         super();
         this.rows = [];
+        this.selectionListeners = [];
     }
 
     init() {
@@ -121,9 +122,38 @@ class RcdMaterialTableBody extends RcdTbodyElement {
 
     createRow() {
         const row = new RcdMaterialTableRow().init();
+        row.addSelectionListener(() => this.fireSelectionEvent());
         this.rows.push(row);
         this.addChild(row);
         return row;
+    }
+
+    clear() {
+        super.clear();
+        this.rows.length = 0;
+        this.fireSelectionEvent();
+        return this;
+    }
+
+    selectAllRows(selected) {
+        this.rows.forEach((row) => row.select(selected, true));
+        this.fireSelectionEvent();
+        return this;
+    }
+
+    getSelectedRows() {
+        return this.rows.filter((row) => row.isSelected());
+    }
+
+    fireSelectionEvent() {
+        this.selectionListeners.forEach((selectionListener) => {
+            selectionListener();
+        }, this);
+    }
+
+    addSelectionListener(selectionListener) {
+        this.selectionListeners.push(selectionListener);
+        return this;
     }
 }
 
@@ -132,6 +162,7 @@ class RcdMaterialTable extends RcdTableElement {
         super();
         this.header = new RcdMaterialTableHeader().init();
         this.body = new RcdMaterialTableBody().init();
+        this.header.row.addSelectionListener(() => this.body.selectAllRows(this.header.row.isSelected()));
     }
 
     init() {
