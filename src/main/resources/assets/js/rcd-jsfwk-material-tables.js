@@ -15,12 +15,12 @@ class RcdMaterialTableCheckbox extends RcdGoogleMaterialIconArea {
 
     init() {
         return super.init().
-            addClass('rcd-material-table-checkbox').
-            setCallback(() => {
-                const wasSelected = this.isSelected();
-                this.select(!wasSelected);
-                this.icon.setText(wasSelected ? 'check_box_outline_blank' : 'check_box');
-            });
+            addClass('rcd-material-table-checkbox');
+    }
+
+    select(selected) {
+        super.select(selected);
+        this.icon.setText(selected ? 'check_box' : 'check_box_outline_blank');
     }
 }
 
@@ -35,12 +35,27 @@ class RcdMaterialTableCheckboxCell extends RcdMaterialTableCell {
             addClass('rcd-material-table-checkbox-cell').
             addChild(this.iconArea);
     }
+
+    select(selected) {
+        super.select(selected);
+        this.iconArea.select(selected);
+        return this;
+    }
+
+    setCallback(callback) {
+        this.iconArea.setCallback(callback);
+        return this;
+    }
 }
 
 class RcdMaterialTableRow extends RcdTrElement {
     constructor() {
         super();
-        this.checkbox = new RcdMaterialTableCheckboxCell().init();
+        this.checkbox = new RcdMaterialTableCheckboxCell().init().
+            setCallback(() => {
+                this.select(!this.isSelected());
+            });
+        this.selectListeners = [];
     }
 
     init() {
@@ -58,6 +73,22 @@ class RcdMaterialTableRow extends RcdTrElement {
         }
         this.addChild(cell);
         return this;
+    }
+
+    select(selected, silent) {
+        super.select(selected);
+        this.checkbox.select(selected);
+        if (!silent) {
+            this.fireSelectEvent();
+        }
+    }
+
+    fireSelectEvent() {
+        this.selectListeners.forEach((listener) => listener());
+    }
+
+    addSelectListener(listener) {
+        this.selectListeners.push(listener);
     }
 }
 
