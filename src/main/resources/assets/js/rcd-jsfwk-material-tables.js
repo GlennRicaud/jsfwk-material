@@ -36,6 +36,10 @@ class RcdMaterialTableCheckboxCell extends RcdMaterialTableCell {
             addChild(this.iconArea);
     }
 
+    enable(enabled) {
+        this.iconArea.enable(enabled);
+    }
+
     select(selected) {
         super.select(selected);
         this.iconArea.select(selected);
@@ -96,6 +100,7 @@ class RcdMaterialTableHeader extends RcdTheadElement {
     constructor() {
         super();
         this.row = new RcdMaterialTableRow().init();
+        this.row.checkbox.enable(false);
     }
 
     init() {
@@ -106,6 +111,10 @@ class RcdMaterialTableHeader extends RcdTheadElement {
     addCell(value, options) {
         this.row.addCell(value, options);
         return this;
+    }
+
+    enableMultiSelection(enabled) {
+        this.row.checkbox.enable(enabled);
     }
 }
 
@@ -157,11 +166,29 @@ class RcdMaterialTableBody extends RcdTbodyElement {
     }
 }
 
+class RcdMaterialTableEmptyBody extends RcdTbodyElement {
+    constructor(message = 'No content') {
+        super();
+        const cell = new RcdTdElement().init().
+            addClass('rcd-material-table-empty-body-message').
+            setText(message).
+            setAttribute('colspan', 100); //TODO Find proper fix
+        this.row = new RcdTrElement().init().
+            addChild(cell);
+    }
+
+    init() {
+        return super.init().
+            addChild(this.row);
+    }
+}
+
 class RcdMaterialTable extends RcdTableElement {
     constructor() {
         super();
         this.header = new RcdMaterialTableHeader().init();
         this.body = new RcdMaterialTableBody().init();
+        this.emptyBody = new RcdMaterialTableEmptyBody().init();
         this.header.row.addSelectionListener(() => this.body.selectAllRows(this.header.row.isSelected()));
     }
 
@@ -169,7 +196,8 @@ class RcdMaterialTable extends RcdTableElement {
         return super.init().
             addClass('rcd-material-table').
             addChild(this.header).
-            addChild(this.body);
+            addChild(this.body).
+            addChild(this.emptyBody);
     }
 
     addColumn(value, options) {
@@ -177,7 +205,16 @@ class RcdMaterialTable extends RcdTableElement {
         return this;
     }
 
+    clear() {
+        this.body.clear();
+        this.emptyBody.show(true);
+        this.header.enableMultiSelection(false);
+        return this;
+    }
+
     createRow() {
+        this.emptyBody.show(false);
+        this.header.enableMultiSelection(true);
         return this.body.createRow();
     }
 }
@@ -194,6 +231,45 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         return super.init().
             addClass('rcd-material-table-card-header').
             addChild(this.title);
+    }
+}
+
+class RcdMaterialTableFooter extends RcdDivElement {
+    constructor(beforeCallback, nextCallback) {
+        super();
+        this.start = 0;
+        this.count = 1;
+        this.total = 0;
+        this.iterator = new RcdTextDivElement('').
+            init().
+            addClass('rcd-material-table-nav-iterator');
+        this.beforeIcon = new RcdMaterialActionIcon('navigate_before', beforeCallback).
+            init().
+            addClass('rcd-material-table-nav-icon');
+        this.nextIcon = new RcdMaterialActionIcon('navigate_next', nextCallback).
+            init().
+            addClass('rcd-material-table-nav-icon');
+    }
+
+    init() {
+        this.iterator.setText(this.generateIteratorText());
+        return this.addClass('rcd-material-table-nav').
+            addChild(this.iterator).
+            addChild(this.beforeIcon).
+            addChild(this.nextIcon);
+    }
+
+    generateIteratorText() {
+        return (this.start + 1) + ' - ' + (this.start + Math.max(1, this.count)) + ' of ' + this.total;
+    }
+
+    setValues(start, count, total) {
+        this.start = start;
+        this.count = count;
+        this.total = total;
+        this.beforeIcon.enable(this.start > 0);
+        this.nextIcon.enable((this.start + this.count) < this.total);
+        this.iterator.setText(this.generateIteratorText());
     }
 }
 

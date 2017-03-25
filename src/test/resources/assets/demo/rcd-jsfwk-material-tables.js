@@ -21,6 +21,13 @@ function createTablesRoute() {
         addChild(standaloneTable);
 
 
+    const emptyTable = new RcdMaterialTable().init().
+        addColumn('First column').
+        addColumn('Numeric column', {numeric: true}).
+        addColumn('Last column');
+    const emptyTableLayout = new RcdMaterialLayout().init().
+        addChild(emptyTable);
+
     const tableCard = new RcdMaterialTableCard('Table card').init().
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
@@ -43,6 +50,7 @@ function createTablesRoute() {
         iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
         callback: (main) => main.addChild(breadcrumbsLayout).
             addChild(standaloneTableLayout).
+            addChild(emptyTableLayout).
             addChild(tableCardLayout)
     };
 }
