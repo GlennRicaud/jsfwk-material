@@ -45,16 +45,6 @@ function createApp() {
         };
     }
 
-    function createTablesRoute() {
-        const view = new RcdTextElement('Tables').init();
-        return {
-            state: 'tables',
-            name: 'Tables',
-            iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
-            callback: (main) => main.addChild(view)
-        };
-    }
-
     function createDefaultRoute() {
         const view = new RcdTextElement('Default').init();
         return {
