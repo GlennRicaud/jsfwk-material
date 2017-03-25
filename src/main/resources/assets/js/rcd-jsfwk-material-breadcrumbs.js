@@ -1,4 +1,4 @@
-class RcdMaterialBreadcrumb extends RcdTextDivElement{
+class RcdMaterialBreadcrumb extends RcdTextDivElement {
     constructor(name, callback) {
         super(name);
         this.name = name;
@@ -17,7 +17,7 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
     }
 
     init() {
-        return this.addClass('rcd-material-breadcrumbs');
+        return super.init().addClass('rcd-material-breadcrumbs');
     }
 
     setBreadcrumbs(breadcrumbs) {
@@ -40,5 +40,33 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
             breadcrumb.addClickListener(breadcrumb.callback);
         }
         return this.addChild(breadcrumb);
+    }
+}
+
+class RcdMaterialBreadcrumbsLayout extends RcdMaterialFullWidthLayout {
+    constructor() {
+        super();
+        this.breadcrumbs = new RcdMaterialBreadcrumbs().init();
+    }
+
+    init() {
+        return super.init().
+            addClass('rcd-material-breadcrumbs-layouts').
+            addChild(this.breadcrumbs);
+    }
+
+    setBreadcrumbs(breadcrumbs) {
+        this.breadcrumbs.setBreadcrumbs(breadcrumbs);
+        return this;
+    }
+
+    addBreadcrumbs(breadcrumbs) {
+        this.breadcrumbs.addBreadcrumbs(breadcrumbs);
+        return this;
+    }
+
+    addBreadcrumb(breadcrumb) {
+        this.breadcrumbs.addBreadcrumb(breadcrumb);
+        return this;
     }
 }

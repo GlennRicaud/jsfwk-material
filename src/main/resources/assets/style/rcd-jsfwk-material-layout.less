@@ -1,6 +1,5 @@
 @rcd-material-layout-margin: 24px;
 .rcd-material-layout :extend(.rcd-flex-vbox) {
-  background-color: red;
   padding: @rcd-material-layout-margin;
 
   @media (max-width: 480px) {
@@ -37,4 +36,9 @@
 }
 
 .rcd-material-breadcrumb:not(:last-of-type) :extend(.rcd-material-link) {
+}
+
+.rcd-material-full-width-layout :extend(.rcd-flex-vbox) {
+  width: 100%;
+  padding: @rcd-material-layout-margin;
 }
