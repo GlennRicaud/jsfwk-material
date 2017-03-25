@@ -56,9 +56,16 @@
   padding-left: 12px;
 }
 
-.rcd-material-table-row.selected {
-  //Material specs
-  background-color: @rcd-table-selected-row-bg-color;
+.rcd-material-table-body {
+  .rcd-material-table-row.selected {
+    //Material specs
+    background-color: @rcd-table-selected-row-bg-color;
+  }
+
+  .rcd-material-table-row:hover {
+    //Material specs
+    background-color: @rcd-table-hovered-row-bg-color;
+  }
 }
 
 @media (max-width: 960px) {
