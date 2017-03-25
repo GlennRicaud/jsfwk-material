@@ -33,10 +33,13 @@ class RcdMaterialTableRow extends RcdTrElement {
             addChild(this.checkbox);
     }
 
-    addCell(value) {
+    addCell(value, options) {
         const cell = new RcdMaterialTableCell(value).
             init().
             setText(value);
+        if (options && options.numeric) {
+            cell.addClass('numeric');
+        }
         this.addChild(cell);
         return this;
     }
@@ -53,8 +56,8 @@ class RcdMaterialTableHeader extends RcdTheadElement {
             addChild(this.row);
     }
 
-    addCell(value) {
-        this.row.addCell(value);
+    addCell(value, options) {
+        this.row.addCell(value, options);
         return this;
     }
 }
@@ -91,8 +94,8 @@ class RcdMaterialTable extends RcdTableElement {
             addChild(this.body);
     }
 
-    addColumn(value) {
-        this.header.addCell(value);
+    addColumn(value, options) {
+        this.header.addCell(value, options);
         return this;
     }
 

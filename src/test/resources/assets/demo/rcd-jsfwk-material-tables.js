@@ -7,11 +7,11 @@ function createTablesRoute() {
 
     const standaloneTable = new RcdMaterialTable().init().
         addColumn('First column').
-        addColumn('Numeric column').
+        addColumn('Numeric column', {numeric: true}).
         addColumn('Last column');
     standaloneTable.createRow().
         addCell('First value').
-        addCell('2').
+        addCell('2', {numeric: true}).
         addCell('Last value');
     const standaloneTableLayout = new RcdMaterialLayout().init().
         addChild(standaloneTable);
