@@ -1,0 +1,42 @@
+.rcd-material-button :extend(.rcd-flex-hbox) {
+  //Material specs
+  height: 36px;
+  min-width: 64px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.rcd-material-button.flat {
+  //Material specs
+  color: @rcd-accent-color;
+}
+
+.rcd-material-button.flat:hover {
+  //Material specs
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.rcd-material-button.raised {
+  color: @rcd-primary-text-light-color;
+  //Material specs
+  border-radius: 2px;
+  background-color: @rcd-accent-color;
+}
+
+.rcd-material-button.raised:hover {
+  //Material specs
+  background-color: darken(@rcd-accent-color, 10);
+}
+
+.rcd-material-button-area :extend(.rcd-flex-hbox) {
+  //Material specs
+  height: 48px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}

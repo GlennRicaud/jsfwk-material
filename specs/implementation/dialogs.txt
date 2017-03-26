@@ -1,0 +1,28 @@
+Dialog
+    shadow: true
+    ContentArea
+        padding: 24px
+        Elements
+            Title
+                margin-bottom: 20px
+            Body
+    Actions
+        padding: 8px;
+        height: 52px
+        action
+            margin-left:8px;
+            height: 36px;
+            min-width: 64px;
+        Placed at the right
+        Affirmative action place at the right of them
+        Dismissive to the left of them
+        Color: Accent color
+    
+In my previous project I differentiated 3 kind of dialogs:
+    Input/Selection/... dialogs: Ask the user for data. Cancel/Confirm button
+    Confirmation dialogs. Not input fields, just a message. Cancel/Confirm button.
+    Details: Temporary dialog. Makes the user wait and block any UI action before finishing.
+        => I like to put an overlay. First to block actions but also to focus on dialog. 
+        On details dialog do not put it since details dialog can be very fast depending on machine and network and cause a blinking effect.
+        
+//TODO Handle case where buttons labels are two long -> Stacked button

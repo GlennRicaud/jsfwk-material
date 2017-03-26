@@ -1,0 +1,32 @@
+Quick implementation. Only flat and raised for the moment because necessary for dialogs
+
+Button types
+    Flat
+        Rect
+        No shadow
+        hover: #000/#fff 0.12
+    Raised
+        Rect
+        Small shadow
+        hover: 12% shade
+    Floating
+        Round
+        Shadow
+        
+Generic stats
+    Button area
+        height: 48 (like icons)
+            padding top/bottom 6
+            padding left/right: 8
+        Button
+            color/bgcolor: accent color
+            font: Med 14px all caps
+            height: 36
+            padding left/right: 8
+            border-radius:2
+            min-width: 64px
+            
+            pressed //TODO
+
+
+//TODO Disabled

@@ -5,11 +5,14 @@ function createApp() {
             addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
             addBreadcrumb(new RcdMaterialBreadcrumb('Dialogs').init());
 
+        const button = new RcdMaterialButtonArea('Input dialog').init();
+        const layout = new RcdMaterialSectionLayout('Dialogs', button).init();
+
         return {
             state: 'dialogs',
             name: 'Dialogs',
             iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
-            callback: (main) => main.addChild(breadcrumbsLayout)
+            callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout)
         };
     }
 
