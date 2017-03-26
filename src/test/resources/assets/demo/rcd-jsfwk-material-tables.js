@@ -22,8 +22,6 @@ function createTablesRoute() {
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
         addColumn('Last column');
-    const emptyTableLayout = new RcdMaterialLayout().init().
-        addChild(emptyTable);
 
     const tableCard = new RcdMaterialTableCard('Table card').init().
         addColumn('First column').
@@ -58,18 +56,19 @@ function createTablesRoute() {
         tableCard.setFooter({start: 2, count: 1, total: 3});
     };
     tableCard.setFooter({start: 0, count: 2, total: 3, previousCallback: previousCallback, nextCallback: nextCallback});
-    const tableCardLayout = new RcdMaterialLayout().init().
-        addChild(tableCard);
 
     const emptyTableCard = new RcdMaterialTableCard('Table card').init().
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
         addColumn('Last column');
     emptyTableCard.setFooter({start: 0, count: 0, total: 0});
-    const emptyTableCardLayout = new RcdMaterialLayout().init().
-        addChild(emptyTableCard);
 
-    const layout = new RcdMaterialSectionLayout('Tables').init().
+    const sectionContent = new RcdPElement().init().
+        setText('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ' +
+                'aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
+                'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
+                'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+    const layout = new RcdMaterialSectionLayout('Tables', sectionContent).init().
         addSubSection('Standalone table', standaloneTable).
         addSubSection('Empty standalone table', emptyTable).
         addSubSection('Table in a card', tableCard).
