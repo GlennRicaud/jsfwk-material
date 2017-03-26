@@ -240,27 +240,51 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         super();
         this.title = new RcdTextElement(title).init().
             addClass('rcd-material-table-card-title');
+        this.count = 0;
         this.selectionCount = new RcdTextElement(title).init().
             addClass('rcd-material-table-card-selection-count').
             show(false);
+        this.iconsContainer = new RcdDivElement().init().
+            addClass('rcd-material-table-card-icons');
+        this.iconConditions = [];
     }
 
     init() {
         return super.init().
             addClass('rcd-material-table-card-header').
             addChild(this.title).
-            addChild(this.selectionCount);
+            addChild(this.selectionCount).
+            addChild(this.iconsContainer);
+    }
+
+    addIconArea(iconArea, options) {
+        this.iconsContainer.addChild(iconArea);
+        const iconCondition = {
+            iconArea: iconArea,
+            min: options && options.min,
+            max: options && options.max
+        };
+        this.applyIconCondition(iconCondition);
+        this.iconConditions.push(iconCondition);
+        return this;
     }
 
     displaySelectionCount(count) {
+        this.count = count;
         this.title.show(count == 0);
-        this.selectionCount.setText(count + ' item' + (count > 1 ? 's' : '') + ' selected');
         this.selectionCount.show(count > 0);
         if (count > 0) {
             this.addClass('selection');
+            this.selectionCount.setText(count + ' item' + (count > 1 ? 's' : '') + ' selected');
         } else {
             this.removeClass('selection');
         }
+        this.iconConditions.forEach((iconCondition) => this.applyIconCondition(iconCondition));
+    }
+
+    applyIconCondition(iconCondition) {
+        iconCondition.iconArea.show((iconCondition.min == null || iconCondition.min <= this.count) &&
+                                    (iconCondition.max == null || iconCondition.max >= this.count));
     }
 }
 
@@ -322,6 +346,11 @@ class RcdMaterialTableCard extends RcdDivElement {
 
     addColumn(value, options) {
         this.table.addColumn(value, options);
+        return this;
+    }
+
+    addIconArea(iconArea, options) {
+        this.header.addIconArea(iconArea, options);
         return this;
     }
 

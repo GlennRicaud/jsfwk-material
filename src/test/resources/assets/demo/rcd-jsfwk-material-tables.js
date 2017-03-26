@@ -26,7 +26,11 @@ function createTablesRoute() {
     const tableCard = new RcdMaterialTableCard('Table card').init().
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
-        addColumn('Last column');
+        addColumn('Last column').
+        addIconArea(new RcdGoogleMaterialIconArea('add', () => alert('No selection action')).init(), {max: 0}).
+        addIconArea(new RcdGoogleMaterialIconArea('edit', () => alert('One item action')).init(), {min: 1, max: 1}).
+        addIconArea(new RcdGoogleMaterialIconArea('delete', () => alert('Min one item action')).init(), {min: 1}).
+        addIconArea(new RcdGoogleMaterialIconArea('info', () => alert('Always present action')).init());
     tableCard.createRow().
         addCell('First value').
         addCell('2', {numeric: true}).
