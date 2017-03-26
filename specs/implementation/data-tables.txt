@@ -77,3 +77,7 @@ Sizes
             => Second divergence: 56px is a bit much for mobile display. Will take 24px for all of them ... or finally 24px for all if not desktop
         
         
+Alternate table card header
+    Specs are not as displayed in screenshots. I will deviate from specs and follow the screenshots.
+    Screenshots show a secondary color with 10% opacity (instead of 50% defined in specs. Makes sense. Otherwise the text would not be readable=
+    Font-size seems to be 15px

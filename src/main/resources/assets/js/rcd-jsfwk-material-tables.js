@@ -116,6 +116,11 @@ class RcdMaterialTableHeader extends RcdTheadElement {
     enableMultiSelection(enabled) {
         this.row.checkbox.enable(enabled);
     }
+
+    addSelectionListener(selectionListener) {
+        this.row.addSelectionListener(selectionListener);
+        return this;
+    }
 }
 
 class RcdMaterialTableBody extends RcdTbodyElement {
@@ -217,6 +222,16 @@ class RcdMaterialTable extends RcdTableElement {
         this.header.enableMultiSelection(true);
         return this.body.createRow();
     }
+
+    addSelectionListener(selectionListener) {
+        this.header.addSelectionListener(selectionListener);
+        this.body.addSelectionListener(selectionListener);
+        return this;
+    }
+
+    getSelectedRows() {
+        return this.body.getSelectedRows();
+    }
 }
 
 
@@ -225,12 +240,27 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         super();
         this.title = new RcdTextElement(title).init().
             addClass('rcd-material-table-card-title');
+        this.selectionCount = new RcdTextElement(title).init().
+            addClass('rcd-material-table-card-selection-count').
+            show(false);
     }
 
     init() {
         return super.init().
             addClass('rcd-material-table-card-header').
-            addChild(this.title);
+            addChild(this.title).
+            addChild(this.selectionCount);
+    }
+
+    displaySelectionCount(count) {
+        this.title.show(count == 0);
+        this.selectionCount.setText(count + ' item' + (count > 1 ? 's' : '') + ' selected');
+        this.selectionCount.show(count > 0);
+        if (count > 0) {
+            this.addClass('selection');
+        } else {
+            this.removeClass('selection');
+        }
     }
 }
 
@@ -276,7 +306,10 @@ class RcdMaterialTableCard extends RcdDivElement {
     constructor(title, options) {
         super();
         this.header = new RcdMaterialTableCardHeader(title).init();
-        this.table = new RcdMaterialTable().init();
+        this.table = new RcdMaterialTable().init().
+            addSelectionListener(() => {
+                this.header.displaySelectionCount(this.table.getSelectedRows().length);
+            });
         this.footer;
     }
 
