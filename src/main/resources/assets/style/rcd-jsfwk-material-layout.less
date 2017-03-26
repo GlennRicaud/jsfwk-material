@@ -47,6 +47,8 @@
   font-size: @rcd-material-section-title-font-size;
   font-weight: @rcd-material-section-title-font-weight;
   color: @rcd-material-section-title-color;
+  margin-top: 56px;
+  margin-bottom: 30px;
 }
 
 .rcd-material-section > * {
@@ -57,4 +59,10 @@
   font-size: @rcd-material-subsection-title-font-size;
   font-weight: @rcd-material-subsection-title-font-weight;
   color: @rcd-material-subsection-title-color;
+  padding-top: 36px;
+  margin-bottom: 30px;
+}
+
+.rcd-material-subsection-title:not(:first-of-type) {
+  border-top: @rcd-divider-dark-border;
 }
