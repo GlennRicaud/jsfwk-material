@@ -3,7 +3,7 @@ function createTablesRoute() {
         init().
         addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
         addBreadcrumb(new RcdMaterialBreadcrumb('Tables').init());
-    
+
     const standaloneTable = new RcdMaterialTable().init().
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
@@ -16,8 +16,6 @@ function createTablesRoute() {
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
         addCell('');
-    const standaloneTableLayout = new RcdMaterialLayout().init().
-        addChild(standaloneTable);
 
 
     const emptyTable = new RcdMaterialTable().init().
@@ -71,15 +69,18 @@ function createTablesRoute() {
     const emptyTableCardLayout = new RcdMaterialLayout().init().
         addChild(emptyTableCard);
 
+    const layout = new RcdMaterialSectionLayout('Tables').init().
+        addSubSection('Standalone table', standaloneTable).
+        addSubSection('Empty standalone table', emptyTable).
+        addSubSection('Table in a card', tableCard).
+        addSubSection('Empty table in a card', emptyTableCard);
+
 
     return {
         state: 'tables',
         name: 'Tables',
         iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
         callback: (main) => main.addChild(breadcrumbsLayout).
-            addChild(standaloneTableLayout).
-            addChild(emptyTableLayout).
-            addChild(tableCardLayout).
-            addChild(emptyTableCardLayout)
+            addChild(layout)
     };
 }
