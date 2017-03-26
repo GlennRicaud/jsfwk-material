@@ -1,0 +1,11 @@
+In complement to other parts:
+
+Polymer and site of material design do not respect their own specs :S
+- App title of specs is Med 20px
+- MAterial site is Reg 18px... (seriously?)
+- Polymer is Reg 20px
+=> Started to use the specs but it does not look good... oh okay, just discovered the antialaising property. Finally not so bad. Will srtick with specs for now
+
+Material site then use
+    For page title (section): Reg 34px -> Display 1. Finally some respect
+    For sections (articles...) title: Reg 24px -> Headline. Finally some respect
