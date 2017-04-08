@@ -13,7 +13,6 @@ class RcdMaterialSectionLayout extends RcdMaterialLayout {
         super();
         const h1 = new RcdH1Element().init().
             addClass('rcd-material-section-title').
-            addClass('component').
             setText(title);
         this.section = new RcdSectionElement().init().
             addClass('rcd-material-section').
@@ -30,7 +29,6 @@ class RcdMaterialSectionLayout extends RcdMaterialLayout {
     addSubSection(title, content) {
         const h2 = new RcdH2Element().init().
             addClass('rcd-material-subsection-title').
-            addClass('component').
             setText(title);
         const subsection = new RcdSectionElement().init().
             addClass('rcd-material-subsection').

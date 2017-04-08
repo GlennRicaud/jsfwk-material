@@ -45,14 +45,13 @@ So I will use the breakpoints only for the mobile/tablet/desktop behaviour (and 
 Final choice!
 
 Margin/gutter:
-    < 600: Half margin/gutter 8px (Using half margin will be easier)
-    >= 600:Half margin/gutter 12px
+    < 600: Margin/gutter 16px
+    >= 600:Margin/gutter 24px
     
 Mobile: <600
 Tablet: >= 600 && <1024
 Desktop >= 1024
 
-User the columns system. Using half-gutter size padding -> Solves the gutter/margin problem
 Use the column idea. You define the number of column for your component.
 A component of 4col will take a 1/3 of width in desk, 1/2 in xxx and 1 on mobile
 A component of 6col will take 1/2 in desk, 3/4 in xxx and 1 on mobile

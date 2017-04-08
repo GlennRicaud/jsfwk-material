@@ -46,8 +46,7 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
 class RcdMaterialBreadcrumbsLayout extends RcdMaterialLayout {
     constructor() {
         super();
-        this.breadcrumbs = new RcdMaterialBreadcrumbs().init().
-            addClass('component');
+        this.breadcrumbs = new RcdMaterialBreadcrumbs().init();
     }
 
     init() {

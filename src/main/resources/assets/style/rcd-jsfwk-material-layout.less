@@ -1,5 +1,5 @@
-@rcd-material-layout-mobile-half-margin: 8px;
-@rcd-material-layout-half-margin: 12px;
+@rcd-material-layout-mobile-margin: 16px;
+@rcd-material-layout-margin: 24px;
 
 @rcd-material-nav-side-width: 256px;
 @rcd-material-max-mobile-width: 599px;
@@ -18,19 +18,10 @@
   }
 
   @media (max-width: @rcd-material-max-mobile-width) {
-    padding: @rcd-material-layout-mobile-half-margin;
+    padding: @rcd-material-layout-mobile-margin;
   }
   @media (min-width: @rcd-material-min-tablet-width) {
-    padding: @rcd-material-layout-half-margin;
-  }
-
-  .component {
-    @media (max-width: @rcd-material-max-mobile-width) {
-      padding: @rcd-material-layout-mobile-half-margin;
-    }
-    @media (min-width: @rcd-material-min-tablet-width) {
-      padding: @rcd-material-layout-half-margin;
-    }
+    padding: @rcd-material-layout-margin;
   }
 }
 
