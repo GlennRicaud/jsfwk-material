@@ -40,10 +40,10 @@ class RcdMaterialDialog extends RcdDivElement {
         this.contentArea.addChild(field);
     }
 
-    addAction(text, callback) {
-        //const action = new 
-        //action.addClass('rcd-material-dialog-action');
-        //this.actions.addChild(action);
+    addAction(label, callback) {
+        const action = new RcdMaterialButtonArea(label, callback, RcdMaterialButtonArea.TYPE.FLAT).init().
+            addClass('rcd-material-dialog-action');
+        this.actions.addChild(action);
         return this;
     }
 }

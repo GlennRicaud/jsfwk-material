@@ -1,11 +1,67 @@
-Breakpoints: (Not respected by the website. They use 360, 800, 1240,...)
-    480, 600, 840, 960, 1280, 1440, and 1600px
-        => Try to make a layout with fixed size for all of them
-            => 0 - 480: width 100% & padding with margin;
-            => 480 - 600: fixed to 480 (still padding)
-            ...
-            >1440: Fixed to 1600 (still padding)
-    Max layout: 1600px.Then centee align
+After replaying with the resizer of Material design and rereading the specs
+    The breakpoints are the ones mentionned before: 480, 600, 840, 960, 1280, 1440, and 1600
+    The content layout (section here) has a fixed size that adapt on breakpoints as defined before
+    The permanent side nav appears only >1440... I think it is a bit too much. Desktop has enough space and want to have a quick navigation.
     
+Resizer example:
+    =<800px: 360px;
+    =<1240px: 760px
+    > 1240px: 1160px;
+    >=1480px: 1160 (256 -> 1416)
+
+DEVICES (portrait)
+    <480px
+        iphone5: 320
+        s5: 360
+        iphone6: 375
+        nexus: 412
+        iphone6plus: 414
+    <840px
+        ipad: 768
+    =<1240px
+        ipad pro: 1024
+        
+
 Margins and gutters can be 8, 16, 24, or 40dp wide.
-    =>I will use 24 for now and for both
+    => But at the same time they use 20 and 40 as margin...
+    They recommend 16 as gutter until 600 and 24 over 860
+    
+They always use 256 of width for permanent side nav...
+
+Incoherence between diagram presented and specs table about column numbers. But also incoherence about tablet max portrait size. Will choose the specs from table since they are more coherent with the breakpoints alreadu used
+    <600: 4columns
+    >=600 < 840: 8 columns
+    >= 840: 12 columns
+    
+In the table they define the desktop size starting from 1024. 
+
+
+Hesitated a long time on breakpoints and size of content layout at each breakpoint. But it does not look good to implement an adaptative design.
+And anyway it is not specifically defined. It just says to use these breakpoints to adapt. 
+It is better to use 100% width - margin until 1600px;
+So I will use the breakpoints only for the mobile/tablet/desktop behaviour (and column division).
+
+
+Final choice!
+
+Margin/gutter:
+    < 600: Half margin/gutter 8px (Using half margin will be easier)
+    >= 600:Half margin/gutter 12px
+    
+Mobile: <600
+Tablet: >= 600 && <1024
+Desktop >= 1024
+
+User the columns system. Using half-gutter size padding -> Solves the gutter/margin problem
+Use the column idea. You define the number of column for your component.
+A component of 4col will take a 1/3 of width in desk, 1/2 in xxx and 1 on mobile
+A component of 6col will take 1/2 in desk, 3/4 in xxx and 1 on mobile
+A component of 12col will take 1 in desk, 1 in xxx and 1 on mobile
+
+
+So to sump up, 2 divisions here
+0 <= mobile < 600 <= tablet < 1024 <= desktop
+0 <= 4columns < 600 <= 8columns < 840 <= desktop
+
+Go thing with this 840. At 840 we start to have the 12 columns. And at 1024 we display the permanent side nav.
+Since permanent  side nav pushes, the content is 768 (1024 - 256), not so far from the 840.

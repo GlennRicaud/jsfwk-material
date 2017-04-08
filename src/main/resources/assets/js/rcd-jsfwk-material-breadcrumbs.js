@@ -43,15 +43,16 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
     }
 }
 
-class RcdMaterialBreadcrumbsLayout extends RcdMaterialFullWidthLayout {
+class RcdMaterialBreadcrumbsLayout extends RcdMaterialLayout {
     constructor() {
         super();
-        this.breadcrumbs = new RcdMaterialBreadcrumbs().init();
+        this.breadcrumbs = new RcdMaterialBreadcrumbs().init().
+            addClass('component');
     }
 
     init() {
         return super.init().
-            addClass('rcd-material-breadcrumbs-layouts').
+            addClass('rcd-material-breadcrumbs-layout').
             addChild(this.breadcrumbs);
     }
 

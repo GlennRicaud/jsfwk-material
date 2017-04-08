@@ -1,46 +1,37 @@
-@rcd-material-layout-margin: 24px;
-.rcd-material-layout :extend(.rcd-flex-vbox) {
-  padding: @rcd-material-layout-margin;
+@rcd-material-layout-mobile-half-margin: 8px;
+@rcd-material-layout-half-margin: 12px;
 
-  @media (max-width: 480px) {
+@rcd-material-nav-side-width: 256px;
+@rcd-material-max-mobile-width: 599px;
+@rcd-material-min-tablet-width: 600px;
+@rcd-material-max-tablet-width: 1023px;
+@rcd-material-min-desktop-width: 1024px;
+@rcd-material-max-desktop-width: 1599px;
+@rcd-material-over-desktop-width: 1600px;
+
+.rcd-material-layout :extend(.rcd-flex-vbox) {
+  @media (max-width: @rcd-material-max-desktop-width) {
     width: 100%;
   }
-  @media (min-width: 481px) and (max-width: 600px) {
-    width: 480px;
-    margin: auto;
+  @media (min-width: @rcd-material-over-desktop-width) {
+    width: @rcd-material-over-desktop-width - @rcd-material-nav-side-width;
   }
-  @media (min-width: 601px) and (max-width: 840px) {
-    width: 600px;
-    margin: auto;
-  }
-  @media (min-width: 841px) and (max-width: 960px) {
-    width: 840px;
-    margin: auto;
-  }
-  @media (min-width: 961px) and (max-width: 1280px) {
-    width: 704px; //TODO: 960 - 254. Fix
-    margin: auto;
-  }
-  @media (min-width: 1281px) and (max-width: 1440px) {
-    width: 1026px; //TODO: 1280 - 254. Fix
-    margin: auto;
-  }
-  @media (min-width: 1441px) and (max-width: 1600px) {
-    width: 1184px; //TODO: 1440 - 254. Fix
-    margin: auto;
-  }
-  @media (min-width: 1601px) {
-    width: 1346px;//TODO: 1600 - 254. Fix
-    margin: auto;
-  }
-}
 
-.rcd-material-breadcrumb:not(:last-of-type) :extend(.rcd-material-link) {
-}
+  @media (max-width: @rcd-material-max-mobile-width) {
+    padding: @rcd-material-layout-mobile-half-margin;
+  }
+  @media (min-width: @rcd-material-min-tablet-width) {
+    padding: @rcd-material-layout-half-margin;
+  }
 
-.rcd-material-full-width-layout :extend(.rcd-flex-vbox) {
-  width: 100%;
-  padding: @rcd-material-layout-margin;
+  .component {
+    @media (max-width: @rcd-material-max-mobile-width) {
+      padding: @rcd-material-layout-mobile-half-margin;
+    }
+    @media (min-width: @rcd-material-min-tablet-width) {
+      padding: @rcd-material-layout-half-margin;
+    }
+  }
 }
 
 .rcd-material-section :extend(.rcd-flex-vbox) {
@@ -51,10 +42,6 @@
   font-size: @rcd-material-section-title-font-size;
   font-weight: @rcd-material-section-title-font-weight;
   color: @rcd-material-section-title-color;
-}
-
-.rcd-material-section > * {
-  margin-top: @rcd-material-layout-margin;
 }
 
 .rcd-material-subsection-title {

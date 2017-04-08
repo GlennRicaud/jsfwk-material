@@ -5,6 +5,7 @@ function createTablesRoute() {
         addBreadcrumb(new RcdMaterialBreadcrumb('Tables').init());
 
     const standaloneTable = new RcdMaterialTable().init().
+        addClass('component').
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
         addColumn('Last column');
@@ -19,11 +20,13 @@ function createTablesRoute() {
 
 
     const emptyTable = new RcdMaterialTable().init().
+        addClass('component').
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
         addColumn('Last column');
 
     const tableCard = new RcdMaterialTableCard('Table card').init().
+        addClass('component').
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
         addColumn('Last column').
@@ -62,12 +65,14 @@ function createTablesRoute() {
     tableCard.setFooter({start: 0, count: 2, total: 3, previousCallback: previousCallback, nextCallback: nextCallback});
 
     const emptyTableCard = new RcdMaterialTableCard('Table card').init().
+        addClass('component').
         addColumn('First column').
         addColumn('Numeric column', {numeric: true}).
         addColumn('Last column');
     emptyTableCard.setFooter({start: 0, count: 0, total: 0});
 
     const sectionContent = new RcdPElement().init().
+        addClass('component').
         setText('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ' +
                 'aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
                 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
