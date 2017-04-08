@@ -1,0 +1,25 @@
+One snackbar at the time
+0..1 action
+
+
+Generic
+    padding-left/right: 24px;
+    Font: Reg 14px
+    Action
+        font: Reg 14px Allcaps;
+    Background: #323232 100%
+
+Mobile
+    Width: 100% ?
+    Multi
+        height: 80px;
+        padding-top/bottom: 24px;
+    Action
+        left-margin: 24px;
+
+Tablet/Desktop
+    min-width: 288px
+    max-width: 568px
+    corner: 2px radius
+    Action
+        left-margin: 48px;

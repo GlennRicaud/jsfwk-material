@@ -10,7 +10,8 @@ function createApp() {
         init().
         setDefaultRoute(createDefaultRoute()).
         addRoute(createDialogsRoute()).
-        addRoute(createTablesRoute());
+        addRoute(createTablesRoute()).
+        addRoute(createSnackbarsRoute());
 }
 
 createApp().start(document.body);
