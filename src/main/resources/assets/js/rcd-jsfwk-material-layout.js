@@ -16,8 +16,10 @@ class RcdMaterialSectionLayout extends RcdMaterialLayout {
             setText(title);
         this.section = new RcdSectionElement().init().
             addClass('rcd-material-section').
-            addChild(h1).
-            addChild(content);
+            addChild(h1);
+        if (content) {
+            this.section.addChild(content);
+        }
     }
 
     init() {
@@ -26,16 +28,22 @@ class RcdMaterialSectionLayout extends RcdMaterialLayout {
             addChild(this.section);
     }
 
-    addSubSection(title, content) {
+    createSubSection(title) {
         const h2 = new RcdH2Element().init().
             addClass('rcd-material-subsection-title').
             setText(title);
-        const subsection = new RcdSectionElement().init().
+        const subSection = new RcdSectionElement().init().
             addClass('rcd-material-section').
             addClass('rcd-material-subsection').
-            addChild(h2).
+            addChild(h2);
+        this.addChild(subSection);
+        return subSection;
+    }
+
+    addSubSection(title, content) {
+        this.createSubSection(title).
             addChild(content);
-        return this.addChild(subsection);
+        return this;
     }
 }
 

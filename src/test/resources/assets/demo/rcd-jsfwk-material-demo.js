@@ -6,8 +6,16 @@ function createApp() {
             addBreadcrumb(new RcdMaterialBreadcrumb('Dialogs').init());
 
         const displayDetailsDialog = () => new RcdMaterialDetailsDialog('Details dialog', 'Details dialog text').init().open();
-        const button = new RcdMaterialButtonArea('Details dialog', displayDetailsDialog).init();
-        const layout = new RcdMaterialSectionLayout('Dialogs', button).init();
+        const displayDetailsButton = new RcdMaterialButtonArea('Details dialog', displayDetailsDialog).init();
+        const displayConfirmationDialog = () => new RcdMaterialConfirmationDialog('Confirmation dialog', 'Confirmation dialog text',
+            () => alert('Confirmation')).
+            init().
+            open();
+        const displayConfirmationButton = new RcdMaterialButtonArea('Confirmation dialog', displayConfirmationDialog).init();
+        const sectionContent = new RcdDivElement().init().
+            addChild(displayDetailsButton).
+            addChild(displayConfirmationButton);
+        const layout = new RcdMaterialSectionLayout('Dialogs', sectionContent).init();
 
         return {
             state: 'dialogs',

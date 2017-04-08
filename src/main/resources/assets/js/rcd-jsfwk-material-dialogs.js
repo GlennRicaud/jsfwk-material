@@ -102,3 +102,29 @@ class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
             focus();
     }
 }
+
+class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
+    constructor(title, text, callback) {
+        super(title, text, true);
+        this.callback = callback;
+    }
+
+    init() {
+        const closeCallback = () => this.close();
+        const confirmationCallback = () => {
+            this.callback();
+            this.close();
+        };
+        super.init().
+            addAction('CANCEL', closeCallback).
+            addAction('OK', confirmationCallback).
+            addKeyUpListener('Enter', confirmationCallback).
+            addKeyUpListener('Escape', closeCallback);
+        return this;
+    }
+
+    open(parent) {
+        return this.setParent(parent).
+            focus();
+    }
+}
