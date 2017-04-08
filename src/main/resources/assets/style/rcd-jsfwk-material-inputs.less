@@ -1,0 +1,38 @@
+//TODO Not reviewed during 2.0 refact
+
+.rcd-material-field :extend(.rcd-flex-vbox) {
+  align-items: flex-start;
+  //Material metrics
+  padding-bottom: 8px;
+}
+
+.rcd-material-field-label {
+  //Material metrics for text fields
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+.rcd-body .rcd-material-field-input {
+  width: 20em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+  border-radius: 0;
+  //Material metrics
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.rcd-body .rcd-material-field-input:focus {
+  border-bottom: 1px solid @rcd-accent-color;
+}
+
+.rcd-body .rcd-material-dropdown-input :extend(.rcd-flex-hbox) {
+  justify-content: space-between;
+}
+
+@rcd-dropdown-background: url(img/arrow-drop-down.png) no-repeat right center;
+.rcd-body .rcd-material-dropdown-select {
+  background: @rcd-dropdown-background;
+  font-size: 16px;
+  flex-grow: 1;
+}

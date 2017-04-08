@@ -1,5 +1,11 @@
+const RcdMaterialButtonType = {
+    FLAT: 0,
+    RAISED: 1,
+    FLOATING: 2
+};
+
 class RcdMaterialButton extends RcdTextDivElement {
-    constructor(label, type = RcdMaterialButton.TYPE.RAISED) {
+    constructor(label, type = RcdMaterialButtonType.RAISED) {
         super(label);
         this.type = type;
     }
@@ -7,19 +13,14 @@ class RcdMaterialButton extends RcdTextDivElement {
     init() {
         super.init().
             addClass('rcd-material-button');
-        if (RcdMaterialButton.TYPE.RAISED = this.type) {
+        if (RcdMaterialButtonType.RAISED = this.type) {
             this.addClass('raised');
-        } else if (RcdMaterialButton.TYPE.FLAT = this.type) {
+        } else if (RcdMaterialButtonType.FLAT = this.type) {
             this.addClass('flat');
         }
         return this;
     }
 }
-RcdMaterialButton.TYPE = {
-    FLAT: 0,
-    RAISED: 1,
-    FLOATING: 2
-};
 
 
 class RcdMaterialButtonArea extends RcdMaterialAction {
