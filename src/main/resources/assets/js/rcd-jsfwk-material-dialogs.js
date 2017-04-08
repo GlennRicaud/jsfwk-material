@@ -85,10 +85,7 @@ class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
     }
 
     init() {
-        const closeCallback = () => {
-            console.log('close');
-            this.close();
-        }
+        const closeCallback = () => this.close();
         return super.init().
             addAction('CLOSE', closeCallback).
             addKeyUpListener('Enter', closeCallback).
