@@ -78,14 +78,19 @@ class RcdMaterialModalDialog extends RcdDivElement {
         return this;
     }
 
+    open(parent) {
+        return this.setParent(parent).
+            focus();
+    }
+
     close() {
         this.removeParent();
     }
 }
 
 class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
-    constructor(title, text) {
-        super(title, text, true);
+    constructor(params) {
+        super(params.title, params.text, true);
     }
 
     init() {
@@ -96,35 +101,52 @@ class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
             addKeyUpListener('Escape', closeCallback);
         return this;
     }
-
-    open(parent) {
-        return this.setParent(parent).
-            focus();
-    }
 }
 
 class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
-    constructor(title, text, callback) {
-        super(title, text, true);
-        this.callback = callback;
+    constructor(params) {
+        super(params.title, params.text, true);
+        this.callback = params.callback;
     }
 
     init() {
         const closeCallback = () => this.close();
         const confirmationCallback = () => {
-            this.callback();
             this.close();
+            this.callback();
         };
-        super.init().
+        return super.init().
             addAction('CANCEL', closeCallback).
             addAction('OK', confirmationCallback).
             addKeyUpListener('Enter', confirmationCallback).
             addKeyUpListener('Escape', closeCallback);
-        return this;
+    }
+}
+
+class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
+    constructor(params) {
+        super(params.title, params.text, true);
+        this.callback = params.callback;
+        this.dropdownField = new RcdMaterialDropdown(params.label, params.options).init();
+    }
+
+    init() {
+        const closeCallback = () => this.close();
+        const confirmationCallback = () => {
+            this.close();
+            this.callback(this.dropdownField.getValue());
+        };
+        return super.init().
+            addAction('CANCEL', closeCallback).
+            addAction('OK', confirmationCallback).
+            addKeyUpListener('Enter', confirmationCallback).
+            addKeyUpListener('Escape', closeCallback).
+            addItem(this.dropdownField);
     }
 
     open(parent) {
-        return this.setParent(parent).
-            focus();
+        super.open(parent);
+        this.dropdownField.focus();
+        return this;
     }
 }
