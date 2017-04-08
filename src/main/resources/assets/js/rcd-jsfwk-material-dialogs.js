@@ -23,9 +23,13 @@ class RcdMaterialDialogContentArea extends RcdDivElement {
 }
 
 class RcdMaterialDialog extends RcdDivElement {
-    constructor(title) {
+    constructor(title, text) {
         super();
         this.contentArea = new RcdMaterialDialogContentArea(title).init();
+        if (text) {
+            const textItem = new RcdTextElement(text).init();
+            this.contentArea.addItem(textItem);
+        }
         this.actions = new RcdDivElement().init().
             addClass('rcd-material-dialog-actions');
     }
@@ -37,7 +41,7 @@ class RcdMaterialDialog extends RcdDivElement {
     }
 
     addItem(item) {
-        this.contentArea.addChild(field);
+        this.contentArea.addChild(item);
     }
 
     addAction(label, callback) {
@@ -49,10 +53,10 @@ class RcdMaterialDialog extends RcdDivElement {
 }
 
 class RcdMaterialModalDialog extends RcdDivElement {
-    constructor(title, overlay) {
+    constructor(title, text, overlay) {
         super();
         this.overlay = overlay;
-        this.dialog = new RcdMaterialDialog(title).init();
+        this.dialog = new RcdMaterialDialog(title, text).init();
     }
 
     init() {
@@ -80,16 +84,17 @@ class RcdMaterialModalDialog extends RcdDivElement {
 }
 
 class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
-    constructor(title) {
-        super(title, true);
+    constructor(title, text) {
+        super(title, text, true);
     }
 
     init() {
         const closeCallback = () => this.close();
-        return super.init().
+        super.init().
             addAction('CLOSE', closeCallback).
             addKeyUpListener('Enter', closeCallback).
             addKeyUpListener('Escape', closeCallback);
+        return this;
     }
 
     open(parent) {

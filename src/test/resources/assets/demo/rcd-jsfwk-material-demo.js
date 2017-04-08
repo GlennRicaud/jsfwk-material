@@ -5,7 +5,7 @@ function createApp() {
             addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
             addBreadcrumb(new RcdMaterialBreadcrumb('Dialogs').init());
 
-        const displayDetailsDialog = () => new RcdMaterialDetailsDialog('Details dialog').init().open();
+        const displayDetailsDialog = () => new RcdMaterialDetailsDialog('Details dialog', 'Details dialog text').init().open();
         const button = new RcdMaterialButtonArea('Details dialog', displayDetailsDialog).init();
         const layout = new RcdMaterialSectionLayout('Dialogs', button).init();
 
