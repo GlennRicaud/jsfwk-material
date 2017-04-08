@@ -28,5 +28,9 @@ Generic stats
             
             pressed //TODO
 
+There are some recurrent incoherences in the specs. 
+For example, they seem to not be able to make a proper addition: 36 + 8 + 8 = 52 and not 48px...
+
+
 
 //TODO Disabled
