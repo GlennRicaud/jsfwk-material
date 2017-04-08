@@ -27,16 +27,39 @@
 
 .rcd-material-section :extend(.rcd-flex-vbox) {
   align-items: flex-start;
+  @media (max-width: @rcd-material-max-mobile-width) {
+    margin-bottom: @rcd-material-layout-mobile-margin;
+  }
+  @media (min-width: @rcd-material-min-tablet-width) {
+    margin-bottom: @rcd-material-layout-margin;
+  }
 }
 
-.rcd-material-section-title {
-  font-size: @rcd-material-section-title-font-size;
-  font-weight: @rcd-material-section-title-font-weight;
-  color: @rcd-material-section-title-color;
-}
+.rcd-body {
+  .rcd-material-section-title {
+    font-size: @rcd-material-section-title-font-size;
+    font-weight: @rcd-material-section-title-font-weight;
+    color: @rcd-material-section-title-color;
+    margin-top: 0;
+    @media (max-width: @rcd-material-max-mobile-width) {
+      margin-bottom: @rcd-material-layout-mobile-margin;
+    }
+    @media (min-width: @rcd-material-min-tablet-width) {
+      margin-bottom: @rcd-material-layout-margin;
+    }
+  }
 
-.rcd-material-subsection-title {
-  font-size: @rcd-material-subsection-title-font-size;
-  font-weight: @rcd-material-subsection-title-font-weight;
-  color: @rcd-material-subsection-title-color;
+  .rcd-material-subsection-title {
+    font-size: @rcd-material-subsection-title-font-size;
+    font-weight: @rcd-material-subsection-title-font-weight;
+    color: @rcd-material-subsection-title-color;
+    @media (max-width: @rcd-material-max-mobile-width) {
+      margin-top: @rcd-material-layout-mobile-margin;
+      margin-bottom: @rcd-material-layout-mobile-margin;
+    }
+    @media (min-width: @rcd-material-min-tablet-width) {
+      margin-top: @rcd-material-layout-margin;
+      margin-bottom: @rcd-material-layout-margin;
+    }
+  }
 }

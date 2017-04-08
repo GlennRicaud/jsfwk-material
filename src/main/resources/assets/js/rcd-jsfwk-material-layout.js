@@ -31,6 +31,7 @@ class RcdMaterialSectionLayout extends RcdMaterialLayout {
             addClass('rcd-material-subsection-title').
             setText(title);
         const subsection = new RcdSectionElement().init().
+            addClass('rcd-material-section').
             addClass('rcd-material-subsection').
             addChild(h2).
             addChild(content);
