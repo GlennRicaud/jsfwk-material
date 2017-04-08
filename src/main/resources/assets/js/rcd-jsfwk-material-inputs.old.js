@@ -23,7 +23,8 @@ class RcdMaterialTextField extends RcdMaterialField {
     }
 
     init() {
-        return this.addClass('rcd-material-textfield').
+        return super.init().
+            addClass('rcd-material-textfield').
             addChild(this.input);
     }
 

@@ -16,7 +16,7 @@ function createDialogsRoute() {
     }).init().
         open();
     const displayConfirmationButton = new RcdMaterialButtonArea('Confirmation dialog', displayConfirmationDialog).init();
-    
+
     const displaySelectionDialog = () => new RcdMaterialSelectionDialog({
         title: 'Selection dialog',
         label: 'Label',
@@ -26,11 +26,21 @@ function createDialogsRoute() {
         open();
     const displaySelectionButton = new RcdMaterialButtonArea('Selection dialog', displaySelectionDialog).init();
 
+    const displayInputDialog = () => new RcdMaterialInputDialog({
+        title: 'Input dialog',
+        label: 'Label',
+        placeholder: 'placeholder',
+        callback: (enteredValue) => alert('Entered value: ' + enteredValue)
+    }).init().
+        open();
+    const displayInputButton = new RcdMaterialButtonArea('Input dialog', displayInputDialog).init();
+
 
     const sectionContent = new RcdDivElement().init().
         addChild(displayDetailsButton).
         addChild(displayConfirmationButton).
-        addChild(displaySelectionButton);
+        addChild(displaySelectionButton).
+        addChild(displayInputButton);
     const layout = new RcdMaterialSectionLayout('Dialogs', sectionContent).init();
 
     return {

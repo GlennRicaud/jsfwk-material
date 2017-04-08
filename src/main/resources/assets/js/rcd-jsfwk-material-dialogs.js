@@ -150,3 +150,32 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
         return this;
     }
 }
+
+class RcdMaterialInputDialog extends RcdMaterialModalDialog {
+    constructor(params) {
+        super(params.title, params.text, true);
+        this.callback = params.callback;
+        this.inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
+            setValue(params.value || '');
+    }
+
+    init() {
+        const closeCallback = () => this.close();
+        const confirmationCallback = () => {
+            this.close();
+            this.callback(this.inputField.getValue());
+        };
+        return super.init().
+            addAction('CANCEL', closeCallback).
+            addAction('OK', confirmationCallback).
+            addKeyUpListener('Enter', confirmationCallback).
+            addKeyUpListener('Escape', closeCallback).
+            addItem(this.inputField);
+    }
+
+    open(parent) {
+        super.open(parent);
+        this.inputField.focus();
+        return this;
+    }
+}
