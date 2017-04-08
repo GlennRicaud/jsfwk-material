@@ -16,7 +16,7 @@ function createDialogsRoute() {
     }).init().
         open();
     const displayConfirmationButton = new RcdMaterialButtonArea('Confirmation dialog', displayConfirmationDialog).init();
-
+    
     const displaySelectionDialog = () => new RcdMaterialSelectionDialog({
         title: 'Selection dialog',
         label: 'Label',
