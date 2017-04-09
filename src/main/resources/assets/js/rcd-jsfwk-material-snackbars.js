@@ -23,10 +23,17 @@ class RcdMaterialSnackbar extends RcdDivElement {
     }
 
     close() {
+        if (RcdMaterialSnackbar.displayedInstance == this) {
+            RcdMaterialSnackbar.displayedInstance = undefined;
+        }
         this.removeParent();
     }
 
     open(parent, timeout = 3000) {
+        if (RcdMaterialSnackbar.displayedInstance) {
+            RcdMaterialSnackbar.displayedInstance.close();
+        }
+        RcdMaterialSnackbar.displayedInstance = this;
         this.setParent(parent);
         setTimeout(() => this.close(), timeout);
     }
