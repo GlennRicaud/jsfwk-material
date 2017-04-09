@@ -362,6 +362,10 @@ class RcdMaterialTableCard extends RcdDivElement {
     createRow() {
         return this.table.createRow();
     }
+    
+    getSelectedRows() {
+        return this.table.getSelectedRows();
+    }
 
     setFooter(params) {
         if (this.footer) {
