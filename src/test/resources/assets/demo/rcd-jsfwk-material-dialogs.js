@@ -35,12 +35,23 @@ function createDialogsRoute() {
         open();
     const displayInputButton = new RcdMaterialButtonArea('Input dialog', displayInputDialog).init();
 
+    const displayTextualLoaderDialog = () => {
+        const loaderDialog = new RcdMateriaTextualLoaderDialog({
+            title: 'Textual loader dialog',
+            text: 'Loading something...'
+        }).init().
+            open();
+        setTimeout(() => loaderDialog.close(), 2000);
+    };
+    const displayTextualLoaderButton = new RcdMaterialButtonArea('Textual loader dialog', displayTextualLoaderDialog).init();
+
 
     const sectionContent = new RcdDivElement().init().
         addChild(displayDetailsButton).
         addChild(displayConfirmationButton).
         addChild(displaySelectionButton).
-        addChild(displayInputButton);
+        addChild(displayInputButton).
+        addChild(displayTextualLoaderButton);
     const layout = new RcdMaterialSectionLayout('Dialogs', sectionContent).init();
 
     return {

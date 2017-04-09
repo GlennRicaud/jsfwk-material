@@ -88,6 +88,12 @@ class RcdMaterialModalDialog extends RcdDivElement {
     }
 }
 
+class RcdMateriaTextualLoaderDialog extends RcdMaterialModalDialog {
+    constructor(params) {
+        super(params.title, params.text, false);
+    }
+}
+
 class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
     constructor(params) {
         super(params.title, params.text, true);
