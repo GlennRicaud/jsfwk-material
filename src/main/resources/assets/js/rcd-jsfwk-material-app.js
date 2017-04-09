@@ -45,14 +45,17 @@ class RcdMaterialSinglePageApplication {
             this.main.removeAllChildren();
             route.callback(this.main);
         });
-        let navDrawerItem = new RcdMaterialNavigationDrawerItem({
-            iconArea: route.iconArea,
-            text: route.name
-        }).init().addClickListener(() => RcdHistoryRouter.getInstance().setState(route.state));
-        this.nav.addItem(navDrawerItem);
+        //TODO
+        if (route.iconArea) {
+            let navDrawerItem = new RcdMaterialNavigationDrawerItem({
+                iconArea: route.iconArea,
+                text: route.name
+            }).init().addClickListener(() => RcdHistoryRouter.getInstance().setState(route.state));
+            this.nav.addItem(navDrawerItem);
+        }
         return this;
     }
-    
+
     start(parent) {
         RcdHistoryRouter.getInstance().setState(RcdHistoryRouter.getInstance().getCurrentState());
         this.shell.setParent(parent);
