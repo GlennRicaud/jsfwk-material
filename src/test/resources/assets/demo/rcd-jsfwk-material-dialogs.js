@@ -30,6 +30,7 @@ function createDialogsRoute() {
         title: 'Input dialog',
         label: 'Label',
         placeholder: 'placeholder',
+        confirmationLabel: 'create',
         callback: (enteredValue) => alert('Entered value: ' + enteredValue)
     }).init().
         open();

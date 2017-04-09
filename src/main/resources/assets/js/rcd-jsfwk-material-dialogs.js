@@ -113,6 +113,7 @@ class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
     constructor(params) {
         super(params.title, params.text, true);
         this.callback = params.callback;
+        this.confirmationLabel = params.confirmationLabel || 'OK';
     }
 
     init() {
@@ -123,7 +124,7 @@ class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
         };
         return super.init().
             addAction('CANCEL', closeCallback).
-            addAction('OK', confirmationCallback).
+            addAction(this.confirmationLabel, confirmationCallback).
             addKeyUpListener('Enter', confirmationCallback).
             addKeyUpListener('Escape', closeCallback);
     }
@@ -134,6 +135,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
         super(params.title, params.text, true);
         this.callback = params.callback;
         this.dropdownField = new RcdMaterialDropdown(params.label, params.options).init();
+        this.confirmationLabel = params.confirmationLabel || 'OK';
     }
 
     init() {
@@ -144,7 +146,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
         };
         return super.init().
             addAction('CANCEL', closeCallback).
-            addAction('OK', confirmationCallback).
+            addAction(this.confirmationLabel, confirmationCallback).
             addKeyUpListener('Enter', confirmationCallback).
             addKeyUpListener('Escape', closeCallback).
             addItem(this.dropdownField);
@@ -163,6 +165,7 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
         this.callback = params.callback;
         this.inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
             setValue(params.value || '');
+        this.confirmationLabel = params.confirmationLabel || 'OK';
     }
 
     init() {
@@ -173,7 +176,7 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
         };
         return super.init().
             addAction('CANCEL', closeCallback).
-            addAction('OK', confirmationCallback).
+            addAction(this.confirmationLabel, confirmationCallback).
             addKeyUpListener('Enter', confirmationCallback).
             addKeyUpListener('Escape', closeCallback).
             addItem(this.inputField);
