@@ -8,12 +8,11 @@ class RcdMaterialSnackbar extends RcdDivElement {
 
     init() {
         return this.addClass('rcd-material-snackbar').
-            addChild(this.message).
-            addClickListener(() => this.close());
+            addChild(this.message);
     }
 
     addAction(label, callback) {
-        const action = new RcdTextDivElement(action).
+        const action = new RcdTextDivElement(label).
             init().
             addClass('rcd-material-snackbar-action').
             addClickListener(() => {

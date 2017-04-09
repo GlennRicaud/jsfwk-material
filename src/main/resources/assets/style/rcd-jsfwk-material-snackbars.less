@@ -1,4 +1,4 @@
-.rcd-material-snackbar :extend(.rcd-flex-hbox, .rcd-material-shadow, .rcd-core-clickable) {
+.rcd-material-snackbar :extend(.rcd-flex-hbox, .rcd-material-shadow) {
   position: fixed;
   left: 50%;
   transform: translate(-50%, 0);
@@ -31,7 +31,8 @@
   }
 }
 
-.rcd-material-snackbar-action {
+.rcd-material-snackbar-action :extend(.rcd-clickable) {
+  color: @rcd-accent-color;
   //Material design metrics
   text-transform: uppercase;
   @media (max-width: @rcd-material-max-mobile-width) {
