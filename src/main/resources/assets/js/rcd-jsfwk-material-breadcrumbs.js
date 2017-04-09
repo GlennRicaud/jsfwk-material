@@ -23,7 +23,7 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
     setBreadcrumbs(breadcrumbs) {
         this.breadcrumbs = [];
         this.removeAllChildren();
-        this.addPathElements(breadcrumbs);
+        this.addBreadcrumbs(breadcrumbs);
     }
 
     addBreadcrumbs(breadcrumbs) {
