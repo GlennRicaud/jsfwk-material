@@ -27,10 +27,15 @@ class RcdMaterialSinglePageApplication {
         return this;
     }
 
+    setTitle(title) {
+        this.title = title;
+        this.bar.setTitle(title);
+    }
+
     setDefaultRoute(route) {
         this.defaultRoute = route;
         RcdHistoryRouter.getInstance().setDefaultRoute(() => {
-            this.bar.setTitle(this.title);
+            this.setTitle(this.title);
             this.main.removeAllChildren();
             route.callback(this.main);
         });
@@ -40,7 +45,7 @@ class RcdMaterialSinglePageApplication {
     addRoute(route) {
         this.routes[route.state] = route;
         RcdHistoryRouter.getInstance().addRoute(route.state, () => {
-            this.bar.setTitle(route.name);
+            this.setTitle(route.name);
             //this.shell.refresh();
             this.main.removeAllChildren();
             route.callback(this.main);
