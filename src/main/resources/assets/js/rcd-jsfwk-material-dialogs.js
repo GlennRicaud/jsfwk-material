@@ -184,7 +184,7 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
 
     open(parent) {
         super.open(parent);
-        this.inputField.focus();
+        this.inputField.focus().select();
         return this;
     }
 }
