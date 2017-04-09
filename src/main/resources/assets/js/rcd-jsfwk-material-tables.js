@@ -114,6 +114,7 @@ class RcdMaterialTableHeader extends RcdTheadElement {
     }
 
     enableMultiSelection(enabled) {
+        this.row.checkbox.select(false);
         this.row.checkbox.enable(enabled);
     }
 
