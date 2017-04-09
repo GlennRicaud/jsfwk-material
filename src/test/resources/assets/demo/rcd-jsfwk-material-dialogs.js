@@ -37,7 +37,7 @@ function createDialogsRoute() {
     const displayInputButton = new RcdMaterialButtonArea('Input dialog', displayInputDialog).init();
 
     const displayTextualLoaderDialog = () => {
-        const loaderDialog = new RcdMateriaTextualLoaderDialog({
+        const loaderDialog = new RcdMaterialTextualLoaderDialog({
             title: 'Textual loader dialog',
             text: 'Loading something...'
         }).init().
