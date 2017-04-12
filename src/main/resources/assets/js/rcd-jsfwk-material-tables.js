@@ -56,8 +56,9 @@ class RcdMaterialTableRow extends RcdTrElement {
     constructor() {
         super();
         this.checkbox = new RcdMaterialTableCheckboxCell().init().
-            setCallback(() => {
+            setCallback((source, event) => {
                 this.select(!this.isSelected());
+                event.stopPropagation();
             });
         this.selectionListeners = [];
     }
@@ -363,7 +364,7 @@ class RcdMaterialTableCard extends RcdDivElement {
     createRow() {
         return this.table.createRow();
     }
-    
+
     getSelectedRows() {
         return this.table.getSelectedRows();
     }
