@@ -39,10 +39,12 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     setTooltip(text, parent) {
-        const tooltip = new RcdMaterialTooltip({text: text}).init();
+        const tooltip = new RcdMaterialTooltip(text).init();
         this.addMouseOverListener(() => {
             const boundingClientRect = this.domElement.getBoundingClientRect();
-            tooltip.setPosition(boundingClientRect.left, boundingClientRect.bottom + 14);
+
+            tooltip.setPosition(boundingClientRect.left + (boundingClientRect.right - boundingClientRect.left) / 2,
+                boundingClientRect.bottom + 2); //TODO
             tooltip.setParent(parent);
         });
         this.addMouseOutListener(() => {

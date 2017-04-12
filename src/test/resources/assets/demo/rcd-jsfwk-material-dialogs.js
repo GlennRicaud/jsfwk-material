@@ -7,7 +7,7 @@ function createDialogsRoute() {
         title: 'Details dialog',
         text: 'Details dialog text'
     }).init().open();
-    const displayDetailsButton = new RcdMaterialButtonArea('Details dialog', displayDetailsDialog).init();
+    const displayDetailsButton = new RcdMaterialButtonArea('Details dialog', displayDetailsDialog).init().setTooltip('Details dialog');
 
     const displayConfirmationDialog = () => new RcdMaterialConfirmationDialog({
         title: 'Confirmation dialog',
