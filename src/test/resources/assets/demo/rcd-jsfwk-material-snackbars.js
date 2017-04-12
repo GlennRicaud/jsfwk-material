@@ -1,6 +1,6 @@
 function createSnackbarsRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init().
-        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.getInstance().setState()).init()).
+        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init()).
         addBreadcrumb(new RcdMaterialBreadcrumb('Snackbars').init());
 
     const displaySnackbar = () => new RcdMaterialSnackbar('Simple snackbar').init().open();

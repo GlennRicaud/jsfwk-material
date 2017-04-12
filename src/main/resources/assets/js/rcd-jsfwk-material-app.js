@@ -34,7 +34,7 @@ class RcdMaterialSinglePageApplication {
 
     setDefaultRoute(route) {
         this.defaultRoute = route;
-        RcdHistoryRouter.getInstance().setDefaultRoute(() => {
+        RcdHistoryRouter.setDefaultRoute(() => {
             this.setTitle(this.title);
             this.main.removeAllChildren();
             route.callback(this.main);
@@ -44,7 +44,7 @@ class RcdMaterialSinglePageApplication {
 
     addRoute(route) {
         this.routes[route.state] = route;
-        RcdHistoryRouter.getInstance().addRoute(route.state, () => {
+        RcdHistoryRouter.addRoute(route.state, () => {
             this.setTitle(route.name);
             //this.shell.refresh();
             this.main.removeAllChildren();
@@ -55,14 +55,14 @@ class RcdMaterialSinglePageApplication {
             let navDrawerItem = new RcdMaterialNavigationDrawerItem({
                 iconArea: route.iconArea,
                 text: route.name
-            }).init().addClickListener(() => RcdHistoryRouter.getInstance().setState(route.state));
+            }).init().addClickListener(() => RcdHistoryRouter.setState(route.state));
             this.nav.addItem(navDrawerItem);
         }
         return this;
     }
 
     start(parent) {
-        RcdHistoryRouter.getInstance().setState(RcdHistoryRouter.getInstance().getCurrentState());
+        RcdHistoryRouter.setState(RcdHistoryRouter.getCurrentState());
         this.shell.setParent(parent);
     }
 }

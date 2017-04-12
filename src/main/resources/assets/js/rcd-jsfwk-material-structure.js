@@ -79,7 +79,7 @@ class RcdMaterialNavigationDrawerItem extends RcdDivElement {
             addChild(this.text).
             addClickListener(() => {
                 if (this.state) {
-                    RcdHistoryRouter.getInstance().setState(this.state);
+                    RcdHistoryRouter.setState(this.state);
                 }
             });
     }
