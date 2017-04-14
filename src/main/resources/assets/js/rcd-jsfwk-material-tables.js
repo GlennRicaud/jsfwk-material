@@ -70,11 +70,16 @@ class RcdMaterialTableRow extends RcdTrElement {
     }
 
     addCell(value, options) {
-        const cell = new RcdMaterialTableCell(value).
-            init().
-            setText(value);
-        if (options && options.numeric) {
-            cell.addClass('numeric');
+        const cell = new RcdMaterialTableCell().
+            init();
+        if (options && options.icon) {
+            cell.addChild(value).
+                addClass('icon');
+        } else {
+            cell.setText(value)
+            if (options && options.numeric) {
+                cell.addClass('numeric');
+            }
         }
         this.addChild(cell);
         return this;

@@ -39,7 +39,7 @@ function createTablesRoute() {
     tableCard.createRow().
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
-        addCell('');
+        addCell(new RcdGoogleMaterialIconArea('info', () => alert('Row action')).init(), {icon: true});
     const previousCallback = () => {
         tableCard.deleteRows();
         tableCard.createRow().
