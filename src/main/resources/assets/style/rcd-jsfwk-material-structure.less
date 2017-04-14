@@ -43,24 +43,47 @@
   //Material specs
   padding-top: 8px;
   @media (max-width: @rcd-material-max-mobile-width) {
-    max-width: 280px;
+    //max-width: 280px;
     top: 56px;
   }
   @media (min-width: @rcd-material-min-tablet-width) {
     top: 64px;
   }
-  @media (min-width: @rcd-material-min-tablet-width) and (max-width: @rcd-material-max-tablet-width) {
-    max-width: 320px;
-  }
-  @media (min-width: @rcd-material-min-desktop-width) {
-    max-width: 400px;
-  }
+  //@media (min-width: @rcd-material-min-tablet-width) and (max-width: @rcd-material-max-tablet-width) {
+  //  max-width: 320px;
+  //}
+  //@media (min-width: @rcd-material-min-desktop-width) {
+  //  max-width: 400px;
+  //}
 }
 
 .rcd-material-nav-drawer:not(.toggled) {
   @media (max-width: @rcd-material-max-tablet-width) {
     display: none;
   }
+}
+
+.rcd-material-nav-cache {
+  @media (max-width: @rcd-material-max-tablet-width) {
+    position: fixed;
+    bottom: 0;
+    left: 256px;
+    right: 0;
+    @media (max-width: @rcd-material-max-mobile-width) {
+      top: 56px;
+    }
+    @media (min-width: @rcd-material-min-tablet-width) {
+      top: 64px;
+    }
+    background-color: rgba(0, 0, 0, 0.56);
+  }
+  @media (min-width: @rcd-material-min-desktop-width) {
+    display: none;
+  }
+}
+
+.rcd-material-nav-drawer:not(.toggled) > .rcd-material-nav-drawer-cache {
+  display: none;
 }
 
 .rcd-material-nav-drawer-item :extend(.rcd-flex-hbox, .rcd-clickable) {

@@ -85,17 +85,30 @@ class RcdMaterialNavigationDrawerItem extends RcdDivElement {
     }
 }
 
+class RcdMaterialNavigationCache extends RcdDivElement {
+    constructor() {
+        super();
+    }
+    
+    init() {
+        return super.init().addClass('rcd-material-nav-cache');
+    }
+    
+}
+
 class RcdMaterialNavigationDrawer extends RcdNavElement {
     constructor() {
         super();
         this.items = [];
         this.toggled = false;
         this.navIconArea;
+        this.cache = new RcdMaterialNavigationCache().init();
     }
 
     init() {
         super.init().
-            addClass('rcd-material-nav-drawer');
+            addClass('rcd-material-nav-drawer').
+            addChild(this.cache);
         return this;
     }
 
@@ -118,11 +131,11 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
     }
 
     toggle() {
-        this.toggled = !this.toggled;
-        return this.setToggled(this.toggled);
+        return this.setToggled(!this.toggled);
     }
 
     setToggled(toggled) {
+        this.toggled = toggled;
         if (toggled) {
             return this.addClass('toggled');
         } else {
