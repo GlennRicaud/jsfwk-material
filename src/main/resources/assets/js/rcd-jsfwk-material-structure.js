@@ -100,17 +100,21 @@ class RcdMaterialNavigationDrawer extends RcdNavElement {
     }
 
     addItem(item) {
-        item.addClickListener((clickedItem) => {
-            this.items.forEach((item) => item.removeClass('selected').removeClass('highlighted'));
-            clickedItem.addClass('selected').
-                addClass('highlighted');
-            this.setToggled(false);
-            if (this.navIconArea) {
-                this.navIconArea.setToggled(false);
-            }
-        });
+        item.addClickListener((clickedItem) => this.selectItem(clickedItem, true));
         this.items.push(item);
         return this.addChild(item);
+    }
+
+    selectItem(itemToSelect, highlight = false) {
+        this.items.forEach((item) => item.removeClass('selected').removeClass('highlighted'));
+        itemToSelect.addClass('selected');
+        if (highlight) {
+            itemToSelect.addClass('highlighted');
+        }
+        this.setToggled(false);
+        if (this.navIconArea) {
+            this.navIconArea.setToggled(false);
+        }
     }
 
     toggle() {

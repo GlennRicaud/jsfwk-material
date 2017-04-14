@@ -44,20 +44,22 @@ class RcdMaterialSinglePageApplication {
 
     addRoute(route) {
         this.routes[route.state] = route;
-        RcdHistoryRouter.addRoute(route.state, () => {
-            this.setTitle(route.name);
-            //this.shell.refresh();
-            this.main.removeAllChildren();
-            route.callback(this.main);
-        });
-        //TODO
+        let navDrawerItem;
         if (route.iconArea) {
-            let navDrawerItem = new RcdMaterialNavigationDrawerItem({
+            navDrawerItem = new RcdMaterialNavigationDrawerItem({
                 iconArea: route.iconArea,
                 text: route.name
             }).init().addClickListener(() => RcdHistoryRouter.setState(route.state));
             this.nav.addItem(navDrawerItem);
         }
+        RcdHistoryRouter.addRoute(route.state, () => {
+            this.setTitle(route.name);
+            if(navDrawerItem) {
+                this.nav.selectItem(navDrawerItem);
+            }
+            this.main.removeAllChildren();
+            route.callback(this.main);
+        });
         return this;
     }
 
