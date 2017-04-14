@@ -303,15 +303,18 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
         this.total = params.total == null ? 0 : params.total;
         this.iterator = new RcdTextDivElement('').init().
             addClass('rcd-material-table-card-footer-iterator');
-        this.previousIconArea = new RcdGoogleMaterialIconArea('navigate_before', params.previousCallback).init().
-            addClass('rcd-material-table-card-footer-icon');
-        this.nextIconArea = new RcdGoogleMaterialIconArea('navigate_next', params.nextCallback).init().
+        this.previousCallback = params.previousCallback;
+        this.nextCallback = params.nextCallback;
+        this.previousIconArea =
+            new RcdGoogleMaterialIconArea('navigate_before', () => this.previousCallback && this.previousCallback()).init().
+                addClass('rcd-material-table-card-footer-icon');
+        this.nextIconArea = new RcdGoogleMaterialIconArea('navigate_next', () => this.nextCallback && this.nextCallback()).init().
             addClass('rcd-material-table-card-footer-icon');
     }
 
     init() {
         return super.init().
-            setIteratorValues({start: this.start, count: this.count, total: this.total}).
+            refresh().
             addClass('rcd-material-table-card-footer').
             addChild(this.iterator).
             addChild(this.previousIconArea).
@@ -322,10 +325,17 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
         return (this.start + 1) + ' - ' + (this.start + Math.max(1, this.count)) + ' of ' + this.total;
     }
 
-    setIteratorValues(params) {
+    setValues(params) {
         this.start = params.start;
         this.count = params.count;
         this.total = params.total;
+        this.previousCallback = params.previousCallback;
+        this.nextCallback = params.nextCallback;
+        return this.refresh();
+
+    }
+
+    refresh() {
         this.previousIconArea.enable(this.start > 0);
         this.nextIconArea.enable((this.start + this.count) < this.total);
         this.iterator.setText(this.generateIteratorText());
@@ -376,7 +386,7 @@ class RcdMaterialTableCard extends RcdDivElement {
 
     setFooter(params) {
         if (this.footer) {
-            this.footer.setIteratorValues(params);
+            this.footer.setValues(params);
         } else {
             this.footer = new RcdMaterialTableCardFooter(params).init();
             this.addChild(this.footer);

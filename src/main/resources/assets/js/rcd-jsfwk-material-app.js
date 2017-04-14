@@ -62,7 +62,7 @@ class RcdMaterialSinglePageApplication {
     }
 
     start(parent) {
-        RcdHistoryRouter.setState(RcdHistoryRouter.getCurrentState());
+        RcdHistoryRouter.refresh();
         this.shell.setParent(parent);
     }
 }
