@@ -67,8 +67,8 @@ class RcdGoogleMaterialIconArea extends RcdMaterialIconArea {
     }
 }
 
-class RcdImageActionIconArea extends RcdMaterialIconArea {
-    constructor(callback, src) {
+class RcdImageIconArea extends RcdMaterialIconArea {
+    constructor(src, callback) {
         super(callback);
         this.iconArea = new RcdImageIcon(src).init();
     }

@@ -17,8 +17,11 @@
 @rcd-disabled-text-darl-color: rgba(0, 0, 0, 0.38);
 @rcd-divider-dark-color: rgba(0, 0, 0, 0.12);
 
-@rcd-icon-dark-color: rgba(0, 0, 0, 0.54);
-@rcd-icon-inactive-dark-color: rgba(0, 0, 0, 0.26);
+@rcd-icon-dark-active-opacity: 0.54;
+@rcd-icon-dark-inactive-opacity: 0.26;
+@rcd-icon-dark-color: rgba(0, 0, 0, @rcd-icon-dark-active-opacity);
+//Also in specs for inactive: rgba(0, 0, 0, 0.38);
+@rcd-icon-inactive-dark-color: rgba(0, 0, 0, @rcd-icon-dark-inactive-opacity);
 @rcd-icon-light-color: rgba(255, 255, 255, 1);
 @rcd-icon-inactive-light-color: rgba(255, 255, 255, 0.3);
 

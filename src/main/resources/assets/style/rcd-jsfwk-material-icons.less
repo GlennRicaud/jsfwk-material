@@ -41,12 +41,19 @@
   height: 48px; //TODO Investigate
   //Material specs
   color: @rcd-icon-dark-color;
+  
+  img {
+    opacity: @rcd-icon-dark-active-opacity;
+  }
 }
 
 .rcd-material-icon-area.disabled {
   //Material specs
   color: @rcd-icon-inactive-dark-color;
-  //Also in specs color: rgba(0, 0, 0, 0.38);
+  
+  img {
+    opacity: @rcd-icon-dark-inactive-opacity;
+  }
 }
 
 .rcd-material-icon-area.light {
