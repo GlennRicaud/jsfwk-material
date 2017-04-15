@@ -31,7 +31,8 @@ function createTablesRoute() {
         addIconArea(new RcdGoogleMaterialIconArea('edit', () => alert('One item action')).init().setTooltip('One item action'),
         {min: 1, max: 1}).
         addIconArea(new RcdGoogleMaterialIconArea('delete', () => alert('Min one item action')).init(), {min: 1}).
-        addIconArea(new RcdGoogleMaterialIconArea('info', () => alert('Always present action')).init());
+        addIconArea(new RcdGoogleMaterialIconArea('info', () => alert('Always present action')).init().setTooltip('Always present action',
+            undefined, RcdMaterialTooltipAlignment.RIGHT));
     tableCard.createRow().
         addCell('First value').
         addCell('2', {numeric: true}).

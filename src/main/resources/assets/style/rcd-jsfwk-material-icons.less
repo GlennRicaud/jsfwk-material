@@ -68,7 +68,6 @@
 
 .rcd-material-tooltip :extend(.rcd-flex-cbox) {
   z-index: 200;
-  transform: translate(-50%, 0);
 
   //Material design metrics
   height: 22px;
@@ -78,4 +77,8 @@
   color: #fff;
   background-color: rgba(97, 97, 97, 0.9);
   opacity: 0.9;
+}
+
+.rcd-material-tooltip.centered {
+  transform: translate(-50%, 0);
 }

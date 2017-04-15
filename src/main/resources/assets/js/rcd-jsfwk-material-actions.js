@@ -38,13 +38,22 @@ class RcdMaterialAction extends RcdDivElement {
         return this;
     }
 
-    setTooltip(text, parent) {
+    setTooltip(text, parent, alignment = RcdMaterialTooltipAlignment.CENTERED) {
         const tooltip = new RcdMaterialTooltip(text).init();
         this.addMouseOverListener(() => {
             const boundingClientRect = this.domElement.getBoundingClientRect();
 
-            tooltip.setPosition(boundingClientRect.left + (boundingClientRect.right - boundingClientRect.left) / 2,
-                boundingClientRect.bottom + 2); //TODO
+            if (RcdMaterialTooltipAlignment.CENTERED === alignment) {
+                tooltip.setPosition({
+                    left: boundingClientRect.left + (boundingClientRect.right - boundingClientRect.left) / 2,
+                    top: boundingClientRect.bottom + 2
+                });
+                tooltip.addClass('centered');
+            } else if (RcdMaterialTooltipAlignment.LEFT === alignment) {
+                tooltip.setPosition({left: boundingClientRect.left, top: boundingClientRect.bottom + 2});
+            } else {
+                tooltip.setPosition({right: document.documentElement.clientWidth - boundingClientRect.right, top: boundingClientRect.bottom + 2});
+            }
             tooltip.setParent(parent);
         });
         this.addMouseOutListener(() => {
