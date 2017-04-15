@@ -118,9 +118,10 @@ class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
 
     init() {
         const closeCallback = () => this.close();
-        const confirmationCallback = () => {
+        const confirmationCallback = (source, event) => {
             this.close();
             this.callback();
+            event.stopPropagation();
         };
         return super.init().
             addAction('CANCEL', closeCallback).
@@ -140,9 +141,10 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
 
     init() {
         const closeCallback = () => this.close();
-        const confirmationCallback = () => {
+        const confirmationCallback = (source, event) => {
             this.close();
             this.callback(this.dropdownField.getValue());
+            event.stopPropagation();
         };
         return super.init().
             addAction('CANCEL', closeCallback).
@@ -170,9 +172,10 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
 
     init() {
         const closeCallback = () => this.close();
-        const confirmationCallback = () => {
+        const confirmationCallback = (source, event) => {
             this.close();
             this.callback(this.inputField.getValue());
+            event.stopPropagation();
         };
         return super.init().
             addAction('CANCEL', closeCallback).
