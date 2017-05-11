@@ -53,15 +53,20 @@ class RcdMaterialDialog extends RcdDivElement {
 }
 
 class RcdMaterialModalDialog extends RcdDivElement {
-    constructor(title, text, overlay) {
+    constructor(title, text, overlay, cancellable) {
         super();
         this.overlay = overlay;
+        this.cancellable = cancellable;
         this.dialog = new RcdMaterialDialog(title, text).init();
     }
 
     init() {
         if (this.overlay) {
             this.addClass('rcd-material-overlay');
+        }
+        if (this.cancellable) {
+            this.dialog.addClickListener((source, event) => event.stopPropagation());
+            this.addClickListener(() => this.close());
         }
         return this.addClass('rcd-material-cache').
             addClass('rcd-body'). //Workaround for widget
@@ -90,13 +95,13 @@ class RcdMaterialModalDialog extends RcdDivElement {
 
 class RcdMaterialInfoDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, false);
+        super(params.title, params.text, false, false);
     }
 }
 
 class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, true);
+        super(params.title, params.text, true, true);
         this.callback = params.callback;
     }
 
@@ -117,7 +122,7 @@ class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
 
 class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, true);
+        super(params.title, params.text, true, true);
         this.callback = params.callback;
         this.confirmationLabel = params.confirmationLabel || 'OK';
     }
@@ -139,7 +144,7 @@ class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
 
 class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, true);
+        super(params.title, params.text, true, true);
         this.callback = params.callback;
         this.dropdownField = new RcdMaterialDropdown(params.label, params.options).init();
         this.confirmationLabel = params.confirmationLabel || 'OK';
@@ -169,7 +174,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
 
 class RcdMaterialInputDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, true);
+        super(params.title, params.text, true, true);
         this.callback = params.callback;
         this.inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
             setValue(params.value || '');
