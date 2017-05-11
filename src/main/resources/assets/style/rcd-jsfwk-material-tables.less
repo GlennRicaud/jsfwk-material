@@ -36,6 +36,11 @@
 }
 
 .rcd-material-table-card-icons :extend(.rcd-flex-hbox) {
+  .rcd-material-icon-area.disabled {
+    @media (max-width: @rcd-material-max-mobile-width) {
+      display: none;
+    }
+  }
 }
 
 .rcd-material-table-card-footer :extend(.rcd-flex-hbox) {
