@@ -76,9 +76,12 @@ class RcdMaterialTableRow extends RcdTrElement {
             cell.addChild(value).
                 addClass('icon');
         } else {
-            cell.setText(value)
+            cell.setText(value);
             if (options && options.numeric) {
                 cell.addClass('numeric');
+            }
+            if (options && options.classes) {
+                options.classes.forEach(columnClass => cell.addClass(columnClass));
             }
         }
         this.addChild(cell);
@@ -181,17 +184,22 @@ class RcdMaterialTableBody extends RcdTbodyElement {
 class RcdMaterialTableEmptyBody extends RcdTbodyElement {
     constructor(message = 'No content') {
         super();
-        const cell = new RcdTdElement().init().
+        this.cell = new RcdTdElement().init().
             addClass('rcd-material-table-empty-body-message').
             setText(message).
-            setAttribute('colspan', 100); //TODO Find proper fix
+            setAttribute('colspan', 0);
         this.row = new RcdTrElement().init().
-            addChild(cell);
+            addChild(this.cell);
     }
 
     init() {
         return super.init().
             addChild(this.row);
+    }
+
+    setColspan(value) {
+        this.cell.setAttribute('colspan', value);
+        return this;
     }
 }
 
@@ -214,6 +222,7 @@ class RcdMaterialTable extends RcdTableElement {
 
     addColumn(value, options) {
         this.header.addCell(value, options);
+        this.emptyBody.setColspan(this.header.row.children.length);
         return this;
     }
 
