@@ -41,7 +41,8 @@ class RcdMaterialDialog extends RcdDivElement {
     }
 
     addItem(item) {
-        this.contentArea.addChild(item);
+        this.contentArea.addItem(item);
+        return this;
     }
 
     addAction(label, callback) {
