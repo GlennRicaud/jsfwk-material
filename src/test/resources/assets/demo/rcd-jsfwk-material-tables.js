@@ -81,11 +81,11 @@ function createTablesRoute() {
         addSubSection('Empty table in a card', emptyTableCard);
 
 
-    return {
+    return new RcdMaterialRoute({
         state: 'tables',
         name: 'Tables',
         iconArea: new RcdGoogleMaterialIconArea('grid_on').init(),
         callback: (main) => main.addChild(breadcrumbsLayout).
             addChild(layout)
-    };
+    });
 }

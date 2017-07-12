@@ -45,11 +45,13 @@ class RcdMaterialSinglePageApplication {
     addRoute(route) {
         this.routes[route.state] = route;
         let navDrawerItem;
-        if (route.iconArea) {
+        if (route.name) {
             navDrawerItem = new RcdMaterialNavigationDrawerItem({
                 iconArea: route.iconArea,
                 text: route.name
-            }).init().addClickListener(() => RcdHistoryRouter.setState(route.state));
+            }).init().
+                addClass(route.iconArea && 'icon-item').
+                addClickListener(() => RcdHistoryRouter.setState(route.state));
             this.nav.addItem(navDrawerItem);
         }
         RcdHistoryRouter.addRoute(route.state, () => {

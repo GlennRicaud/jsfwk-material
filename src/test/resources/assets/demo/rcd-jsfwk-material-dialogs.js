@@ -55,10 +55,10 @@ function createDialogsRoute() {
         addChild(displayInfoButton);
     const layout = new RcdMaterialSectionLayout('Dialogs', sectionContent).init();
 
-    return {
+    return new RcdMaterialRoute({
         state: 'dialogs',
         name: 'Dialogs',
         iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
         callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout)
-    };
+    });
 }

@@ -102,6 +102,15 @@
   }
 }
 
+.rcd-material-nav-drawer-item:not(.icon-item) {
+  @media (max-width: @rcd-material-max-mobile-width) {
+    padding-left: 16px;
+  }
+  @media (min-width: @rcd-material-min-tablet-width) {
+    padding-left: 24px;
+  }
+}
+
 .rcd-material-nav-drawer-item.selected {
   color: @rcd-primary-color;
   .rcd-icon {

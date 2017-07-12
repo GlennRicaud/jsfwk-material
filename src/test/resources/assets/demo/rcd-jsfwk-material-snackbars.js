@@ -17,10 +17,9 @@ function createSnackbarsRoute() {
         addChild(displaySnackbarWithActionButton);
     const layout = new RcdMaterialSectionLayout('Snackbars', sectionContent).init();
 
-    return {
+    return new RcdMaterialRoute({
         state: 'snackbars',
         name: 'Snackbars',
-        iconArea: new RcdGoogleMaterialIconArea('open_in_new').init(),
         callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout)
-    };
+    });
 }

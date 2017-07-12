@@ -1,9 +1,9 @@
 function createApp() {
     function createDefaultRoute() {
         const view = new RcdTextElement('Default').init();
-        return {
+        return new RcdMaterialRoute({
             callback: (main) => main.addChild(view)
-        };
+        });
     }
 
     return new RcdMaterialSinglePageApplication('RCD Material framework - Demo').
