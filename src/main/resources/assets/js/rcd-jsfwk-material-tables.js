@@ -6,6 +6,11 @@ class RcdMaterialTableCell extends RcdTdElement {
     init() {
         return this.addClass('rcd-material-table-cell');
     }
+
+    setTooltip(text, parent, alignment) {
+        RcdMaterialTooltipHelper.setTooltip(this, text, parent, alignment);
+        return this;
+    }
 }
 
 class RcdMaterialTableCheckbox extends RcdGoogleMaterialIconArea {
@@ -83,6 +88,9 @@ class RcdMaterialTableRow extends RcdTrElement {
             if (options && options.classes) {
                 options.classes.forEach(columnClass => cell.addClass(columnClass));
             }
+        }
+        if (options && options.tooltip) {
+            cell.setTooltip(options.tooltip.text,options.tooltip.parent, options.tooltip.alignment);
         }
         this.addChild(cell);
         return this;

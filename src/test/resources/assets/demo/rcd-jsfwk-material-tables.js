@@ -13,7 +13,7 @@ function createTablesRoute() {
         addCell('Last value');
     standaloneTable.createRow().
         addCell('Second col first value').
-        addCell('234.0', {numeric: true}).
+        addCell('234.0', {numeric: true, tooltip:{ text: 'A tooltip'}}).
         addCell('');
 
 

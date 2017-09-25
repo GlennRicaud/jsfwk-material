@@ -23,22 +23,6 @@ class RcdImageIcon extends RcdImgElement {
     }
 }
 
-const RcdMaterialTooltipAlignment = {
-    LEFT: 0,
-    RIGHT: 1,
-    CENTERED: 2
-};
-class RcdMaterialTooltip extends RcdTextDivElement {
-    constructor(text) {
-        super(text);
-    }
-
-    init() {
-        return super.init().
-            addClass('rcd-material-tooltip');
-    }
-}
-
 class RcdMaterialIconArea extends RcdMaterialAction {
     constructor(callback) {
         super(callback);
