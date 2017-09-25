@@ -37,5 +37,8 @@ class RcdMaterialTooltipHelper {
         target.addMouseOutListener(() => {
             tooltip.removeParent();
         });
+        target.addClickListener(() => {
+            tooltip.removeParent();
+        });
     }
 }
