@@ -65,7 +65,6 @@ class RcdMaterialTableRow extends RcdTrElement {
                 this.select(!this.isSelected());
                 event.stopPropagation();
             });
-        console.log(this.checkbox);
         this.selectionListeners = [];
     }
 
