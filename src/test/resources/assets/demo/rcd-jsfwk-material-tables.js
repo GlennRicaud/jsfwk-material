@@ -41,6 +41,10 @@ function createTablesRoute() {
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
         addCell(new RcdGoogleMaterialIconArea('info', () => alert('Row action')).init(), {icon: true});
+    tableCard.createRow({selectable:false}).
+        addCell('Without a checkbox').
+        addCell('234.0', {numeric: true}).
+        addCell('Last value');
     const previousCallback = () => {
         tableCard.deleteRows();
         tableCard.createRow().

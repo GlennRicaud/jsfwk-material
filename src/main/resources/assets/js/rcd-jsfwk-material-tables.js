@@ -58,20 +58,27 @@ class RcdMaterialTableCheckboxCell extends RcdMaterialTableCell {
 }
 
 class RcdMaterialTableRow extends RcdTrElement {
-    constructor() {
+    constructor(params) {
         super();
-        this.checkbox = new RcdMaterialTableCheckboxCell().init().
+        this.checkbox = params && params.selectable === false ? undefined : new RcdMaterialTableCheckboxCell().init().
             setCallback((source, event) => {
                 this.select(!this.isSelected());
                 event.stopPropagation();
             });
+        console.log(this.checkbox);
         this.selectionListeners = [];
     }
 
     init() {
-        return super.init().
-            addClass('rcd-material-table-row').
-            addChild(this.checkbox);
+        super.init().
+            addClass('rcd-material-table-row');
+        
+        if(this.checkbox) {
+            this.addChild(this.checkbox);
+        } else {
+            this.addChild(new RcdMaterialTableCell().init());
+        }
+        return this;
     }
 
     addCell(value, options) {
@@ -98,10 +105,16 @@ class RcdMaterialTableRow extends RcdTrElement {
 
     select(selected, silent) {
         super.select(selected);
-        this.checkbox.select(selected);
+        if (this.checkbox) {
+            this.checkbox.select(selected);
+        }
         if (!silent) {
             this.fireSelectionEvent();
         }
+    }
+    
+    isSelectable() {
+        return !!this.checkbox;
     }
 
     fireSelectionEvent() {
@@ -152,8 +165,8 @@ class RcdMaterialTableBody extends RcdTbodyElement {
         return this.addClass('rcd-material-table-body');
     }
 
-    createRow() {
-        const row = new RcdMaterialTableRow().init();
+    createRow(params) {
+        const row = new RcdMaterialTableRow(params).init();
         row.addSelectionListener(() => this.fireSelectionEvent());
         this.rows.push(row);
         this.addChild(row);
@@ -168,7 +181,7 @@ class RcdMaterialTableBody extends RcdTbodyElement {
     }
 
     selectAllRows(selected) {
-        this.rows.forEach((row) => row.select(selected, true));
+        this.rows.forEach((row) => row.isSelectable() && row.select(selected, true));
         this.fireSelectionEvent();
         return this;
     }
@@ -241,10 +254,10 @@ class RcdMaterialTable extends RcdTableElement {
         return this;
     }
 
-    createRow() {
+    createRow(params) {
         this.emptyBody.show(false);
         this.header.enableMultiSelection(true);
-        return this.body.createRow();
+        return this.body.createRow(params);
     }
 
     addSelectionListener(selectionListener) {
@@ -393,8 +406,8 @@ class RcdMaterialTableCard extends RcdDivElement {
         return this;
     }
 
-    createRow() {
-        return this.table.createRow();
+    createRow(params) {
+        return this.table.createRow(params);
     }
 
     getSelectedRows() {
