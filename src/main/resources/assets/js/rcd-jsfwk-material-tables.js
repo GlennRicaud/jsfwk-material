@@ -7,8 +7,8 @@ class RcdMaterialTableCell extends RcdTdElement {
         return this.addClass('rcd-material-table-cell');
     }
 
-    setTooltip(text, parent, alignment) {
-        RcdMaterialTooltipHelper.setTooltip(this, text, parent, alignment);
+    setTooltip(text, alignment) {
+        RcdMaterialTooltipHelper.setTooltip(this, text, alignment);
         return this;
     }
 }
@@ -90,7 +90,7 @@ class RcdMaterialTableRow extends RcdTrElement {
             }
         }
         if (options && options.tooltip) {
-            cell.setTooltip(options.tooltip.text,options.tooltip.parent, options.tooltip.alignment);
+            cell.setTooltip(options.tooltip.text, options.tooltip.alignment);
         }
         this.addChild(cell);
         return this;

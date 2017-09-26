@@ -6,7 +6,8 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     init() {
-        super.init().addClass('rcd-material-action');
+        super.init().
+            addClass('rcd-material-action');
         if (this.callback) {
             this.addClickListener(this.callback);
         }
@@ -38,8 +39,8 @@ class RcdMaterialAction extends RcdDivElement {
         return this;
     }
 
-    setTooltip(text, parent, alignment) {
-        RcdMaterialTooltipHelper.setTooltip(this, text, parent, alignment);
+    setTooltip(text, alignment) {
+        RcdMaterialTooltipHelper.setTooltip(this, text, alignment);
         return this;
     }
 }
