@@ -18,6 +18,11 @@ class RcdMaterialTooltip extends RcdTextDivElement {
 class RcdMaterialTooltipHelper {
     static setTooltip(target, text, parent, alignment = RcdMaterialTooltipAlignment.CENTERED) {
         const tooltip = new RcdMaterialTooltip(text).init();
+        let tooltipRemovalTimeout;
+        const removeTooltip = () => {
+            clearTimeout(tooltipRemovalTimeout)
+            tooltip.removeParent();
+        };
         target.addMouseOverListener(() => {
             const boundingClientRect = target.domElement.getBoundingClientRect();
 
@@ -33,12 +38,9 @@ class RcdMaterialTooltipHelper {
                 tooltip.setPosition({right: document.documentElement.clientWidth - boundingClientRect.right, top: boundingClientRect.bottom + 2});
             }
             tooltip.setParent(parent);
+            tooltipRemovalTimeout = setTimeout(removeTooltip, 3000);
         });
-        target.addMouseOutListener(() => {
-            tooltip.removeParent();
-        });
-        target.addClickListener(() => {
-            tooltip.removeParent();
-        });
+        target.addMouseOutListener(removeTooltip);
+        target.addClickListener(removeTooltip);
     }
 }
