@@ -27,14 +27,14 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
     }
 
     addBreadcrumbs(breadcrumbs) {
-        breadcrumbs.forEach(this.addBreadcrumb, this);
+        breadcrumbs.forEach((breadcrumb) => this.addBreadcrumb(breadcrumb));
         return this;
     }
 
-    addBreadcrumb(breadcrumb) {
+    addBreadcrumb(breadcrumb, separator = ' / ') {
         this.breadcrumbs.push(breadcrumb);
         if (this.breadcrumbs.length > 1) {
-            this.addChild(new RcdTextElement(' / ').init());
+            this.addChild(new RcdTextElement(separator).init());
         }
         if (breadcrumb.callback) {
             breadcrumb.addClickListener(breadcrumb.callback);
@@ -65,8 +65,8 @@ class RcdMaterialBreadcrumbsLayout extends RcdMaterialLayout {
         return this;
     }
 
-    addBreadcrumb(breadcrumb) {
-        this.breadcrumbs.addBreadcrumb(breadcrumb);
+    addBreadcrumb(breadcrumb, separator) {
+        this.breadcrumbs.addBreadcrumb(breadcrumb, separator);
         return this;
     }
 }
