@@ -322,6 +322,10 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         iconCondition.iconArea.enable((iconCondition.min == null || iconCondition.min <= this.count) &&
                                     (iconCondition.max == null || iconCondition.max >= this.count));
     }
+    
+    setTitle(title) {
+        this.title.setText(title);
+    }
 }
 
 class RcdMaterialTableCardFooter extends RcdFooterElement {
@@ -420,6 +424,9 @@ class RcdMaterialTableCard extends RcdDivElement {
             this.footer = new RcdMaterialTableCardFooter(params).init();
             this.addChild(this.footer);
         }
+    }
 
+    setTitle(title) {
+        this.header.setTitle(title);
     }
 }
