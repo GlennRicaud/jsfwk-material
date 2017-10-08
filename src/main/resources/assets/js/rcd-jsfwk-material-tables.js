@@ -91,9 +91,9 @@ class RcdMaterialTableRow extends RcdTrElement {
             if (options && options.numeric) {
                 cell.addClass('numeric');
             }
-            if (options && options.classes) {
-                options.classes.forEach(columnClass => cell.addClass(columnClass));
-            }
+        }
+        if (options && options.classes) {
+            options.classes.forEach(columnClass => cell.addClass(columnClass));
         }
         if (options && options.tooltip) {
             cell.setTooltip(options.tooltip.text, options.tooltip.alignment);
