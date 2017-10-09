@@ -40,7 +40,7 @@ function createTablesRoute() {
     tableCard.createRow().
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
-        addCell(new RcdGoogleMaterialIconArea('info', () => alert('Row action')).init(), {icon: true});
+        addCell(new RcdGoogleMaterialIconArea('more_vert', (target) => RcdMaterialMenuHelper.displayMenu(target, ['Item 1', 'Item 2','Item 3'])).init(), {icon: true});
     tableCard.createRow({selectable:false}).
         addCell('Without a checkbox').
         addCell('234.0', {numeric: true}).

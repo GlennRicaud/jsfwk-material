@@ -57,6 +57,7 @@
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-inputs.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-snackbars.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-menu.js</source>
                   </sources>
                 </merger>
               </mergers>

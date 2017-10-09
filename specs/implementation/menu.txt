@@ -1,0 +1,26 @@
+Scrollable
+Dismiss: Tap outside or selection
+
+// Not necessary for the moment but the current selected item should appear over the list item
+// This will not have any impact on current solution. TODO
+
+Menu width varies depending on string length, and on mobile is defined as a multiple of a 56dp unit.
+Simple menus always maintain a 16dp margin (phone) or 24dp margin (tablet) to the left and right edges of the screen
+Simple menus are left-aligned regardless of touch location.
+ 16sp (mobile devices), 15px (desktop)
+ 
+ 
+
+Mobile
+    Menu item height: 48dp
+    Menu item text left padding: 16dp
+    Menu item text bottom padding: 20dp
+    Top padding: 8dp
+    Bottom padding: 8dp
+    Typography: 16sp
+Desktop
+    Menu item height: 32px
+    Menu item text left padding: 24px
+    Top padding: 8px
+    Bottom padding: 8px
+    Typography: 15px
