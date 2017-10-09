@@ -37,10 +37,12 @@ function createTablesRoute() {
         addCell('First value').
         addCell('2', {numeric: true}).
         addCell('Last value');
+    
+    const items = [{text:'Item 1', callback: () => alert('Item callback')}, {text: 'Item 2'}, {text: 'Item 3'}]
     tableCard.createRow().
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
-        addCell(new RcdGoogleMaterialIconArea('more_vert', (target) => RcdMaterialMenuHelper.displayMenu(target, ['Item 1', 'Item 2','Item 3'], RcdMaterialMenuAlignment.RIGHT)).init(), {icon: true});
+        addCell(new RcdGoogleMaterialIconArea('more_vert', (target) => RcdMaterialMenuHelper.displayMenu(target, items, RcdMaterialMenuAlignment.RIGHT)).init(), {icon: true});
     tableCard.createRow({selectable:false}).
         addCell('Without a checkbox').
         addCell('234.0', {numeric: true}).

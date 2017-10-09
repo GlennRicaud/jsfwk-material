@@ -24,7 +24,12 @@ class RcdMaterialMenuDialog extends RcdDivElement {
     }
     
     addItem(item) {
-        const menuItem = new RcdMaterialMenuItem(item).init();
+        const menuItem = new RcdMaterialMenuItem(item.text).init();
+        if (item.callback) {
+            menuItem.addClickListener((target, event) => {
+                item.callback(menuItem, event);
+            });
+        }
         return this.addChild(menuItem);
     }
     
@@ -63,7 +68,6 @@ class RcdMaterialMenu extends RcdDivElement {
 
 class RcdMaterialMenuHelper {
     static displayMenu(target, items, alignment = RcdMaterialMenuAlignment.LEFT) {
-        console.log('displayMenu');
         const menu = new RcdMaterialMenu().init().addItems(items);
         const boundingClientRect = target.domElement.getBoundingClientRect();
 
