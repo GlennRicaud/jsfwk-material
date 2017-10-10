@@ -75,10 +75,13 @@ class RcdMaterialMenuHelper {
         
         const boundingClientRect = target.domElement.getBoundingClientRect();
         const clientWidth = document.documentElement.clientWidth;
+        const clientHeight = document.documentElement.clientHeight;
+        const height = 16 + items.length * (window.matchMedia("(min-width: 600px)").matches ? 32 : 48);
         const isTooWide = boundingClientRect.x + width > clientWidth;
+        const isTooTall = boundingClientRect.y + height > clientHeight;
         menu.dialog.setPosition({
             position:'absolute',
-            top: boundingClientRect.y,
+            top: boundingClientRect.y - (isTooTall ? (boundingClientRect.y + height - clientHeight) : 0),
             left: boundingClientRect.x - (isTooWide ? (boundingClientRect.x + width - clientWidth) : 0)
         });
         
