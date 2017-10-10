@@ -1,8 +1,3 @@
-const RcdMaterialMenuAlignment = {
-    LEFT: 0,
-    RIGHT: 1
-};
-
 class RcdMaterialMenuItem extends RcdTextDivElement {
     constructor(text) {
         super(text);
@@ -49,7 +44,6 @@ class RcdMaterialMenu extends RcdDivElement {
         return this.addClass('rcd-material-menu').
             addChild(this.dialog).
             addClickListener((target, event) => {
-                console.log('remove');
                 event.stopPropagation();
                 this.removeParent();
              });
@@ -67,16 +61,15 @@ class RcdMaterialMenu extends RcdDivElement {
 }
 
 class RcdMaterialMenuHelper {
-    static displayMenu(target, items, alignment = RcdMaterialMenuAlignment.LEFT) {
-        const menu = new RcdMaterialMenu().init().addItems(items);
+    static displayMenu(target, items) {
         const boundingClientRect = target.domElement.getBoundingClientRect();
-
-        if (RcdMaterialMenuAlignment.RIGHT === alignment) {
-            menu.dialog.setPosition({right: document.documentElement.clientWidth - boundingClientRect.right, top: boundingClientRect.top});
-        } else {
-            menu.dialog.setPosition({left: boundingClientRect.left, top: boundingClientRect.top});
-        }
-        menu.setParent(target);
+        const menu = new RcdMaterialMenu().init().addItems(items);
+        menu.dialog.setPosition({
+            position:'absolute',
+            top: boundingClientRect.y,
+            left: boundingClientRect.x,
+        });
+        menu.setParent();
     }
 }
 
