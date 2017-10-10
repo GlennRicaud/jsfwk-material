@@ -1,10 +1,23 @@
+const RcdMaterialMenuAlignment = {
+    LEFT: 0,
+    RIGHT: 1
+};
+
 class RcdMaterialMenuItem extends RcdTextDivElement {
-    constructor(text) {
-        super(text);
+    constructor(params) {
+        super(params.text);
+        this.callback = params.callback;
     }
 
     init() {
-        return super.init().addClass('rcd-material-menu-item');
+        super.init().addClass('rcd-material-menu-item');
+
+        if (this.callback) {
+            this.addClass('rcd-clickable').addClickListener((target, event) => {
+                this.callback(this, event);
+            });
+        }
+        return this;
     }
 }
 
@@ -19,12 +32,7 @@ class RcdMaterialMenuDialog extends RcdDivElement {
     }
     
     addItem(item) {
-        const menuItem = new RcdMaterialMenuItem(item.text).init();
-        if (item.callback) {
-            menuItem.addClickListener((target, event) => {
-                item.callback(menuItem, event);
-            });
-        }
+        const menuItem = new RcdMaterialMenuItem(item).init();
         return this.addChild(menuItem);
     }
     
@@ -61,14 +69,20 @@ class RcdMaterialMenu extends RcdDivElement {
 }
 
 class RcdMaterialMenuHelper {
-    static displayMenu(target, items) {
-        const boundingClientRect = target.domElement.getBoundingClientRect();
+    static displayMenu(target, items, width = 112) {
         const menu = new RcdMaterialMenu().init().addItems(items);
+        
+        
+        const boundingClientRect = target.domElement.getBoundingClientRect();
+        const clientWidth = document.documentElement.clientWidth;
+        const isTooWide = boundingClientRect.x + width > clientWidth;
         menu.dialog.setPosition({
             position:'absolute',
             top: boundingClientRect.y,
-            left: boundingClientRect.x,
+            left: boundingClientRect.x - (isTooWide ? (boundingClientRect.x + width - clientWidth) : 0)
         });
+        
+        menu.dialog.setWidth(width);
         menu.setParent();
     }
 }
