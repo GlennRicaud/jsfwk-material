@@ -155,7 +155,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
         const closeCallback = () => this.close();
         const confirmationCallback = (source, event) => {
             this.close();
-            this.callback(this.dropdownField.getValue());
+            this.callback(this.dropdownField.getSelectedValue());
             event.stopPropagation();
         };
         return super.init().

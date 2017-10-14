@@ -24,7 +24,11 @@ class RcdMaterialTableCheckbox extends RcdGoogleMaterialIconArea {
     }
 
     select(selected) {
-        super.select(selected);
+        if (selected) {
+            this.addClass('selected');
+        } else {
+            this.removeClass('selected');
+        }
         this.icon.setText(selected ? 'check_box' : 'check_box_outline_blank');
     }
 }
@@ -46,7 +50,11 @@ class RcdMaterialTableCheckboxCell extends RcdMaterialTableCell {
     }
 
     select(selected) {
-        super.select(selected);
+        if (selected) {
+            this.addClass('selected');
+        } else {
+            this.removeClass('selected');
+        }
         this.iconArea.select(selected);
         return this;
     }
@@ -103,13 +111,21 @@ class RcdMaterialTableRow extends RcdTrElement {
     }
 
     select(selected, silent) {
-        super.select(selected);
+        if (selected) {
+            this.addClass('selected');
+        } else {
+            this.removeClass('selected');
+        }
         if (this.checkbox) {
             this.checkbox.select(selected);
         }
         if (!silent) {
             this.fireSelectionEvent();
         }
+    }
+
+    isSelected() {
+        return this.hasClass('selected');
     }
     
     isSelectable() {
@@ -248,13 +264,13 @@ class RcdMaterialTable extends RcdTableElement {
 
     clear() {
         this.body.clear();
-        this.emptyBody.show(true);
+        this.emptyBody.show();
         this.header.enableMultiSelection(false);
         return this;
     }
 
     createRow(params) {
-        this.emptyBody.show(false);
+        this.emptyBody.hide();
         this.header.enableMultiSelection(true);
         return this.body.createRow(params);
     }
@@ -279,7 +295,7 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         this.count = 0;
         this.selectionCount = new RcdTextElement(title).init().
             addClass('rcd-material-table-card-selection-count').
-            show(false);
+            hide();
         this.iconsContainer = new RcdDivElement().init().
             addClass('rcd-material-table-card-icons');
         this.iconConditions = [];
