@@ -25,14 +25,14 @@ class RcdMaterialTooltipHelper {
             if (RcdMaterialTooltipAlignment.CENTERED === alignment) {
                 tooltip.setStyle({
                     position: 'fixed',
-                    left: boundingClientRect.left + (boundingClientRect.right - boundingClientRect.left) / 2,
-                    top: boundingClientRect.bottom + 2
+                    left: boundingClientRect.left + (boundingClientRect.right - boundingClientRect.left) / 2 + 'px',
+                    top: boundingClientRect.bottom + 2 + 'px'
                 });
                 tooltip.addClass('centered');
             } else if (RcdMaterialTooltipAlignment.LEFT === alignment) {
-                tooltip.setStyle({position: 'fixed', left: boundingClientRect.left, top: boundingClientRect.bottom + 2});
+                tooltip.setStyle({position: 'fixed', left: boundingClientRect.left + 'px', top: boundingClientRect.bottom + 2 + 'px'});
             } else {
-                tooltip.setStyle({position: 'fixed', right: document.documentElement.clientWidth - boundingClientRect.right, top: boundingClientRect.bottom + 2});
+                tooltip.setStyle({position: 'fixed', right: document.documentElement.clientWidth - boundingClientRect.right + 'px', top: boundingClientRect.bottom + 2 + 'px'});
             }
             tooltip.setParent(target);
         });

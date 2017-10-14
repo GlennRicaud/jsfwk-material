@@ -81,8 +81,8 @@ class RcdMaterialMenuHelper {
         const isTooTall = boundingClientRect.y + height > clientHeight;
         menu.dialog.setStyle({
             position:'absolute',
-            top: boundingClientRect.y - (isTooTall ? (boundingClientRect.y + height - clientHeight) : 0),
-            left: boundingClientRect.x - (isTooWide ? (boundingClientRect.x + width - clientWidth) : 0)
+            top: boundingClientRect.y - (isTooTall ? (boundingClientRect.y + height - clientHeight) : 0) + 'px',
+            left: boundingClientRect.x - (isTooWide ? (boundingClientRect.x + width - clientWidth) : 0) + 'px'
         });
         
         menu.dialog.setStyle({width: width + 'px'});
