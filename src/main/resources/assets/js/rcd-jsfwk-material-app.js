@@ -1,5 +1,6 @@
-class RcdMaterialRoute {
+class RcdMaterialRoute extends RcdObject{
     constructor(params) {
+        super();
         this.state = params.state;
         this.name = params.name;
         this.iconArea = params.iconArea;
@@ -7,8 +8,9 @@ class RcdMaterialRoute {
     }
 }
 
-class RcdMaterialSinglePageApplication {
+class RcdMaterialSinglePageApplication extends RcdObject{
     constructor(title) {
+        super();
         this.title = title;
         this.bar = new RcdMaterialApplicationBar(title).init();
         this.nav = new RcdMaterialNavigationDrawer().init();
