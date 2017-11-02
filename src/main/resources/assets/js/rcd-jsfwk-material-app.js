@@ -9,24 +9,25 @@ class RcdMaterialRoute extends RcdObject{
 }
 
 class RcdMaterialSinglePageApplication extends RcdObject{
-    constructor(title) {
+    constructor(params) {
         super();
-        this.title = title;
-        this.bar = new RcdMaterialApplicationBar(title).init();
+        this.title = params.title;
+        this.bar = new RcdMaterialApplicationBar(params.title).init();
         this.nav = new RcdMaterialNavigationDrawer().init();
         this.main = new RcdMaterialMain().init();
 
         this.shell = new RcdMaterialApplicationShell({
             bar: this.bar,
             nav: this.nav,
-            main: this.main
+            main: this.main,
+            navBehaviour: params.nav && params.nav.behaviour || RcdMaterialNavigationDrawerBehaviour.PERMANENT
         }).init();
         this.routes = {};
         this.defaultRoute;
     }
 
     init() {
-        return this;
+        return super.init();
     }
 
     setTitle(title) {

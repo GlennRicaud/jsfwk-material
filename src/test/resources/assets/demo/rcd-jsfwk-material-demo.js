@@ -6,7 +6,7 @@ function createApp() {
         });
     }
 
-    return new RcdMaterialSinglePageApplication('RCD Material framework - Demo').
+    return new RcdMaterialSinglePageApplication({title:'RCD Material framework - Demo', nav: {behaviour:RcdMaterialNavigationDrawerBehaviour.PERMANENT}}).
         init().
         setDefaultRoute(createDefaultRoute()).
         addRoute(createDialogsRoute()).
