@@ -39,9 +39,10 @@ function createDialogsRoute() {
     const displayInfoDialog = () => {
         const infoDialog = new RcdMaterialInfoDialog({
             title: 'Textual loader dialog',
-            text: 'Loading something...'
+            text: 'Loading something (0/2)...'
         }).init().
             open();
+        setTimeout(() => infoDialog.setInfoText('Loading something (1/2)...'), 1000);
         setTimeout(() => infoDialog.close(), 2000);
     };
     const displayInfoButton = new RcdMaterialButtonArea('Info dialog', displayInfoDialog).init();

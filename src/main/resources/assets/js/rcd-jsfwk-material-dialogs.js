@@ -98,6 +98,11 @@ class RcdMaterialInfoDialog extends RcdMaterialModalDialog {
     constructor(params) {
         super(params.title, params.text, false, false);
     }
+    
+    setInfoText(infoText) {
+        //TODO Clean
+        this.dialog.contentArea.body.children[0].setText(infoText);
+    }
 }
 
 class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
