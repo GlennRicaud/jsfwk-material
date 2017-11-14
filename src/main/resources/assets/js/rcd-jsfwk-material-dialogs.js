@@ -96,7 +96,7 @@ class RcdMaterialModalDialog extends RcdDivElement {
 
 class RcdMaterialInfoDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, false, false);
+        super(params.title, params.text, params.overlay, false);
     }
     
     setInfoText(infoText) {

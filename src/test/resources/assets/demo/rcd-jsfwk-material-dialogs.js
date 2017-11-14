@@ -46,6 +46,18 @@ function createDialogsRoute() {
         setTimeout(() => infoDialog.close(), 2000);
     };
     const displayInfoButton = new RcdMaterialButtonArea('Info dialog', displayInfoDialog).init();
+    
+    const displayDarkInfoDialog = () => {
+        const infoDialog = new RcdMaterialInfoDialog({
+            title: 'Textual loader dialog',
+            text: 'Loading something (0/2)...',
+            overlay: true
+        }).init().
+        open();
+        setTimeout(() => infoDialog.setInfoText('Loading something (1/2)...'), 1000);
+        setTimeout(() => infoDialog.close(), 2000);
+    };
+    const displayDarkInfoButton = new RcdMaterialButtonArea('Info dialog with overlay', displayDarkInfoDialog).init();
 
 
     const sectionContent = new RcdDivElement().init().
@@ -53,7 +65,8 @@ function createDialogsRoute() {
         addChild(displayConfirmationButton).
         addChild(displaySelectionButton).
         addChild(displayInputButton).
-        addChild(displayInfoButton);
+        addChild(displayInfoButton).
+        addChild(displayDarkInfoButton);
     const layout = new RcdMaterialSectionLayout('Dialogs', sectionContent).init();
 
     return new RcdMaterialRoute({
