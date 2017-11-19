@@ -66,6 +66,10 @@ class RcdMaterialDropdown extends RcdMaterialField {
         this.select.focus();
         return this;
     }
+    
+    selectOption(option) {
+        return this.select.selectOption(option);
+    }
 
     getSelectedValue() {
         return this.select.getSelectedValue();
