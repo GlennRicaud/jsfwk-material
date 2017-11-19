@@ -181,6 +181,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
 class RcdMaterialInputDialog extends RcdMaterialModalDialog {
     constructor(params) {
         super(params.title, params.text, true, true);
+        this.enabled = true;
         this.callback = params.callback;
         this.inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
             setValue(params.value || '');
@@ -190,8 +191,10 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
     init() {
         const closeCallback = () => this.close();
         const confirmationCallback = (source, event) => {
-            this.close();
-            this.callback(this.inputField.getValue());
+            if (this.enabled) {
+                this.close();
+                this.callback(this.inputField.getValue());
+            }
             event.stopPropagation();
         };
         return super.init().
@@ -206,5 +209,23 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
         super.open(parent);
         this.inputField.focus().select();
         return this;
+    }
+
+    addInputListener(listener) {
+        return this.inputField.input.addEventListener('input', listener); //TODO
+    }
+
+    removeInputListener(listener) {
+        return this.inputField.input.removeEventListener('input', listener); //TODO
+    }
+    
+    setConfirmationLabel(confirmationLabel) { //TODO
+        this.confirmationLabel = confirmationLabel;
+        this.dialog.actions.children[1].button.setText(confirmationLabel);
+    }
+    
+    enable(enabled) {
+        this.enabled = enabled;
+        this.dialog.actions.children[1].enable(enabled); //TODO Refactor
     }
 }
