@@ -46,6 +46,16 @@ class RcdMaterialTextField extends RcdMaterialField {
         this.input.select();
         return this;
     }
+
+    addInputListener(listener) {
+        this.input.addInputListener(listener);
+        return this;
+    }
+
+    removeInputListener(listener) {
+        this.input.removeInputListener(listener);
+        return this;
+    }
 }
 
 class RcdMaterialDropdown extends RcdMaterialField {
@@ -69,10 +79,21 @@ class RcdMaterialDropdown extends RcdMaterialField {
     }
     
     selectOption(option) {
-        return this.select.selectOption(option);
+        this.select.selectOption(option);
+        return this;
     }
 
     getSelectedValue() {
         return this.select.getSelectedValue();
+    }
+    
+    addChangeListener(listener) {
+        this.select.addChangeListener(listener);
+        return this;
+    }
+
+    removeChangeListener(listener) {
+        this.select.removeChangeListener(listener);
+        return this;
     }
 }
