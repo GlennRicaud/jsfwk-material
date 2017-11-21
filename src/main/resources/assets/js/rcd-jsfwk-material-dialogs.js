@@ -212,11 +212,13 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
     }
 
     addInputListener(listener) {
-        return this.inputField.input.addEventListener('input', listener); //TODO
+        this.inputField.addInputListener('input', listener);
+        return this
     }
 
     removeInputListener(listener) {
-        return this.inputField.input.removeEventListener('input', listener); //TODO
+        this.inputField.removeInputListener('input', listener);
+        return this;
     }
     
     setConfirmationLabel(confirmationLabel) { //TODO
