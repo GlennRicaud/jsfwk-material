@@ -15,11 +15,12 @@ class RcdMaterialField extends RcdDivElement {
 }
 
 class RcdMaterialTextField extends RcdMaterialField {
-    constructor(labelText, placeholderText) {
+    constructor(labelText, placeholder) {
         super(labelText);
-        this.input = new RcdInputElement(placeholderText).init().
-            addClass('rcd-material-field-input').
-            addClass('rcd-material-textfield-input');
+        this.input = new RcdInputElement().init()
+            .setPlaceholder(placeholder)
+            .addClass('rcd-material-field-input')
+            .addClass('rcd-material-textfield-input');
     }
 
     init() {
