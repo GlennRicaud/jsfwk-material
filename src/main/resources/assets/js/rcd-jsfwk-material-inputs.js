@@ -46,6 +46,11 @@ class RcdMaterialTextField extends RcdMaterialField {
         this.input.select();
         return this;
     }
+    
+    setPattern(pattern) {
+        this.input.setAttribute('pattern', pattern);
+        return this;
+    }
 
     addInputListener(listener) {
         this.input.addInputListener(listener);
