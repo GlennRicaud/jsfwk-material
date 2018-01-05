@@ -51,6 +51,10 @@ class RcdMaterialTextField extends RcdMaterialField {
         this.input.setAttribute('pattern', pattern);
         return this;
     }
+    
+    checkValidity() {
+        return this.input.domElement.checkValidity();
+    }
 
     addInputListener(listener) {
         this.input.addInputListener(listener);
