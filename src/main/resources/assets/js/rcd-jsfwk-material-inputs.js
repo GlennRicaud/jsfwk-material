@@ -20,11 +20,18 @@ class RcdMaterialTextField extends RcdMaterialField {
         this.input = new RcdInputElement().init()
             .setPlaceholder(placeholder)
             .addClass('rcd-material-field-input')
-            .addClass('rcd-material-textfield-input');
+            .addClass('rcd-material-textfield-input')
+            .addFocusListener(() => {
+                this.addClass('focused')
+            })
+            .addBlurListener(() => {
+                this.removeClass('focused')
+            });
     }
 
     init() {
-        return this.addClass('rcd-material-textfield').
+        return super.init()
+            .addClass('rcd-material-textfield').
             addChild(this.input);
     }
 
@@ -63,6 +70,65 @@ class RcdMaterialTextField extends RcdMaterialField {
 
     removeInputListener(listener) {
         this.input.removeInputListener(listener);
+        return this;
+    }
+}
+
+class RcdMaterialTextArea extends RcdMaterialField {
+    constructor(labelText, placeholder) {
+        super(labelText);
+        this.textArea = new RcdTextAreaElement().init()
+            .setPlaceholder(placeholder)
+            .addClass('rcd-material-field-input')
+            .addClass('rcd-material-textarea-input')
+            .addKeyUpListener('Enter', (source, event) => {
+                event.stopPropagation();
+                console.log('keyup')
+            })
+            .addFocusListener(() => {
+                this.addClass('focused')
+            })
+            .addBlurListener(() => {
+                this.removeClass('focused')
+            });
+    }
+
+    init() {
+        return super.init()
+            .addClass('rcd-material-textarea')
+            .addChild(this.textArea);
+    }
+
+    getValue() {
+        return this.textArea.getValue();
+    }
+
+    setValue(value) {
+        this.textArea.setValue(value);
+        return this;
+    }
+
+    focus() {
+        this.textArea.focus();
+        return this;
+    }
+
+    select() {
+        this.textArea.select();
+        return this;
+    }
+
+    checkValidity() {
+        return this.textArea.domElement.checkValidity();
+    }
+
+    addInputListener(listener) {
+        this.textArea.addInputListener(listener);
+        return this;
+    }
+
+    removeInputListener(listener) {
+        this.textArea.removeInputListener(listener);
         return this;
     }
 }
