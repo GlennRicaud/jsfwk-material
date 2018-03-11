@@ -107,6 +107,16 @@ class RcdMaterialTextArea extends RcdMaterialField {
         return this;
     }
 
+    setRows(rows) {
+        this.textArea.setRows(rows);
+        return this;
+    }
+
+    setCols(cols) {
+        this.textArea.setCols(cols);
+        return this;
+    }
+
     focus() {
         this.textArea.focus();
         return this;
