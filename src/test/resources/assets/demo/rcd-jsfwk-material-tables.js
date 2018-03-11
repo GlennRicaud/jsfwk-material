@@ -42,7 +42,7 @@ function createTablesRoute() {
     tableCard.createRow().
         addCell('Second col first value').
         addCell('234.0', {numeric: true}).
-        addCell(new RcdGoogleMaterialIconArea('more_vert', (target) => RcdMaterialMenuHelper.displayMenu(target, items, 112, RcdMaterialMenuAlignment.RIGHT)).init(), {icon: true});
+        addCell(new RcdGoogleMaterialIconArea('more_vert', (target) => RcdMaterialMenuHelper.displayMenu(target, items, 112)).init(), {icon: true});
     tableCard.createRow({selectable:false}).
         addCell('Without a checkbox').
         addCell('234.0', {numeric: true}).

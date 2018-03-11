@@ -6,12 +6,13 @@ function createApp() {
         });
     }
 
-    return new RcdMaterialSinglePageApplication('RCD Material framework - Demo').
-        init().
-        setDefaultRoute(createDefaultRoute()).
-        addRoute(createDialogsRoute()).
-        addRoute(createTablesRoute()).
-        addRoute(createSnackbarsRoute());
+    return new RcdMaterialSinglePageApplication(
+        {title: 'RCD Material framework - Demo', nav: {behaviour: RcdMaterialNavigationDrawerBehaviour.PERMANENT}}).init()
+        .setDefaultRoute(createDefaultRoute())
+        .addRoute(createDialogsRoute())
+        .addRoute(createTablesRoute())
+        .addRoute(createSnackbarsRoute())
+        .addRoute(createFieldsRoute());
 }
 
 createApp().start(document.body);

@@ -13,9 +13,9 @@ class RcdMaterialButton extends RcdTextDivElement {
     init() {
         super.init().
             addClass('rcd-material-button');
-        if (RcdMaterialButtonType.RAISED = this.type) {
+        if (RcdMaterialButtonType.RAISED == this.type) {
             this.addClass('raised');
-        } else if (RcdMaterialButtonType.FLAT = this.type) {
+        } else if (RcdMaterialButtonType.FLAT == this.type) {
             this.addClass('flat');
         }
         return this;

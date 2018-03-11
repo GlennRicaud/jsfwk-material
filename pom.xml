@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>systems.rcd.js.fwk.material</groupId>
   <artifactId>rcd-jsfwk-material</artifactId>
-  <version>2.0.1</version>
+  <version>3.0.1</version>
   <name>Rcd Javascript Framework Material</name>
   <description>Rcd Javascript Framework Material</description>
 
@@ -19,7 +19,7 @@
     <dependency>
       <groupId>systems.rcd.js.fwk.core</groupId>
       <artifactId>rcd-jsfwk-core</artifactId>
-      <version>2.0.1</version>
+      <version>3.0.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -53,6 +53,7 @@
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-structure.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-app.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-breadcrumbs.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-checkboxes.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-tables.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-inputs.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>

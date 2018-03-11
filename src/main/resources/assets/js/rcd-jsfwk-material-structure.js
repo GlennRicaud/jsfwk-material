@@ -96,6 +96,11 @@ class RcdMaterialNavigationCache extends RcdDivElement {
 
 }
 
+const RcdMaterialNavigationDrawerBehaviour = {
+  PERMANENT: 'permanent', 
+  TEMPORARY: 'temporary'  
+};
+
 class RcdMaterialNavigationDrawer extends RcdNavElement {
     constructor() {
         super();
@@ -169,11 +174,13 @@ class RcdMaterialApplicationShell extends RcdDivElement {
         this.nav = params.nav.setNavIconArea(params.bar.navIconArea);
         this.bar = params.bar.setNavigationDrawer(params.nav);
         this.main = params.main;
+        this.navBehaviour = params.navBehaviour;
     }
 
     init() {
         return super.init().
             addClass('rcd-material-application').
+            setAttribute('nav-behaviour', this.navBehaviour).
             addChild(this.bar).
             addChild(this.nav).
             addChild(this.main);

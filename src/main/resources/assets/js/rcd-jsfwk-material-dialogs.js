@@ -96,7 +96,12 @@ class RcdMaterialModalDialog extends RcdDivElement {
 
 class RcdMaterialInfoDialog extends RcdMaterialModalDialog {
     constructor(params) {
-        super(params.title, params.text, false, false);
+        super(params.title, params.text, params.overlay, false);
+    }
+    
+    setInfoText(infoText) {
+        //TODO Clean
+        this.dialog.contentArea.body.children[0].setText(infoText);
     }
 }
 
@@ -155,7 +160,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
         const closeCallback = () => this.close();
         const confirmationCallback = (source, event) => {
             this.close();
-            this.callback(this.dropdownField.getValue());
+            this.callback(this.dropdownField.getSelectedValue());
             event.stopPropagation();
         };
         return super.init().
@@ -176,6 +181,7 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
 class RcdMaterialInputDialog extends RcdMaterialModalDialog {
     constructor(params) {
         super(params.title, params.text, true, true);
+        this.enabled = true;
         this.callback = params.callback;
         this.inputField = new RcdMaterialTextField(params.label, params.placeholder).init().
             setValue(params.value || '');
@@ -185,8 +191,10 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
     init() {
         const closeCallback = () => this.close();
         const confirmationCallback = (source, event) => {
-            this.close();
-            this.callback(this.inputField.getValue());
+            if (this.enabled) {
+                this.close();
+                this.callback(this.inputField.getValue());
+            }
             event.stopPropagation();
         };
         return super.init().
@@ -201,5 +209,25 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
         super.open(parent);
         this.inputField.focus().select();
         return this;
+    }
+
+    addInputListener(listener) {
+        this.inputField.addInputListener(listener);
+        return this
+    }
+
+    removeInputListener(listener) {
+        this.inputField.removeInputListener(listener);
+        return this;
+    }
+    
+    setConfirmationLabel(confirmationLabel) { //TODO
+        this.confirmationLabel = confirmationLabel;
+        this.dialog.actions.children[1].button.setText(confirmationLabel);
+    }
+    
+    enable(enabled) {
+        this.enabled = enabled;
+        this.dialog.actions.children[1].enable(enabled); //TODO Refactor
     }
 }

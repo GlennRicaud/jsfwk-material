@@ -22,8 +22,30 @@
   margin-bottom: 8px;
 }
 
+.rcd-body .rcd-material-textarea-input {
+  border: none;
+  width: 222px;
+}
+
+.rcd-body .rcd-material-textarea {
+  border: 1px solid rgba(0, 0, 0, 0.38);
+  border-radius: 2px;
+  padding: 8px;
+}
+
+.rcd-body .rcd-material-field.focused {
+  border-color: @rcd-accent-color;
+  .rcd-material-textfield-label {
+    color: @rcd-accent-color;
+  }
+}
+
 .rcd-body .rcd-material-field-input:focus {
   border-bottom: 1px solid @rcd-accent-color;
+}
+
+.rcd-body .rcd-material-textarea-input:focus {
+  border-bottom: none;
 }
 
 .rcd-body .rcd-material-dropdown-input :extend(.rcd-flex-hbox) {
