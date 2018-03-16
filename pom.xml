@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>systems.rcd.js.fwk.material</groupId>
   <artifactId>rcd-jsfwk-material</artifactId>
-  <version>3.0.1</version>
+  <version>3.0.2-SNAPSHOT</version>
   <name>Rcd Javascript Framework Material</name>
   <description>Rcd Javascript Framework Material</description>
 
@@ -19,7 +19,7 @@
     <dependency>
       <groupId>systems.rcd.js.fwk.core</groupId>
       <artifactId>rcd-jsfwk-core</artifactId>
-      <version>3.0.1</version>
+      <version>3.0.2-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -59,6 +59,7 @@
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-snackbars.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-menu.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-progress.js</source>
                   </sources>
                 </merger>
               </mergers>

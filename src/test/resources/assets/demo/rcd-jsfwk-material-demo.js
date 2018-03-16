@@ -12,7 +12,8 @@ function createApp() {
         .addRoute(createDialogsRoute())
         .addRoute(createTablesRoute())
         .addRoute(createSnackbarsRoute())
-        .addRoute(createFieldsRoute());
+        .addRoute(createFieldsRoute())
+        .addRoute(createProgressRoute());
 }
 
 createApp().start(document.body);
