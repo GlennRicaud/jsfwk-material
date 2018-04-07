@@ -3,7 +3,7 @@ function createListsRoute() {
         .addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init())
         .addBreadcrumb(new RcdMaterialBreadcrumb('Lists').init());
 
-    const list = new RcdMaterialList().init()
+    const list = new RcdMaterialListCard().init()
         .setStyle({'width': '300px'})
         .addRow('Single line')
         .addRow('Single line with action', null, {callback: () => alert('Action')})

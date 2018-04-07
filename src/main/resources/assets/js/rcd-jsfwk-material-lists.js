@@ -66,3 +66,13 @@ class RcdMaterialList extends RcdDivElement {
         return this;
     }
 }
+
+class RcdMaterialListCard extends RcdMaterialList {
+    constructor() {
+        super();
+    }
+
+    init() {
+        return super.init().addClass('rcd-material-list-card');
+    }
+}
