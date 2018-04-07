@@ -9,8 +9,14 @@ class RcdMaterialListRow extends RcdDivElement {
         super();
         this.primaryText = new RcdTextElement(primaryText).init()
             .addClass('rcd-material-list-row-primary');
-        this.secondaryText = secondaryText ? new RcdTextElement(secondaryText).init()
-            .addClass('rcd-material-list-row-secondary') : undefined;
+        if (secondaryText) {
+            if (RcdMaterialListRowType.THREE_LINE == type) {
+                this.secondaryText = new RcdPElement().init().setText(secondaryText);
+            } else {
+                this.secondaryText = new RcdTextElement(secondaryText).init();
+            }
+            this.secondaryText.addClass('rcd-material-list-row-secondary');
+        }
         this.rowType = type || (secondaryText ? RcdMaterialListRowType.TWO_LINE : RcdMaterialListRowType.SINGLE_LINE);
     }
 
