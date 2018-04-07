@@ -6,10 +6,11 @@ function createListsRoute() {
     const list = new RcdMaterialList().init()
         .setStyle({'width': '300px'})
         .addRow('Single line')
+        .addRow('Single line with action', null, {callback: () => alert('Action')})
         .addRow('Two line row', 'Second line with a long text that is going to be truncated')
         .addRow('Three line row',
             'Second line but with a longer text that will not fix on one row and is going to be truncated on the second line',
-            RcdMaterialListRowType.THREE_LINE);
+            {type: RcdMaterialListRowType.THREE_LINE});
 
     const sectionContent = new RcdDivElement().init()
         .addChild(list);

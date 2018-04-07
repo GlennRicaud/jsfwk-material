@@ -5,26 +5,36 @@ const RcdMaterialListRowType = {
 };
 
 class RcdMaterialListRow extends RcdDivElement {
-    constructor(primaryText, secondaryText, type) {
+    constructor(primaryText, secondaryText, params = {}) {
         super();
         this.primaryText = new RcdTextElement(primaryText).init()
             .addClass('rcd-material-list-row-primary');
         if (secondaryText) {
-            if (RcdMaterialListRowType.THREE_LINE == type) {
+            if (RcdMaterialListRowType.THREE_LINE == params.type) {
                 this.secondaryText = new RcdPElement().init().setText(secondaryText);
             } else {
                 this.secondaryText = new RcdTextElement(secondaryText).init();
             }
             this.secondaryText.addClass('rcd-material-list-row-secondary');
         }
-        this.rowType = type || (secondaryText ? RcdMaterialListRowType.TWO_LINE : RcdMaterialListRowType.SINGLE_LINE);
+        this.callback = params.callback;
+        this.rowType = params.type || (secondaryText ? RcdMaterialListRowType.TWO_LINE : RcdMaterialListRowType.SINGLE_LINE);
     }
 
     init() {
-        return this.addClass('rcd-material-list-row')
+        this.addClass('rcd-material-list-row')
             .addClass(this.rowType)
             .addChild(this.primaryText)
             .addChild(this.secondaryText);
+        
+        if (this.callback) {
+            this.addClass('rcd-clickable')
+                .addClickListener((target, event) => {
+                    this.callback(this, event);
+                });
+        }
+        
+        return this;
     }
 }
 
@@ -38,10 +48,16 @@ class RcdMaterialList extends RcdDivElement {
         return this.addClass('rcd-material-list');
     }
 
-    addRow(primaryText, secondaryText, type) {
-        const row = new RcdMaterialListRow(primaryText, secondaryText, type).init();
+    addRow(primaryText, secondaryText, params) {
+        this.createRow(primaryText, secondaryText, params);
+        return this;
+    }
+
+    createRow(primaryText, secondaryText, params) {
+        const row = new RcdMaterialListRow(primaryText, secondaryText, params).init();
         this.rows.push(row);
-        return this.addChild(row);
+        this.addChild(row);
+        return row;
     }
 
     deleteRows() {
