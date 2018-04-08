@@ -2,9 +2,9 @@ List of rows containing tiles holding the content
 Max 3 lines of text
 
 
-Padding left: 16px (4px if icon)
+Padding left: 16px
 Padding right: 16px
-Margin right icon: 72 - 4 - 48= 20px
+Margin right icon: 72- 16 - 24 = 32px
 
 Padding at top and botton of list: 8px
 

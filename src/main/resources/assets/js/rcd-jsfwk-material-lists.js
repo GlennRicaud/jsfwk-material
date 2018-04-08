@@ -4,8 +4,8 @@ const RcdMaterialListRowType = {
     THREE_LINE: 'rcd-material-list-row-three'
 };
 
-class RcdMaterialListRow extends RcdDivElement {
-    constructor(primaryText, secondaryText, params = {}) {
+class RcdMaterialListRowText extends RcdDivElement {
+    constructor(primaryText, secondaryText, params) {
         super();
         this.primaryText = new RcdTextElement(primaryText).init()
             .addClass('rcd-material-list-row-primary');
@@ -17,23 +17,38 @@ class RcdMaterialListRow extends RcdDivElement {
             }
             this.secondaryText.addClass('rcd-material-list-row-secondary');
         }
-        this.callback = params.callback;
+    }
+
+    init() {
+        console.log('q');
+        return this.addClass('rcd-material-list-row-text')
+            .addChild(this.primaryText)
+            .addChild(this.secondaryText);
+    }
+}
+
+class RcdMaterialListRow extends RcdDivElement {
+    constructor(primaryText, secondaryText, params = {}) {
+        super();
+        this.rowText = new RcdMaterialListRowText(primaryText, secondaryText, params).init();
         this.rowType = params.type || (secondaryText ? RcdMaterialListRowType.TWO_LINE : RcdMaterialListRowType.SINGLE_LINE);
+        this.icon = params.icon;
+        this.callback = params.callback;
     }
 
     init() {
         this.addClass('rcd-material-list-row')
             .addClass(this.rowType)
-            .addChild(this.primaryText)
-            .addChild(this.secondaryText);
-        
+            .addChild(this.icon)
+            .addChild(this.rowText);
+
         if (this.callback) {
             this.addClass('rcd-clickable')
                 .addClickListener((target, event) => {
                     this.callback(this, event);
                 });
         }
-        
+
         return this;
     }
 }

@@ -1,7 +1,6 @@
-.rcd-material-list-row :extend(.rcd-flex-vbox) {
+.rcd-material-list-row-text :extend(.rcd-flex-vbox) {
   justify-content: center;
-  //Material specs
-  padding: 8px 16px;
+  overflow: auto;
 
   .rcd-material-list-row-primary {
     //Material specs
@@ -16,6 +15,17 @@
     //Material specs
     color: @rcd-secondary-text-dark-color;
     font-size: 14px;
+  }
+}
+
+.rcd-material-list-row :extend(.rcd-flex-hbox) {
+  //Material specs
+  padding-left: 16px;
+  padding-right: 16px;
+  
+  .rcd-icon {
+    //Material specs
+    margin-right: 32px;
   }
 }
 
@@ -40,6 +50,9 @@
 
 .rcd-material-list :extend(.rcd-flex-vbox) {
   background-color: #fff;
+  //Material specs
+  padding-top: 8px;
+  padding-botton: 8px;
 }
 
 .rcd-material-list-card :extend(.rcd-material-shadow) {

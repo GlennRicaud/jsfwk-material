@@ -5,7 +5,7 @@ function createListsRoute() {
 
     const list = new RcdMaterialListCard().init()
         .setStyle({'width': '300px'})
-        .addRow('Single line')
+        .addRow('Single line', null, {icon:new RcdGoogleMaterialIcon('open_in_new').init()})
         .addRow('Single line with action', null, {callback: () => alert('Action')})
         .addRow('Two line row', 'Second line with a long text that is going to be truncated')
         .addRow('Three line row',
