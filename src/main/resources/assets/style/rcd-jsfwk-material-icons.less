@@ -44,17 +44,22 @@
 
 .rcd-material-icon-area {
   height: 48px; //TODO Investigate
-  //Material specs
-  color: @rcd-icon-dark-color;
-  
   img {
     opacity: @rcd-icon-dark-active-opacity;
   }
 }
 
+.rcd-gmaterial-icon {
+  //Material specs
+  color: @rcd-icon-dark-color;
+}
+
 .rcd-material-icon-area.disabled {
   //Material specs
-  color: @rcd-icon-inactive-dark-color;
+  .rcd-gmaterial-icon {
+    //Material specs
+    color: @rcd-icon-inactive-dark-color;
+  }
   
   img {
     opacity: @rcd-icon-dark-inactive-opacity;
