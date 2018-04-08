@@ -1,0 +1,61 @@
+.rcd-material-list-row-text :extend(.rcd-flex-vbox) {
+  justify-content: center;
+  overflow: auto;
+
+  .rcd-material-list-row-primary {
+    //Material specs
+    color: @rcd-primary-text-dark-color;
+    font-size: 16px;
+  }
+
+  .rcd-material-list-row-secondary {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 32px;
+    //Material specs
+    color: @rcd-secondary-text-dark-color;
+    font-size: 14px;
+  }
+}
+
+.rcd-material-list-row :extend(.rcd-flex-hbox) {
+  //Material specs
+  padding-left: 16px;
+  padding-right: 16px;
+  
+  .rcd-icon {
+    //Material specs
+    margin-right: 32px;
+  }
+}
+
+.rcd-material-list-row:not(:last-of-type) {
+  border-bottom: @rcd-divider-dark-border;
+}
+
+.rcd-material-list-row-single {
+  //Material specs
+  height: 48px;
+}
+
+.rcd-material-list-row-two {
+  //Material specs
+  height: 72px;
+}
+
+.rcd-material-list-row-three {
+  //Material specs
+  height: 88px;
+}
+
+.rcd-material-list :extend(.rcd-flex-vbox) {
+  background-color: #fff;
+  //Material specs
+  padding-top: 8px;
+  padding-botton: 8px;
+}
+
+.rcd-material-list-card :extend(.rcd-material-shadow) {
+  width: 100%;
+}
+

@@ -1,0 +1,19 @@
+List of rows containing tiles holding the content
+Max 3 lines of text
+
+
+Padding left: 16px
+Padding right: 16px
+Margin right icon: 72- 16 - 24 = 32px
+
+Padding at top and botton of list: 8px
+
+Tile
+    Primary text font size: 16px
+    Secondary text font size: 14px
+    Height: 48px (1line) / 72 px (2 lines) / 88px (3 lines)
+    
+    
+Reminder:
+    Primary text  87%
+    Secondary text 54%

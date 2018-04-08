@@ -18,3 +18,6 @@ target/
 # IntelliJ exceptions
 *.iml
 .idea/*
+
+#Gradle exceptions
+.gradle
