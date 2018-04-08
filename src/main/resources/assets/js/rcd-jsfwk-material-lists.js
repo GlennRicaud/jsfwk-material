@@ -20,7 +20,6 @@ class RcdMaterialListRowText extends RcdDivElement {
     }
 
     init() {
-        console.log('q');
         return this.addClass('rcd-material-list-row-text')
             .addChild(this.primaryText)
             .addChild(this.secondaryText);
