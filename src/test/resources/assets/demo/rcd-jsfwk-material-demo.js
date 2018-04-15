@@ -7,7 +7,7 @@ function createApp() {
     }
 
     return new RcdMaterialSinglePageApplication(
-        {title: 'RCD Material framework - Demo', nav: {behaviour: RcdMaterialNavigationDrawerBehaviour.PERMANENT}}).init()
+        {title: 'RCD Material framework - Demo', search: (value) => alert('Searching for ' + value), nav: {behaviour: RcdMaterialNavigationDrawerBehaviour.PERMANENT}}).init()
         .setDefaultRoute(createDefaultRoute())
         .addRoute(createDialogsRoute())
         .addRoute(createTablesRoute())

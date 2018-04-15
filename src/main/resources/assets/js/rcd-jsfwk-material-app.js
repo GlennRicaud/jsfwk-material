@@ -12,7 +12,9 @@ class RcdMaterialSinglePageApplication extends RcdObject{
     constructor(params) {
         super();
         this.title = params.title;
-        this.bar = new RcdMaterialApplicationBar(params.title).init();
+        this.bar = new RcdMaterialApplicationBar(params.title, {
+            search: params.search
+        }).init();
         this.nav = new RcdMaterialNavigationDrawer().init();
         this.main = new RcdMaterialMain().init();
 

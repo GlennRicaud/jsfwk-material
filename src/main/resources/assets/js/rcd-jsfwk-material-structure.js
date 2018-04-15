@@ -39,18 +39,58 @@ class RcdMaterialNavIconArea extends RcdGoogleMaterialIconArea {
 
 
 class RcdMaterialApplicationBar extends RcdHeaderElement {
-    constructor(title) {
+    constructor(title, params = {}) {
         super();
         this.title = new RcdTextDivElement(title).
             init().
             addClass('rcd-material-application-title');
         this.navIconArea = new RcdMaterialNavIconArea().init();
+        this.openSearchIconArea = params.search && new RcdGoogleMaterialIconArea('search', () => {
+            this.title.hide();
+            this.openSearchIconArea.hide();
+            this.seachPanel.show();
+            this.searchField.focus();
+        })
+            .init()
+            .setLight(true);
+
+        if (params.search) {
+            const searchCallback = () => params.search(this.searchField.getValue());
+            this.searchIconArea = new RcdGoogleMaterialIconArea('search', searchCallback)
+                .init()
+                .setLight(true);
+            this.searchField = new RcdMaterialTextField('', 'Search')
+                .init()
+                .addClass('rcd-material-application-bar-search-field')
+                .addKeyUpListener('Enter', searchCallback);
+            this.searchCancelIconArea = new RcdGoogleMaterialIconArea('clear', () => {
+                this.title.show();
+                this.openSearchIconArea.show();
+                this.seachPanel.hide();
+            })
+                .init()
+                .setLight(true);
+            this.seachPanel = new RcdDivElement().init()
+                .addClass('rcd-material-application-bar-search')
+                .addChild(this.searchIconArea)
+                .addChild(this.searchField)
+                .addChild(this.searchCancelIconArea)
+                .hide();
+        }
+        this.leftPanel = new RcdDivElement().init()
+            .addClass('rcd-material-application-bar-left')
+            .addChild(this.navIconArea)
+            .addChild(this.title);
+        this.rightPanel = new RcdDivElement().init()
+            .addClass('rcd-material-application-bar-right')
+            .addChild(this.openSearchIconArea)
+            .addChild(this.seachPanel);
     }
 
     init() {
-        return this.addClass('rcd-material-application-bar').
-            addChild(this.navIconArea).
-            addChild(this.title);
+        return this.addClass('rcd-material-application-bar')
+            .addChild(this.leftPanel)
+            .addChild(this.rightPanel);
     }
 
     setNavigationDrawer(navigationDrawer) {
