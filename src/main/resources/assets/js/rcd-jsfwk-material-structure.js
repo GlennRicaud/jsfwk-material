@@ -55,7 +55,17 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
             .setLight(true);
 
         if (params.search) {
-            const searchCallback = () => params.search(this.searchField.getValue());
+            const hideSearchPanel = () => {
+                this.title.show();
+                this.openSearchIconArea.show();
+                this.seachPanel.hide();
+            }
+            const searchCallback = () => {
+                const searchValue = this.searchField.getValue();
+                hideSearchPanel();
+                this.searchField.setValue('');
+                params.search(searchValue);
+            };
             this.searchIconArea = new RcdGoogleMaterialIconArea('search', searchCallback)
                 .init()
                 .setLight(true);
@@ -63,11 +73,7 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
                 .init()
                 .addClass('rcd-material-application-bar-search-field')
                 .addKeyUpListener('Enter', searchCallback);
-            this.searchCancelIconArea = new RcdGoogleMaterialIconArea('clear', () => {
-                this.title.show();
-                this.openSearchIconArea.show();
-                this.seachPanel.hide();
-            })
+            this.searchCancelIconArea = new RcdGoogleMaterialIconArea('clear', hideSearchPanel)
                 .init()
                 .setLight(true);
             this.seachPanel = new RcdDivElement().init()
