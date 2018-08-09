@@ -14,7 +14,9 @@ function createApp() {
         .addRoute(createListsRoute())
         .addRoute(createSnackbarsRoute())
         .addRoute(createFieldsRoute())
-        .addRoute(createProgressRoute());
+        .addRoute(createProgressRoute())
+        .setActionItems([new RcdGoogleMaterialIconArea('clear', () => alert('action item')).init()]);
 }
 
-createApp().start(document.body);
+const app = createApp();
+app.start(document.body);

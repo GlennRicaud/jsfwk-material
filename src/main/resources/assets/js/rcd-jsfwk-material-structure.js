@@ -45,6 +45,7 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
             init().
             addClass('rcd-material-application-title');
         this.navIconArea = new RcdMaterialNavIconArea().init();
+        this.actionItems = [];
         this.openSearchIconArea = params.search && new RcdGoogleMaterialIconArea('search', () => {
             this.title.hide();
             this.openSearchIconArea.hide();
@@ -106,6 +107,17 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
 
     setTitle(title) {
         this.title.setText(title);
+        return this;
+    }
+    
+    setActionItems(actionItems) {
+        this.actionItems.forEach(actionItem => this.rightPanel.removeChild(actionItem));
+        this.actionItems = actionItems;
+        this.actionItems.forEach(actionItem => {
+            actionItem.setLight(true);
+            this.rightPanel.addChild(actionItem)
+        });
+        return this;
     }
 }
 

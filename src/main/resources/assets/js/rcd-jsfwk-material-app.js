@@ -35,6 +35,12 @@ class RcdMaterialSinglePageApplication extends RcdObject{
     setTitle(title) {
         this.title = title;
         this.bar.setTitle(title);
+        return this;
+    }
+
+    setActionItems(actionItems) {
+        this.bar.setActionItems(actionItems);
+        return this;
     }
 
     setDefaultRoute(route) {
