@@ -7,14 +7,16 @@ function createApp() {
     }
 
     return new RcdMaterialSinglePageApplication(
-        {title: 'RCD Material framework - Demo', nav: {behaviour: RcdMaterialNavigationDrawerBehaviour.PERMANENT}}).init()
+        {title: 'RCD Material framework - Demo', search: (value) => alert('Searching for ' + value), nav: {behaviour: RcdMaterialNavigationDrawerBehaviour.PERMANENT}}).init()
         .setDefaultRoute(createDefaultRoute())
         .addRoute(createDialogsRoute())
         .addRoute(createTablesRoute())
         .addRoute(createListsRoute())
         .addRoute(createSnackbarsRoute())
         .addRoute(createFieldsRoute())
-        .addRoute(createProgressRoute());
+        .addRoute(createProgressRoute())
+        .setActionItems([new RcdGoogleMaterialIconArea('clear', () => alert('action item')).init()]);
 }
 
-createApp().start(document.body);
+const app = createApp();
+app.start(document.body);

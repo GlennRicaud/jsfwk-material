@@ -70,7 +70,7 @@ class RcdMaterialTableRow extends RcdTrElement {
         if(this.checkbox) {
             this.addChild(this.checkbox);
         } else {
-            this.addChild(new RcdMaterialTableCell().init());
+            this.addChild(new RcdMaterialTableCell().init().addClass('rcd-material-table-checkbox-placeholder'));
         }
         return this;
     }
@@ -129,10 +129,12 @@ class RcdMaterialTableRow extends RcdTrElement {
 }
 
 class RcdMaterialTableHeader extends RcdTheadElement {
-    constructor() {
+    constructor(params) {
         super();
-        this.row = new RcdMaterialTableRow().init();
-        this.row.checkbox.enable(false);
+        this.row = new RcdMaterialTableRow(params).init();
+        if (this.row.checkbox) {
+            this.row.checkbox.enable(false);
+        }
     }
 
     init() {
@@ -146,8 +148,10 @@ class RcdMaterialTableHeader extends RcdTheadElement {
     }
 
     enableMultiSelection(enabled) {
-        this.row.checkbox.select(false);
-        this.row.checkbox.enable(enabled);
+        if (this.row.checkbox) {
+            this.row.checkbox.select(false);
+            this.row.checkbox.enable(enabled);
+        }
     }
 
     addSelectionListener(selectionListener) {
@@ -157,17 +161,21 @@ class RcdMaterialTableHeader extends RcdTheadElement {
 }
 
 class RcdMaterialTableBody extends RcdTbodyElement {
-    constructor() {
+    constructor(params) {
         super();
         this.rows = [];
         this.selectionListeners = [];
+        this.params = params;
     }
 
     init() {
         return this.addClass('rcd-material-table-body');
     }
 
-    createRow(params) {
+    createRow(params = {}) {
+        if (this.params && this.params.selectable === false) {
+            params.selectable = false;
+        }
         const row = new RcdMaterialTableRow(params).init();
         row.addSelectionListener(() => this.fireSelectionEvent());
         this.rows.push(row);
@@ -227,10 +235,10 @@ class RcdMaterialTableEmptyBody extends RcdTbodyElement {
 }
 
 class RcdMaterialTable extends RcdTableElement {
-    constructor() {
+    constructor(params) {
         super();
-        this.header = new RcdMaterialTableHeader().init();
-        this.body = new RcdMaterialTableBody().init();
+        this.header = new RcdMaterialTableHeader(params).init();
+        this.body = new RcdMaterialTableBody(params).init();
         this.emptyBody = new RcdMaterialTableEmptyBody().init();
         this.header.row.addSelectionListener(() => this.body.selectAllRows(this.header.row.isSelected()));
     }
@@ -380,10 +388,10 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
 }
 
 class RcdMaterialTableCard extends RcdDivElement {
-    constructor(title, options) {
+    constructor(title, params) {
         super();
         this.header = new RcdMaterialTableCardHeader(title).init();
-        this.table = new RcdMaterialTable().init().
+        this.table = new RcdMaterialTable(params).init().
             addSelectionListener(() => {
                 this.header.displaySelectionCount(this.table.getSelectedRows().length);
             });

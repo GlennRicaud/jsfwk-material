@@ -12,7 +12,9 @@ class RcdMaterialSinglePageApplication extends RcdObject{
     constructor(params) {
         super();
         this.title = params.title;
-        this.bar = new RcdMaterialApplicationBar(params.title).init();
+        this.bar = new RcdMaterialApplicationBar(params.title, {
+            search: params.search
+        }).init();
         this.nav = new RcdMaterialNavigationDrawer().init();
         this.main = new RcdMaterialMain().init();
 
@@ -33,6 +35,12 @@ class RcdMaterialSinglePageApplication extends RcdObject{
     setTitle(title) {
         this.title = title;
         this.bar.setTitle(title);
+        return this;
+    }
+
+    setActionItems(actionItems) {
+        this.bar.setActionItems(actionItems);
+        return this;
     }
 
     setDefaultRoute(route) {
