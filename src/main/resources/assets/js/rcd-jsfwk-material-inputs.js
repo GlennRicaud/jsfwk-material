@@ -162,6 +162,20 @@ class RcdMaterialDropdown extends RcdMaterialField {
         return this;
     }
     
+    clear() {
+        this.select.clear();
+    }
+    
+    addOptions(options) {
+        this.select.addOptions(options);
+        return this;
+    }
+    
+    addOption(option) {
+        this.select.addOption(option);
+        return this;
+    }
+    
     selectOption(option) {
         this.select.selectOption(option);
         return this;
