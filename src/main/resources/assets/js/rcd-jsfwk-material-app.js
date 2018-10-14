@@ -54,6 +54,9 @@ class RcdMaterialSinglePageApplication extends RcdObject{
     }
 
     addRoute(route) {
+        if (!route) {
+            return this;
+        }
         this.routes[route.state] = route;
         let navDrawerItem;
         if (route.name) {
