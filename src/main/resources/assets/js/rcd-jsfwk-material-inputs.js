@@ -77,6 +77,9 @@ class RcdMaterialTextField extends RcdMaterialField {
 class RcdMaterialTextArea extends RcdMaterialField {
     constructor(labelText, placeholder) {
         super(labelText);
+        this.label.addClickListener(() => {
+            this.textArea.domElement.focus();
+        });
         this.textArea = new RcdTextAreaElement().init()
             .setPlaceholder(placeholder)
             .addClass('rcd-material-field-input')
