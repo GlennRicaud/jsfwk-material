@@ -62,6 +62,7 @@
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-app.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-breadcrumbs.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-checkboxes.js</source>
+                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-radioboxes.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-lists.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-tables.js</source>
                     <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-inputs.js</source>
