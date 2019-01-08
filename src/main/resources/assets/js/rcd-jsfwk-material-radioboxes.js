@@ -34,7 +34,8 @@ class RcdMaterialRadioboxGroup extends RcdObject {
     }
 
     createRadiobox() {
-        const radiobox = new RcdMaterialRadiobox().init();
+        const radiobox = new RcdMaterialRadiobox().init()
+            .addClickListener(() => this.select(radiobox));
         this.radioboxes.push(radiobox);
         return radiobox;
     }

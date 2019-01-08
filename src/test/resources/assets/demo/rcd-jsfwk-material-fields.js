@@ -8,10 +8,8 @@ function createFieldsRoute() {
     const textArea = new RcdMaterialTextArea('mylabel', 'myplaceholder').init();
 
     const radioboxGroup = new RcdMaterialRadioboxGroup().init();
-    const radiobox1 = radioboxGroup.createRadiobox()
-        .addClickListener(() => radioboxGroup.select(radiobox1));
-    const radiobox2 = radioboxGroup.createRadiobox()
-        .addClickListener(() => radioboxGroup.select(radiobox2));
+    const radiobox1 = radioboxGroup.createRadiobox();
+    const radiobox2 = radioboxGroup.createRadiobox();
 
 
     const sectionContent = new RcdDivElement().init()
