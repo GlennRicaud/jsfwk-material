@@ -309,7 +309,8 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         const iconCondition = {
             iconArea: iconArea,
             min: options && options.min,
-            max: options && options.max
+            max: options && options.max,
+            predicate: options && options.predicate,
         };
         this.applyIconCondition(iconCondition);
         this.iconConditions.push(iconCondition);
@@ -331,7 +332,8 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
 
     applyIconCondition(iconCondition) {
         iconCondition.iconArea.enable((iconCondition.min == null || iconCondition.min <= this.count) &&
-                                    (iconCondition.max == null || iconCondition.max >= this.count));
+                                    (iconCondition.max == null || iconCondition.max >= this.count) &&
+                                      (iconCondition.predicate == null || iconCondition.predicate()));
     }
     
     setTitle(title) {
