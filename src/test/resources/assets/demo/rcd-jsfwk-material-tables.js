@@ -1,6 +1,6 @@
 function createTablesRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init().
-        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init()).
+        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', {href: '#'}).init()).
         addBreadcrumb(new RcdMaterialBreadcrumb('Tables').init());
 
     const standaloneTable = new RcdMaterialTable().init().

@@ -1,6 +1,6 @@
 function createProgressRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init()
-        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init())
+        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo', {href: '#'}).init())
         .addBreadcrumb(new RcdMaterialBreadcrumb('Progress').init());
 
     const progressIndicator = new RcdLinearProgressIndicator({width: 200, height: 200}).init().setProgress(0.3);
