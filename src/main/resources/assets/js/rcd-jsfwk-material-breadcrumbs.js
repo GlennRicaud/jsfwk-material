@@ -1,8 +1,7 @@
 class RcdMaterialBreadcrumb extends RcdAElement {
-    constructor(name, params) {
-        super(name, params && params.href);
+    constructor(name) {
+        super(name);
         this.name = name;
-        this.callback = params && params.callback;
     }
 
     init() {

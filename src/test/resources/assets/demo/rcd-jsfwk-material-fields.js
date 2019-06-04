@@ -1,6 +1,6 @@
 function createFieldsRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init()
-        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo', {href: '#'}).init())
+        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo').setStateRef('').init())
         .addBreadcrumb(new RcdMaterialBreadcrumb('Fields').init());
 
     const textField = new RcdMaterialTextField('mylabel', 'myplaceholder').init();
