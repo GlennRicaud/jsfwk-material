@@ -1,6 +1,6 @@
 function createListsRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init()
-        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo').setStateRef('').init())
+        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo').init().setStateRef(''))
         .addBreadcrumb(new RcdMaterialBreadcrumb('Lists').init());
 
     const list = new RcdMaterialListCard().init()
