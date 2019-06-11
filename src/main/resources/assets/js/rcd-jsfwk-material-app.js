@@ -65,7 +65,7 @@ class RcdMaterialSinglePageApplication extends RcdObject{
                 text: route.name
             }).init().
                 addClass(route.iconArea && 'icon-item').
-                addClickListener(() => RcdHistoryRouter.setState(route.state));
+                setStateRef(route.state);
             this.nav.addItem(navDrawerItem);
         }
         RcdHistoryRouter.addRoute(route.state, () => {
