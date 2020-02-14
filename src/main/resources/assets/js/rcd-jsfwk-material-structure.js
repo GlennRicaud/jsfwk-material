@@ -124,7 +124,6 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
 class RcdMaterialNavigationDrawerItem extends RcdAElement {
     constructor(params) {
         super('');
-        console.log(params);
         this.iconArea = params.iconArea;
         this.textElement = new RcdTextElement(params.text).
             init().
