@@ -344,6 +344,7 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
 class RcdMaterialTableCardFooter extends RcdFooterElement {
     constructor(params) {
         super();
+        this.rowCount = params.rowCount == null ? 0 : params.rowCount;
         this.start = params.start == null ? 0 : params.start;
         this.count = params.count == null ? 0 : params.count;
         this.total = params.total == null ? 0 : params.total;
@@ -351,11 +352,11 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
         this.nextCallback = params.nextCallback;
         this.rowCountCallback = params.rowCountCallback;
         this.rowCountLabel = new RcdTextDivElement('Rows per page:').init();
-        this.rowCountDropdown = new RcdSelectElement().init()
-            .addOptions([10, 20, 50, 100, 200, 500])
+        this.rowCountSelect = new RcdSelectElement().init()
+            .addOptions(['10', '20', '50', '100', '200', '500'])
             .addClass('rcd-material-select')
-            .selectOption(this.count)
-            .addChangeListener( () => this.rowCountCallback && this.rowCountCallback());
+            .selectOption('' + this.rowCount)
+            .addChangeListener( () => this.rowCountCallback && this.rowCountCallback(parseInt(this.rowCountSelect.getSelectedValue())));
         this.iterator = new RcdTextDivElement('').init().
             addClass('rcd-material-table-card-footer-iterator');
         this.previousIconArea =
@@ -370,7 +371,7 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
             refresh().
             addClass('rcd-material-table-card-footer').
             addChild(this.rowCountLabel).
-            addChild(this.rowCountDropdown).
+            addChild(this.rowCountSelect).
             addChild(this.iterator).
             addChild(this.previousIconArea).
             addChild(this.nextIconArea);
@@ -381,9 +382,11 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
     }
 
     setValues(params) {
+        this.rowCount = params.rowCount;
         this.start = params.start;
         this.count = params.count;
         this.total = params.total;
+        this.rowCountCallback = params.rowCountCallback;
         this.previousCallback = params.previousCallback;
         this.nextCallback = params.nextCallback;
         return this.refresh();
@@ -391,6 +394,7 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
     }
 
     refresh() {
+        this.rowCountSelect.selectOption('' + this.rowCount);
         this.previousIconArea.enable(this.start > 0);
         this.nextIconArea.enable((this.start + this.count) < this.total);
         this.iterator.setText(this.generateIteratorText());
