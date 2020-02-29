@@ -3,15 +3,19 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>systems.rcd.js.fwk.material</groupId>
   <artifactId>rcd-jsfwk-material</artifactId>
-  <version>4.1.0-B1</version>
+  <version>4.1.0-beta-1</version>
   <name>Rcd Javascript Framework Material</name>
   <description>Rcd Javascript Framework Material</description>
 
   <distributionManagement>
-    <repository>
+    <!--repository>
       <id>bintray-rcd-systems-rcd-repo</id>
       <name>rcd-systems-rcd-repo</name>
       <url>https://api.bintray.com/maven/rcd-systems/rcd-repo/rcd-jsfwk-material/;publish=1</url>
+    </repository-->
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/GlennRicaud/jsfwk-material</url>
     </repository>
   </distributionManagement>
 
