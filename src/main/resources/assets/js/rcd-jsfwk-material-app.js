@@ -5,6 +5,7 @@ class RcdMaterialRoute extends RcdObject{
         this.name = params.name;
         this.iconArea = params.iconArea;
         this.callback = params.callback;
+        this.hideCallback = params.hideCallback;
     }
 }
 
@@ -26,6 +27,7 @@ class RcdMaterialSinglePageApplication extends RcdObject{
         }).init();
         this.routes = {};
         this.defaultRoute;
+        this.currentRoute;
     }
 
     init() {
@@ -46,6 +48,10 @@ class RcdMaterialSinglePageApplication extends RcdObject{
     setDefaultRoute(route) {
         this.defaultRoute = route;
         RcdHistoryRouter.setDefaultRoute(() => {
+            if (this.currentRoute && this.currentRoute.hideCallback) {
+                this.currentRoute.hideCallback(this.main);
+            }
+            this.currentRoute = route;
             this.setTitle(this.title);
             this.main.removeAllChildren();
             route.callback(this.main);
@@ -69,6 +75,10 @@ class RcdMaterialSinglePageApplication extends RcdObject{
             this.nav.addItem(navDrawerItem);
         }
         RcdHistoryRouter.addRoute(route.state, () => {
+            if (this.currentRoute && this.currentRoute.hideCallback) {
+                this.currentRoute.hideCallback(this.main);
+            }
+            this.currentRoute = route;
             this.setTitle(route.name);
             if(navDrawerItem) {
                 this.nav.selectItem(navDrawerItem);

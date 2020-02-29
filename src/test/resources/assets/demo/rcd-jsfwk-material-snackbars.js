@@ -20,6 +20,7 @@ function createSnackbarsRoute() {
     return new RcdMaterialRoute({
         state: 'snackbars',
         name: 'Snackbars',
-        callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout)
+        callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout),
+        hideCallback: () => alert('leaving snackbars')
     });
 }
