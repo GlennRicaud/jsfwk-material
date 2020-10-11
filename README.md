@@ -1,4 +1,2 @@
-# jsfwk-core
-Rcd Javascript Framework Material
+# Rcd Javascript Framework Material (jsfwk-core)
 
-IN PROGRESS!
