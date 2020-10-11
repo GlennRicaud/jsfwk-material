@@ -1,15 +1,22 @@
 function createFieldsRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init()
-        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init())
+        .addBreadcrumb(new RcdMaterialBreadcrumb('Demo').init().setStateRef(''))
         .addBreadcrumb(new RcdMaterialBreadcrumb('Fields').init());
 
     const textField = new RcdMaterialTextField('mylabel', 'myplaceholder').init();
-    
+
     const textArea = new RcdMaterialTextArea('mylabel', 'myplaceholder').init();
+
+    const radioboxGroup = new RcdMaterialRadioboxGroup().init();
+    const radiobox1 = radioboxGroup.createRadiobox();
+    const radiobox2 = radioboxGroup.createRadiobox();
+
 
     const sectionContent = new RcdDivElement().init()
         .addChild(textField)
-        .addChild(textArea);
+        .addChild(textArea)
+        .addChild(radiobox1)
+        .addChild(radiobox2);
     const layout = new RcdMaterialSectionLayout('Dialogs', sectionContent).init();
 
     return new RcdMaterialRoute({

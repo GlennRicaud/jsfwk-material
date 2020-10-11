@@ -1,6 +1,6 @@
 function createTablesRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init().
-        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init()).
+        addBreadcrumb(new RcdMaterialBreadcrumb('Demo').init().setStateRef('')).
         addBreadcrumb(new RcdMaterialBreadcrumb('Tables').init());
 
     const standaloneTable = new RcdMaterialTable().init().
@@ -67,7 +67,7 @@ function createTablesRoute() {
             addCell('');
         tableCard.setFooter({start: 2, count: 1, total: 3, previousCallback: previousCallback, nextCallback: nextCallback});
     };
-    tableCard.setFooter({start: 0, count: 2, total: 3, previousCallback: previousCallback, nextCallback: nextCallback});
+    tableCard.setFooter({rowCount: 50, start: 0, count: 2, total: 3, previousCallback: previousCallback, nextCallback: nextCallback});
 
     const emptyTableCard = new RcdMaterialTableCard('Table card').init().
         addColumn('First column').

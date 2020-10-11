@@ -309,7 +309,8 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
         const iconCondition = {
             iconArea: iconArea,
             min: options && options.min,
-            max: options && options.max
+            max: options && options.max,
+            predicate: options && options.predicate,
         };
         this.applyIconCondition(iconCondition);
         this.iconConditions.push(iconCondition);
@@ -331,7 +332,8 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
 
     applyIconCondition(iconCondition) {
         iconCondition.iconArea.enable((iconCondition.min == null || iconCondition.min <= this.count) &&
-                                    (iconCondition.max == null || iconCondition.max >= this.count));
+                                    (iconCondition.max == null || iconCondition.max >= this.count) &&
+                                      (iconCondition.predicate == null || iconCondition.predicate()));
     }
     
     setTitle(title) {
@@ -342,13 +344,21 @@ class RcdMaterialTableCardHeader extends RcdHeaderElement {
 class RcdMaterialTableCardFooter extends RcdFooterElement {
     constructor(params) {
         super();
+        this.rowCount = params.rowCount == null ? 0 : params.rowCount;
         this.start = params.start == null ? 0 : params.start;
         this.count = params.count == null ? 0 : params.count;
         this.total = params.total == null ? 0 : params.total;
-        this.iterator = new RcdTextDivElement('').init().
-            addClass('rcd-material-table-card-footer-iterator');
         this.previousCallback = params.previousCallback;
         this.nextCallback = params.nextCallback;
+        this.rowCountCallback = params.rowCountCallback;
+        this.rowCountLabel = new RcdTextDivElement('Rows per page:').init();
+        this.rowCountSelect = new RcdSelectElement().init()
+            .addOptions(['10', '20', '50', '100', '200', '500'])
+            .addClass('rcd-material-select')
+            .selectOption('' + this.rowCount)
+            .addChangeListener( () => this.rowCountCallback && this.rowCountCallback(parseInt(this.rowCountSelect.getSelectedValue())));
+        this.iterator = new RcdTextDivElement('').init().
+            addClass('rcd-material-table-card-footer-iterator');
         this.previousIconArea =
             new RcdGoogleMaterialIconArea('navigate_before', () => this.previousCallback && this.previousCallback()).init().
                 addClass('rcd-material-table-card-footer-icon');
@@ -360,6 +370,8 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
         return super.init().
             refresh().
             addClass('rcd-material-table-card-footer').
+            addChild(this.rowCountLabel).
+            addChild(this.rowCountSelect).
             addChild(this.iterator).
             addChild(this.previousIconArea).
             addChild(this.nextIconArea);
@@ -370,9 +382,11 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
     }
 
     setValues(params) {
+        this.rowCount = params.rowCount;
         this.start = params.start;
         this.count = params.count;
         this.total = params.total;
+        this.rowCountCallback = params.rowCountCallback;
         this.previousCallback = params.previousCallback;
         this.nextCallback = params.nextCallback;
         return this.refresh();
@@ -380,6 +394,7 @@ class RcdMaterialTableCardFooter extends RcdFooterElement {
     }
 
     refresh() {
+        this.rowCountSelect.selectOption('' + this.rowCount);
         this.previousIconArea.enable(this.start > 0);
         this.nextIconArea.enable((this.start + this.count) < this.total);
         this.iterator.setText(this.generateIteratorText());

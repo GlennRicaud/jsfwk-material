@@ -3,15 +3,19 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>systems.rcd.js.fwk.material</groupId>
   <artifactId>rcd-jsfwk-material</artifactId>
-  <version>3.0.5</version>
+  <version>4.1.2</version>
   <name>Rcd Javascript Framework Material</name>
   <description>Rcd Javascript Framework Material</description>
 
   <distributionManagement>
-    <repository>
+    <!--repository>
       <id>bintray-rcd-systems-rcd-repo</id>
       <name>rcd-systems-rcd-repo</name>
       <url>https://api.bintray.com/maven/rcd-systems/rcd-repo/rcd-jsfwk-material/;publish=1</url>
+    </repository-->
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/GlennRicaud/jsfwk-material</url>
     </repository>
   </distributionManagement>
 
@@ -19,57 +23,43 @@
     <dependency>
       <groupId>systems.rcd.js.fwk.core</groupId>
       <artifactId>rcd-jsfwk-core</artifactId>
-      <version>3.0.3</version>
+      <version>4.0.0-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
 
   <build>
+    <resources>
+      <!-- Do not JS files. See JS Merge below -->
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <excludes>
+          <exclude>assets/js/**</exclude>
+        </excludes>
+      </resource>
+    </resources>
     <plugins>
-
       <!-- JS Merge -->
       <plugin>
-        <groupId>org.zcore.maven</groupId>
-        <artifactId>merge-maven-plugin</artifactId>
-        <version>0.0.3</version>
+        <groupId>systems.rcd.maven</groupId>
+        <artifactId>include-maven-plugin</artifactId>
+        <version>0.1.0</version>
         <executions>
           <execution>
-            <id>merge-js</id>
             <phase>process-resources</phase>
             <goals>
-              <goal>merge</goal>
+              <goal>include</goal>
             </goals>
             <configuration>
-              <mergers>
-                <merger>
-                  <target>${project.basedir}/target/classes/assets/js/rcd-jsfwk-material.js</target>
-                  <sources>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-actions.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-buttons.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-tooltips.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-icons.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-layout.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-structure.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-app.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-breadcrumbs.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-checkboxes.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-lists.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-tables.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-inputs.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-dialogs.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-snackbars.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-menu.js</source>
-                    <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material-progress.js</source>
-                  </sources>
-                </merger>
-              </mergers>
+              <source>${project.basedir}/src/main/resources/assets/js/rcd-jsfwk-material.js</source>
+              <target>${project.basedir}/target/classes/assets/js/rcd-jsfwk-material.js</target>
             </configuration>
           </execution>
         </executions>
       </plugin>
 
-      <!-- Unpack dependencies -->
+      <!-- Unpack LESS files from dependencies -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -82,7 +72,8 @@
               <goal>unpack-dependencies</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target/dependencies</outputDirectory>
+              <outputDirectory>${project.basedir}/target/buffer</outputDirectory>
+              <includes>**/*.less,**/*.js</includes>
             </configuration>
           </execution>
         </executions>
@@ -100,39 +91,13 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.basedir}/target/lessc</outputDirectory>
+              <outputDirectory>${project.basedir}/target/buffer</outputDirectory>
               <resources>
                 <resource>
                   <includes>
                     <include>**/*.less</include>
                   </includes>
                   <directory>${project.basedir}/src/main/resources</directory>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- Copy dependant LESS files for LESS transpilation -->
-      <plugin>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.0.2</version>
-        <executions>
-          <execution>
-            <id>copy-dependant-less-resources</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.basedir}/target/lessc</outputDirectory>
-              <resources>
-                <resource>
-                  <includes>
-                    <include>**/*.less</include>
-                  </includes>
-                  <directory>${project.basedir}/target/dependencies</directory>
                 </resource>
               </resources>
             </configuration>
@@ -155,7 +120,7 @@
             <configuration>
               <executable>lessc</executable>
               <arguments>
-                <argument>${project.basedir}/target/lessc/assets/style/rcd-jsfwk-material.less</argument>
+                <argument>${project.basedir}/target/buffer/assets/style/rcd-jsfwk-material.less</argument>
                 <argument>${project.basedir}/target/classes/assets/style/rcd-jsfwk-material.css</argument>
               </arguments>
             </configuration>

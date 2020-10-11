@@ -1,6 +1,6 @@
 function createSnackbarsRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init().
-        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init()).
+        addBreadcrumb(new RcdMaterialBreadcrumb('Demo').init().setStateRef('')).
         addBreadcrumb(new RcdMaterialBreadcrumb('Snackbars').init());
 
     const displaySnackbar = () => new RcdMaterialSnackbar('Simple snackbar').init().open();
@@ -20,6 +20,7 @@ function createSnackbarsRoute() {
     return new RcdMaterialRoute({
         state: 'snackbars',
         name: 'Snackbars',
-        callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout)
+        callback: (main) => main.addChild(breadcrumbsLayout).addChild(layout),
+        hideCallback: () => alert('leaving snackbars')
     });
 }

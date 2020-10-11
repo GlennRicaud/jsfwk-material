@@ -1,6 +1,6 @@
 function createDialogsRoute() {
     const breadcrumbsLayout = new RcdMaterialBreadcrumbsLayout().init().
-        addBreadcrumb(new RcdMaterialBreadcrumb('Demo', () => RcdHistoryRouter.setState()).init()).
+        addBreadcrumb(new RcdMaterialBreadcrumb('Demo').init().setStateRef('')).
         addBreadcrumb(new RcdMaterialBreadcrumb('Dialogs').init());
 
     const displayDetailsDialog = () => new RcdMaterialDetailsDialog({

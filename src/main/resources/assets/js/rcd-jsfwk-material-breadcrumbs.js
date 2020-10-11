@@ -1,12 +1,12 @@
-class RcdMaterialBreadcrumb extends RcdTextDivElement {
-    constructor(name, callback) {
+class RcdMaterialBreadcrumb extends RcdAElement {
+    constructor(name) {
         super(name);
         this.name = name;
-        this.callback = callback;
     }
 
     init() {
-        return super.init().addClass('rcd-material-breadcrumb');
+        return super.init()
+            .addClass('rcd-material-breadcrumb');
     }
 }
 
@@ -17,7 +17,8 @@ class RcdMaterialBreadcrumbs extends RcdDivElement {
     }
 
     init() {
-        return super.init().addClass('rcd-material-breadcrumbs');
+        return super.init()
+            .addClass('rcd-material-breadcrumbs');
     }
 
     setBreadcrumbs(breadcrumbs) {
@@ -50,9 +51,7 @@ class RcdMaterialBreadcrumbsLayout extends RcdMaterialLayout {
     }
 
     init() {
-        return super.init().
-            addClass('rcd-material-breadcrumbs-layout').
-            addChild(this.breadcrumbs);
+        return super.init().addClass('rcd-material-breadcrumbs-layout').addChild(this.breadcrumbs);
     }
 
     setBreadcrumbs(breadcrumbs) {

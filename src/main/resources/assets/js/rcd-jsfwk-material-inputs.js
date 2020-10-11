@@ -4,18 +4,20 @@
 class RcdMaterialField extends RcdDivElement {
     constructor(labelText) {
         super();
-        this.label = new RcdTextElement(labelText).init().
-            addClass('rcd-material-textfield-label');
+        this.label = new RcdTextElement(labelText).init().addClass('rcd-material-textfield-label');
     }
 
     init() {
-        return this.addClass('rcd-material-field').
-            addChild(this.label);
+        return this.addClass('rcd-material-field').addChild(this.label);
+    }
+
+    clear() {
+        return this;
     }
 }
 
 class RcdMaterialTextField extends RcdMaterialField {
-    constructor(labelText, placeholder) {
+    constructor(labelText, placeholder = '') {
         super(labelText);
         this.input = new RcdInputElement().init()
             .setPlaceholder(placeholder)
@@ -31,8 +33,12 @@ class RcdMaterialTextField extends RcdMaterialField {
 
     init() {
         return super.init()
-            .addClass('rcd-material-textfield').
-            addChild(this.input);
+            .addClass('rcd-material-textfield').addChild(this.input);
+    }
+
+    clear() {
+        this.input.setValue(null);
+        return this;
     }
 
     getValue() {
@@ -53,12 +59,12 @@ class RcdMaterialTextField extends RcdMaterialField {
         this.input.select();
         return this;
     }
-    
+
     setPattern(pattern) {
         this.input.setAttribute('pattern', pattern);
         return this;
     }
-    
+
     checkValidity() {
         return this.input.domElement.checkValidity();
     }
@@ -75,7 +81,7 @@ class RcdMaterialTextField extends RcdMaterialField {
 }
 
 class RcdMaterialTextArea extends RcdMaterialField {
-    constructor(labelText, placeholder) {
+    constructor(labelText, placeholder = '') {
         super(labelText);
         this.textArea = new RcdTextAreaElement().init()
             .setPlaceholder(placeholder)
@@ -95,7 +101,15 @@ class RcdMaterialTextArea extends RcdMaterialField {
     init() {
         return super.init()
             .addClass('rcd-material-textarea')
-            .addChild(this.textArea);
+            .addChild(this.textArea)
+            .addClickListener(() => {
+                this.textArea.domElement.focus();
+            });
+    }
+
+    clear() {
+        this.textArea.setValue(null);
+        return this;
     }
 
     getValue() {
@@ -145,37 +159,36 @@ class RcdMaterialTextArea extends RcdMaterialField {
 class RcdMaterialDropdown extends RcdMaterialField {
     constructor(labelText, options) {
         super(labelText);
-        this.select = new RcdSelectElement().init().
-            addOptions(options).
-            addClass('rcd-material-dropdown-select').
-            addClass('rcd-material-field-input');
+        this.select =
+            new RcdSelectElement().init()
+                .addOptions(options)
+                .addClass('rcd-material-dropdown-select')
+                .addClass('rcd-material-field-input');
     }
 
     init() {
-        return super.init().
-            addClass('rcd-material-dropdown').
-            addChild(this.select);
+        return super.init().addClass('rcd-material-dropdown').addChild(this.select);
     }
 
     focus() {
         this.select.focus();
         return this;
     }
-    
+
     clear() {
         this.select.clear();
     }
-    
+
     addOptions(options) {
         this.select.addOptions(options);
         return this;
     }
-    
+
     addOption(option) {
         this.select.addOption(option);
         return this;
     }
-    
+
     selectOption(option) {
         this.select.selectOption(option);
         return this;
@@ -184,7 +197,7 @@ class RcdMaterialDropdown extends RcdMaterialField {
     getSelectedValue() {
         return this.select.getSelectedValue();
     }
-    
+
     addChangeListener(listener) {
         this.select.addChangeListener(listener);
         return this;
