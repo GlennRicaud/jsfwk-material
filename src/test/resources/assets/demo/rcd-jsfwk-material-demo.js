@@ -11,6 +11,7 @@ function createApp() {
         .setDefaultRoute(createDefaultRoute())
         .addRoute(createDialogsRoute())
         .addRoute(createTablesRoute())
+        .addRoute(createCardsRoute())
         .addRoute(createListsRoute())
         .addRoute(createSnackbarsRoute())
         .addRoute(createFieldsRoute())

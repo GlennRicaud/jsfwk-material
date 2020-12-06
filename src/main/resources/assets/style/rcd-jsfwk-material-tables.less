@@ -1,7 +1,4 @@
-.rcd-material-table-card :extend(.rcd-flex-vbox, .rcd-material-shadow) {
-  width: 100%;
-  background-color: #fff;
-
+.rcd-material-table-card :extend(.rcd-material-card) {
   .rcd-material-table {
     width: 100%;
   }
@@ -11,12 +8,7 @@
   table-layout: fixed;
 }
 
-.rcd-material-table-card-header :extend(.rcd-flex-hbox) {
-  justify-content: space-between;
-  //Material specs
-  height: 64px;
-  padding-left: 24px;
-  padding-right: 2px;
+.rcd-material-table-card-header :extend(.rcd-material-card-header) {
 }
 
 .rcd-material-table-card-header.selection {
@@ -29,10 +21,7 @@
   color: @rcd-secondary-color;
 }
 
-.rcd-material-table-card-title {
-  //Material specs
-  font-size: @rcd-table-title-font-size;
-  color: @rcd-table-title-color;
+.rcd-material-table-card-title :extend(.rcd-material-card-title) {
 }
 
 .rcd-material-table-card-icons :extend(.rcd-flex-hbox) {
@@ -133,9 +122,11 @@
   padding-left: 9px;
   padding-right: 9px;
   width: 66px;
+
   .rcd-material-icon-area {
     padding: 15px;
     width: 48px;
+
     .rcd-icon {
       font-size: 18px;
     }

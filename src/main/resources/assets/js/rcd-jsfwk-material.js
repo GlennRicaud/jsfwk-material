@@ -9,6 +9,7 @@ include('rcd-jsfwk-material-breadcrumbs.js');
 include('rcd-jsfwk-material-checkboxes.js');
 include('rcd-jsfwk-material-radioboxes.js');
 include('rcd-jsfwk-material-lists.js');
+include('rcd-jsfwk-material-cards.js');
 include('rcd-jsfwk-material-tables.js');
 include('rcd-jsfwk-material-inputs.js');
 include('rcd-jsfwk-material-dialogs.js');
