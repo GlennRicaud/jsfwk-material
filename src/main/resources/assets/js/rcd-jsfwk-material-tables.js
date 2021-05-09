@@ -1,3 +1,14 @@
+class RcdMaterialTableCellAnchor extends RcdAElement {
+    init() {
+        return super.init()
+            .addClass('rcd-material-table-cell-anchor');
+    }
+    
+    setTabIndex(tabIndex) {
+        return this.setAttribute('tabindex', tabIndex);
+    }
+}
+
 class RcdMaterialTableCell extends RcdTdElement {
     constructor() {
         super();
@@ -78,7 +89,13 @@ class RcdMaterialTableRow extends RcdTrElement {
     addCell(value, options) {
         const cell = new RcdMaterialTableCell().
             init();
-        if (options && options.icon) {
+        if (options && options.href) {
+            const anchor = new RcdMaterialTableCellAnchor(value, options.href).init();
+            if (options.reachable === false) {
+                anchor.setTabIndex(-1);
+            }
+            cell.addChild(anchor);
+        } else if (options && options.icon) {
             cell.addChild(value).
                 addClass('icon');
         } else {
