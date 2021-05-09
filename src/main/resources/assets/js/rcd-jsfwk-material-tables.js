@@ -76,11 +76,19 @@ class RcdMaterialTableRow extends RcdTrElement {
     }
 
     addCell(value, options) {
-        const cell = new RcdMaterialTableCell().
-            init();
+        this.createCell(value, options);
+        return this;
+    }
+    
+    createCell(value, options) {
+        const cell = new RcdMaterialTableCell()
+            .init();
         if (options && options.icon) {
-            cell.addChild(value).
-                addClass('icon');
+            cell.addChild(value)
+                .addClass('icon');
+        } else if (options && options.href) {
+            cell.addChild(new RcdAElement(value, options.href).init()
+                .addClass('rcd-material-table-cell-anchor'));
         } else {
             cell.setText(value);
             if (options && options.numeric) {
@@ -94,7 +102,7 @@ class RcdMaterialTableRow extends RcdTrElement {
             cell.setTooltip(options.tooltip.text, options.tooltip.alignment);
         }
         this.addChild(cell);
-        return this;
+        return cell;
     }
 
     select(selected, silent) {
@@ -212,24 +220,22 @@ class RcdMaterialTableBody extends RcdTbodyElement {
     }
 }
 
-class RcdMaterialTableEmptyBody extends RcdTbodyElement {
+class RcdMaterialTableEmptyBody extends RcdMaterialTableBody {
     constructor(message = 'No content') {
-        super();
-        this.cell = new RcdTdElement().init().
-            addClass('rcd-material-table-empty-body-message').
-            setText(message).
-            setAttribute('colspan', 0);
-        this.row = new RcdTrElement().init().
-            addChild(this.cell);
+        super({selectable: false});
+        this.message = message;
     }
 
     init() {
-        return super.init().
-            addChild(this.row);
+        this.messageCell = super.init()
+            .createRow()
+            .createCell(this.message)
+            .addClass('rcd-material-table-empty-body-message');
+        return this;
     }
 
     setColspan(value) {
-        this.cell.setAttribute('colspan', value);
+        this.messageCell.setAttribute('colspan', value);
         return this;
     }
 }
