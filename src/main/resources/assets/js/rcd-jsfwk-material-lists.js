@@ -26,7 +26,7 @@ class RcdMaterialListRowText extends RcdDivElement {
     }
 }
 
-class RcdMaterialListRow extends RcdDivElement {
+class RcdMaterialListRow extends RcdButtonElement {
     constructor(primaryText, secondaryText, params = {}) {
         super();
         this.rowText = new RcdMaterialListRowText(primaryText, secondaryText, params).init();
@@ -46,6 +46,8 @@ class RcdMaterialListRow extends RcdDivElement {
                 .addClickListener((target, event) => {
                     this.callback(this, event);
                 });
+        } else {
+            this.setAttribute('tabindex','-1');
         }
 
         return this;

@@ -1,4 +1,4 @@
-class RcdMaterialAction extends RcdDivElement {
+class RcdMaterialAction extends RcdButtonElement {
     constructor(callback) {
         super();
         this.enabled = true;
@@ -6,11 +6,12 @@ class RcdMaterialAction extends RcdDivElement {
     }
 
     init() {
-        super.init().
-            addClass('rcd-material-action');
+        super.init()
+            .addClass('rcd-material-action');
         if (this.callback) {
             this.addClickListener(this.callback);
         }
+        this.refreshTabIndex();
         return this;
     }
 
@@ -18,14 +19,19 @@ class RcdMaterialAction extends RcdDivElement {
         if (this.enabled != enabled) {
             this.enabled = enabled;
             if (enabled) {
-                return this.removeClass('disabled').
-                    addClickListener(this.callback);
+                this.removeClass('disabled')
+                    .addClickListener(this.callback);
             } else {
-                return this.addClass('disabled').
-                    removeClickListener(this.callback);
+                this.addClass('disabled')
+                    .removeClickListener(this.callback);
             }
+            this.refreshTabIndex();
         }
         return this;
+    }
+
+    refreshTabIndex() {
+        return this.setAttribute('tabindex', (this.callback && this.enabled) ? null : '-1');
     }
 
     setCallback(callback) {

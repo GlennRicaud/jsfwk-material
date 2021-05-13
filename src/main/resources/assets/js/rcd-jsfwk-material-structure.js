@@ -73,7 +73,7 @@ class RcdMaterialApplicationBar extends RcdHeaderElement {
             this.searchField = new RcdMaterialTextField('', 'Search')
                 .init()
                 .addClass('rcd-material-application-bar-search-field')
-                .addKeyUpListener('Enter', searchCallback);
+                .addKeyDownListener('Enter', searchCallback);
             this.searchCancelIconArea = new RcdGoogleMaterialIconArea('clear', hideSearchPanel)
                 .init()
                 .setLight(true);

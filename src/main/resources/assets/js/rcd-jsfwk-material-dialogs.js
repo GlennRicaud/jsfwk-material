@@ -120,8 +120,8 @@ class RcdMaterialDetailsDialog extends RcdMaterialModalDialog {
         };
         super.init().
             addAction('CLOSE', closeCallback).
-            addKeyUpListener('Enter', closeCallback).
-            addKeyUpListener('Escape', closeCallback);
+            addKeyDownListener('Enter', closeCallback).
+            addKeyDownListener('Escape', closeCallback);
         return this;
     }
 }
@@ -143,8 +143,8 @@ class RcdMaterialConfirmationDialog extends RcdMaterialModalDialog {
         return super.init().
             addAction('CANCEL', closeCallback).
             addAction(this.confirmationLabel, confirmationCallback).
-            addKeyUpListener('Enter', confirmationCallback).
-            addKeyUpListener('Escape', closeCallback);
+            addKeyDownListener('Enter', confirmationCallback).
+            addKeyDownListener('Escape', closeCallback);
     }
 }
 
@@ -166,8 +166,8 @@ class RcdMaterialSelectionDialog extends RcdMaterialModalDialog {
         return super.init().
             addAction('CANCEL', closeCallback).
             addAction(this.confirmationLabel, confirmationCallback).
-            addKeyUpListener('Enter', confirmationCallback).
-            addKeyUpListener('Escape', closeCallback).
+            addKeyDownListener('Enter', confirmationCallback).
+            addKeyDownListener('Escape', closeCallback).
             addItem(this.dropdownField);
     }
 
@@ -200,8 +200,8 @@ class RcdMaterialInputDialog extends RcdMaterialModalDialog {
         return super.init().
             addAction('CANCEL', closeCallback).
             addAction(this.confirmationLabel, confirmationCallback).
-            addKeyUpListener('Enter', confirmationCallback).
-            addKeyUpListener('Escape', closeCallback).
+            addKeyDownListener('Enter', confirmationCallback).
+            addKeyDownListener('Escape', closeCallback).
             addItem(this.inputField);
     }
 

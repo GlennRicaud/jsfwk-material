@@ -87,7 +87,7 @@ class RcdMaterialTextArea extends RcdMaterialField {
             .setPlaceholder(placeholder)
             .addClass('rcd-material-field-input')
             .addClass('rcd-material-textarea-input')
-            .addKeyUpListener('Enter', (source, event) => {
+            .addKeyDownListener('Enter', (source, event) => {
                 event.stopPropagation();
             })
             .addFocusListener(() => {

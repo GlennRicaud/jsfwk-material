@@ -21,6 +21,10 @@ class RcdMaterialRadiobox extends RcdGoogleMaterialIconArea {
     isSelected() {
         return this.hasClass('selected');
     }
+    
+    refreshTabIndex() {
+        return this.setAttribute('tabindex', this.enabled ? null : '-1');
+    }
 }
 
 class RcdMaterialRadioboxGroup extends RcdObject {
