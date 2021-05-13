@@ -35,6 +35,10 @@ class RcdMaterialNavIconArea extends RcdGoogleMaterialIconArea {
         this.navigationDrawer = navigationDrawer;
         return this;
     }
+
+    refreshTabIndex() {
+        return this.setAttribute('tabindex', this.enabled ? null : '-1');
+    }
 }
 
 
