@@ -47,7 +47,7 @@ class RcdMaterialListRow extends RcdButtonElement {
                     this.callback(this, event);
                 });
         } else {
-            this.setAttribute('tabindex','-1');
+            this.setAttribute('tabindex', '-1');
         }
 
         return this;
@@ -79,6 +79,15 @@ class RcdMaterialList extends RcdDivElement {
     deleteRows() {
         this.removeAllChildren();
         this.rows = [];
+        return this;
+    }
+
+    deleteRow(row) {
+        let index = this.rows.indexOf(row);
+        if (index !== -1) {
+            this.removeChild(row);
+            this.rows.splice(index, 1);
+        }
         return this;
     }
 }
