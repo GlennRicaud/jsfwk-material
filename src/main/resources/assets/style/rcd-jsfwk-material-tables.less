@@ -83,6 +83,10 @@
   }
 }
 
+.rcd-material-table-cell {
+  word-break: break-word;
+}
+
 @media (max-width: 960px) {
   .rcd-material-table-cell {
     padding-right: 24px;
@@ -148,7 +152,9 @@
 }
 
 .rcd-material-table-cell-anchor :extend(.rcd-flex-hbox) {
-  height: 48px;
+  max-height: 96px;
+  overflow-y: hidden;
+  align-items: start;
 }
 
 .rcd-material-table-empty-body-message {
